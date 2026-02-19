@@ -9,6 +9,11 @@ GROQ_API_KEY + DB_CONNECTION_STRING must be set as environment variables
 import os
 
 import streamlit as st
+
+# ── sync Streamlit secrets → os.environ (do this before any other imports) ────
+for _k, _v in st.secrets.items():
+    os.environ.setdefault(_k, str(_v))
+    
 from llama_index.core import StorageContext, VectorStoreIndex
 from llama_index.vector_stores.supabase import SupabaseVectorStore
 
