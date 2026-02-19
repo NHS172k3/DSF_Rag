@@ -16,9 +16,11 @@ Settings.embed_model = HuggingFaceEmbedding(
 )
 
 # Read prompt templates once
-with open("../prompts/answer_prompt.txt") as f:
+from pathlib import Path
+_PROMPTS_DIR = Path(__file__).parent.parent / "prompts"
+with open(_PROMPTS_DIR / "answer_prompt.txt") as f:
     ANSWER_PROMPT = f.read()
-with open("../prompts/quiz_prompt.txt") as f:
+with open(_PROMPTS_DIR / "quiz_prompt.txt") as f:
     QUIZ_PROMPT = f.read()
 
 # Load your LlamaIndex (retrieval engine)
