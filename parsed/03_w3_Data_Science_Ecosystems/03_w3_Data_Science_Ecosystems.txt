@@ -1,0 +1,1761 @@
+NANYANG
+TECHNOLOGICAL
+UNIVERSITY
+SINGAPORE
+
+             Data Science Fundamentals
+             [SC3021]
+
+
+Chapter 3: Data Science Ecosystems
+
+Assoc. Prof. Melanie Herschel | CCDS
+
+Course content
+
+
+
+
+
+
+
+
+  Data science overview         Data preparation and          Data analytics and         Design considerations
+                                data management               understanding
+  What is Data Science?         Data profiling                Descriptive analytics      Privacy
+  Data Science Thinking vs.     Structuring                   Diagnostic Analytics       Security
+  Computational Thinking        Enriching                     Prescriptive analytics     Ethics
+  Data Science Ecosystem        Data cleaning                 Predictive analytics       Psychology
+  •Ecosystem overview           Data management platforms     Data visualization         Policies
+  •Component details            Schema design
+
+                                Querying data
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    2
+
+At the end of this lecture, you should be able to…
+
+•     … describe the main components of
+      the data science ecosystem.
+•     … explain how different factors
+      influence the development of a data
+      science system.
+•     … define the functionality of data
+      science building blocks at a high
+      level to solve data science
+      applications.
+•     … reflect on possible data
+      protection, data ethics, social and
+      policy aspects that may affect the
+      data science application
+      deployment.
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    3
+
+ECOSYSTEM OVERVIEW
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    4
+
+Applications, systems, and deployments
+
+
+ Data Science     Problem instance that applies Data Science Thinking
+ application      to solve a problem based on data
+
+ Data Science     Software system that supports the process underlying
+ system           Data Science Thinking
+
+ Data Science
+ application      Use of a data science system for a data science
+ deployment       problem in a production environment
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE        Nanyang Technological University. All rights reserved.    5
+
+Applications, systems, and deployments
+
+
+                                                 Data visualization                 Data preparation and
+ Data Science                                    and explanation                    data management
+ application                                                           Ask
+                                                 Data protection    Act             Prepare        Social and
+ Data Science                                    and data ethics    Share           Process    policy aspects
+ system                                                                      Analyze
+
+ Data Science                                                       Data modeling
+ application                                                        and analytics
+ deployment
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                  Nanyang Technological University. All rights reserved.    6
+
+    Holistic consideration
+                                                    •     Applications, systems, and
+
+    Data                                                  deployments are interlinked and
+  Science                                                 influence one another.
+application                                         •     Examples:
+
+                                                           –  Data science systems provide tools and
+  Data                                                        technologies that help data scientists
+Science                                                       address their problems.
+ system                                                    –  Data science systems need to be
+
+    Data Science                                              carefully designed to fit the target
+    deployment                                                applications.
+                                                           –  Data science systems need to support
+                                                              deployments within their social and policy
+                                                              context.
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                           Nanyang Technological University. All rights reserved.    7
+
+Data Science ecosystem
+
+•     A framework designed to guide the development of data science
+      systems.
+•     The ecosystem is composed of building blocks that are
+      application-informed and context-informed.
+•     Application-informed: Data Science applications guide the
+      appropriate technologies, tools, algorithms, and methodologies to be
+      incorporated in data science systems and leverage them to address
+      the application needs.
+•     Context-informed: Social and policy context significantly impact
+      data-science application deployments. Core technologies developed
+      and used in data science systems need to take these into account
+      and reflect them in application deployments.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE      Nanyang Technological University. All rights reserved.    8
+
+Illustration of application-informed
+
+•     Application problem: Classify if a product sold online
+      will be returned or not.
+•     Some considerations for system development
+      (there are more):
+       –  The application defines a classification problem.
+       –  The product description on the Web is semi-structured,
+          so restructuring and cleaning of the data is necessary to obtain dense
+          feature vectors.
+       –  The system needs to implement standardization and alignment to
+          ensure that feature representations of online products are compatible
+          with features of the available product transaction data.
+       –  The choice of model should ensure highly accurate classification
+          results.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                Nanyang Technological University. All rights reserved.    9
+
+Illustration of context-informed
+
+•     Application problem: Classify if a person applying for a                        $ PERSONAL
+      loan will repay the loan or not.                                                  LOAN
+•     Some considerations for system development                                        PWE IACD
+      (there are more):
+       –  The application defines a classification problem.
+       –  Customer profiles vary and are semi-structured data, so restructuring and cleaning
+          of the data is necessary to obtain dense feature vectors.
+       –  The system needs to implement standardization and alignment to ensure that
+          feature representations of applicants are compatible with features of the available
+          bank transaction data.                                                          Changed social
+       –   ~~The choice of model should ensure highly accurate classification ~~  results.  and policy
+       –  Choose a right model to obtain accurate and fair classification results.           context!
+       –  Handling of personal data requires the integration of privacy mechanisms into the
+          data science system.
+       –  Financial data needs to be protected through appropriate security mechanisms.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                       Nanyang Technological University. All rights reserved.    10
+
+ Data Science ecosystem
+
+
+<table>
+  <caption>Data Science ecosystem</caption>
+  <thead>
+    <tr>
+      <th colspan="5">Applications</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data engineering</td>
+      <td>Data analytics</td>
+      <td>Data understanding</td>
+      <td>Data protection</td>
+      <td>Data ethics</td>
+    </tr>
+    <tr>
+      <th colspan="5">Data science building blocks</th>
+    </tr>
+    <tr>
+      <th colspan="5">Social and policy context</th>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    11
+
+Data Science ecosystem
+
+                                                             Applications
+
+Data engineering                Data analytics                    Data               Data protection       Data ethics
+                                                             understanding
+•     Data preparation     •     Data exploration                               •     Security        •     Impact on
+•     Data management      •     (data mining)         •     Explanation        •     Privacy               individuals,
+                                 Models and            •     Visualization                                  organizations,
+                                 algorithms                                                                 and society
+                                 (machine learning)                                                   •     Bias in data
+                                                                                                      •     Algorithmic bias
+                                                                                                      •     Regulatory
+                                                                                                            issues
+
+                                                     Data science building blocks
+
+                                                       Social and policy context
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    12
+
+Ecosystem structures the remainder of this
+lecture
+
+
+
+
+
+
+ Data science overview         Data preparation and          Data analytics and         Design considerations
+                               data management               understanding
+ What is Data Science?         Data profiling                Descriptive analytics      Privacy
+ Data Science Thinking vs.     Structuring                   Diagnostic Analytics       Security
+ Computational Thinking        Enriching                     Prescriptive analytics     Ethics
+ Data Science Ecosystems       Data cleaning                 Predictive analytics       Psychology
+
+                               Data management platforms     Data visualization         Policies
+                               Schema design
+                               Querying data
+
+
+
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    13
+
+COMPONENT DETAILS
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    14
+
+ Data Science ecosystem
+
+
+<table>
+  <caption>Data Science ecosystem</caption>
+  <thead>
+    <tr>
+      <th colspan="5">Social and policy context</th>
+    </tr>
+    <tr>
+      <th colspan="5">Applications</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data engineering</td>
+      <td>Data analytics</td>
+      <td>Data understanding</td>
+      <td>Data protection</td>
+      <td>Data ethics</td>
+    </tr>
+    <tr>
+      <th colspan="5">Data science building blocks</th>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    15
+
+Data Engineering                                 Data     Data           Data        Data
+                                                engin    analyt          under      protec                Data
+                                                eering    ics            standing    tion                 ethics
+
+Data Engineering
+The practice of designing, building, and maintaining systems
+that collect, manage, and convert raw data into usable
+information for downstream applications.
+
+Data preparation                                Data management
+Operations typically involved                   Solutions devised to
+in a data engineering process                   organize, protect, store,
+that transform the data.                        access, and manipulate data.
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.          16
+
+Data preparation    Data     Data      Data      Data
+                   engin    analyt     under    protec    Data
+                   eering    ics       standi    tion    ethics
+                                       ng
+
+
+Operations transforming data in multiple stages:
+•     Data profiling
+•     Data structuring
+•     Data enriching                                                     Running example:
+•     Data cleaning                             LEAVE FEEDBACK           •     Goal: analyze the relationship
+
+                                                                  100          between product ratings and
+                                                                               customer demographics (age,
+                                                                               gender, place of residence).
+                                                                         •     Requires: data on both product
+                                                                               reviews by customers and
+                                                                               customer demographics.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                   Nanyang Technological University. All rights reserved.    17
+
+                               Data     Data      Data      Data
+  Data preparation - Example  engin    analyt     under    protec    Data
+                              eering    ics       standi    tion    ethics
+                                                  ng
+
+
+Sample data from  Product                                       Reviewer           Rating      Text     Date             City
+  user_reviews    iPhone 6                                      helloKitty93       4           …        19/12/2011       LA
+
+                  Apple iPhone 6                                ⊥                  3           …        04/24/2012       New York
+                  Samsung Galaxy                                SecretUser007      5           ⊥        21/01/2018       Austin
+                  ⊥                                             helloKitty93       4           …        29/09/2020       CA
+
+  Sample data for                                 Username           Name               Age     isMale     isFemale     City
+customer_demographics                             helloKitty         Jane Smith         46      ⊥          1            Los Angeles
+                                                  JD                 John Doe           24      1          0            New York
+                                                  SecretUser007      James Bond         65      1          0            ⊥
+                                                  maxMiller          Max Miller         37      ⊥          ⊥            Miami
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                            Nanyang Technological University. All rights reserved.    18
+
+Data preparation - Profiling Data     Data      Data      Data
+                            engin    analyt     under    protec    Data
+                            eering    ics       standi    tion    ethics
+                                                ng
+
+
+•     Examine and analyze data to               Statistics commonly used in
+      create metadata (data about               summaries:
+
+•     data).                                     •     Number of rows
+      Metadata represent a                       •     Min and max values
+      summary of various                         •     Number of missing values
+
+•     characteristics of the data.               •     Outliers
+      These summaries help to                    •     Data type
+      assess usefulness and quality
+      of data.                                   •     Data format violations
+                                                 •     Histograms
+                                                 •     …
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                     Nanyang Technological University. All rights reserved.    19
+
+Data preparation - Profiling Data     Data      Data      Data
+                            engin    analyt     under    protec    Data
+                            eering    ics       standi    tion    ethics
+                                                ng
+
+
+
+
+Metadata for user_reviews                                    Metadata for customer_demographics
+Column       Type       Missing values     Unique values     Column       Type       Missing values     Unique values
+Product      String     55                 10987             username     String     0                  5000
+Reviewer     String     126                8426              Name         String     0                  4230
+Rating       Int        0                  5                 Age          Int        10                 89
+Text         String     6024               4963              isMale       Bool       2040               2
+Date         Date       0                  365               isFemale     Bool       3022               2
+City         String     3024               430               City         String     75                 500
+
+
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    20
+
+                                Data     Data      Data      Data
+Data preparation - Structuring engin    analyt     under    protec    Data
+                               eering    ics       standi    tion    ethics
+                                                   ng
+
+
+
+•     Organize and transform the data           Typical structuring tasks:
+      into a well-defined format.               •     Organization of data into tables.
+•     The format should be suitable             •     Table normalization to avoid
+      for the intended analysis.                      data redundancy and improve
+•     Properly structured data enables                data integrity.
+      efficient and effective data              •     Splitting values
+      processing.                               •     Pivoting data
+                                                •     Group numerical data into
+                                                      ranges
+                                                •     …
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                         Nanyang Technological University. All rights reserved.    21
+
+                                  Data     Data      Data      Data
+  Data preparation - Structuring engin    analyt     under    protec    Data
+                                 eering    ics       standi    tion    ethics
+                                                     ng
+
+
+Sample data from  Product                         Reviewer             Rating     Text        Date           City
+  user_reviews    iPhone 6                        helloKitty93         4          …           19/12/2011     LA
+
+                  Apple iPhone 6                  ⊥                    3          …           04/24/2012     New York
+                  Samsung Galaxy                  SecretUser007        5          ⊥           21/01/2018     Austin
+                  ⊥                               helloKitty93         4          …           29/09/2020     CA
+
+                       Product                         Reviewer             Rating     Day     Month        Year     City
+                       iPhone 6                        helloKitty93         4          19      12           2011     LA
+                       Apple iPhone 6                  ⊥                    3          04      24           2012     New York
+
+  Restructured         Samsung Galaxy                  SecretUser007        5          21      01           2018     Austin
+  data                 ⊥                               helloKitty93         4          29      09           2020     CA
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                 Nanyang Technological University. All rights reserved.    22
+
+                                   Data     Data      Data      Data
+   Data preparation - Structuring engin    analyt     under    protec    Data
+                                  eering    ics       standi    tion    ethics
+                                                      ng
+
+
+
+   Sample data for     Username                                     Name           Age     isMale          isFemale     City
+customer_demographics  helloKitty                                   Jane Smith     46      ⊥               1            Los Angeles
+                       JD                                           John Doe       24      1               0            New York
+                       SecretUser007                                James Bond     65      1               0            ⊥
+                       maxMiller                                    Max Miller     37      ⊥               ⊥            Miami
+
+                                                   Username          Name           Age         AgeRange        Gender      City
+                                                   helloKitty        Jane Smith     46          46- 60          F           Los Angeles
+                                                   JD                John Doe       24          18- 30          M           New York
+   Restructured                                    SecretUser007     James Bond     65          60 - 75         M           ⊥
+   data                                            maxMiller         Max Miller     37          30- 45          ⊥           Miami
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                            Nanyang Technological University. All rights reserved.    23
+
+                               Data     Data      Data      Data
+Data preparation - Enriching  engin    analyt     under    protec    Data
+                              eering    ics       standi    tion    ethics
+                                                  ng
+
+
+
+•     Enhance existing data by           Common enrichment steps:
+      adding new and supplemental        •     Add new attributes (columns)
+
+•     information.                       •     Join with external data sources
+      The supplemental information       •     Create derived attributes
+      should be relevant to the data     •     Data integration
+
+•     science application.               •     …
+      Enrichment supports
+      improving the accuracy,
+      reliability, and completeness of
+      the data for the task at hand.
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    24
+
+                               Data     Data      Data      Data
+Data preparation - Enriching  engin    analyt     under    protec    Data
+                              eering    ics       standi    tion    ethics
+                                                  ng
+
+
+     user_reviews       Product                                  Reviewer          Rating       Day     Month     Year       City
+     (restructured)     iPhone 6                                 helloKitty93      4            19      12        2011       LA
+
+                7 Apple iPhone 6                                 ⊥                 3            04      24        2012       New York
+user_reviews            Samsung Galaxy                           SecretUser007     5            21      01        2018       Austin
+  (enriched)            ⊥                                        helloKitty93      4            29      09        2020       CA
+Product            Category                          Reviewer          Rating     Day     Month        Year      City         State
+iPhone 6           Electronics                       helloKitty93      4          19      12           2011      LA           CA
+Apple iPhone 6     Electronics                       ⊥                 3          04      24           2012      New York     NY
+Samsung Galaxy     Electronics                       SecretUser007     5          21      01           2018      Austin       TX
+⊥                  ⊥                                 helloKitty93      4          29      09           2020      CA           ⊥
+
+     NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                      Nanyang Technological University. All rights reserved.    25
+
+                               Data     Data      Data      Data
+Data preparation - Enriching  engin    analyt     under    protec    Data
+                              eering    ics       standi    tion    ethics
+                                                  ng
+
+
+Product            Category                           Reviewer          Rating      Day     Month       Year         City                                         State
+iPhone 6           Electronics                        helloKitty93      4           19      12          2011         LA                                           CA
+Apple iPhone 6     Electronics                        ⊥                 3           04      24          2012         New York                                     NY
+Samsung Galaxy     Electronics                        SecretUser007     5           21      01          2018         Austin                                       TX
+⊥                  ⊥                                  helloKitty93      4           29      09          2020         CA                                           ⊥
+
+                                                Username              Name           Age     AgeRange           Gender         City
+                                                helloKitty            Jane Smith     46      46- 60             F              Los Angeles
+                                                JD                    John Doe       24      18- 30             M              New York
+                                                SecretUser007         James Bond     65      60 - 75            M              ⊥
+                                                maxMiller             Max Miller     37      30- 45             ⊥              Miami
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                            Nanyang Technological University. All rights reserved.         26
+
+                                 Data     Data      Data      Data
+  Data preparation - Enriching  engin    analyt     under    protec    Data
+                                eering    ics       standi    tion    ethics
+                                                    ng
+
+
+
+
+
+user_reviews(enriched)
+
+Product      Category        UN1               R     D      M      Y        City       State     UN2               Name      Age     Range      Gender     City2
+iPhone 6     Electronics     helloKitty93      4     19     12     2011     LA         CA        helloKitty        Jane      46      46- 60     F          Los
+                                                                                                                   Smith                                   Ange
+                                                                                                                                                           les
+Apple        Electronics     ⊥                 3     04     24     2012     New        NY               ⊥               ⊥    ⊥            ⊥          ⊥      ⊥
+iPhone 6                                                                    York
+Samsung      Electronics     SecretUser007     5     21     01     2018     Austin     TX        SecretUser007     James     65      60- 75     M           ⊥
+Galaxy                                                                                                             Bond
+⊥            ⊥               helloKitty93      4     29     09     2020     CA         ⊥         ⊥                 ⊥         ⊥       ⊥          ⊥          ⊥
+
+
+
+
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    27
+
+                              Data     Data      Data        Data
+Data preparation - Cleaning  engin    analyt     under      protec    Data
+                             eering    ics       standing    tion    ethics
+
+
+•     Identify and correct data        Example data cleaning tasks:
+      errors, inconsistencies, and     •     Identify matches
+
+•     inaccuracies.                    •     Remove duplicates
+      Final step of data               •     Remove irrelevant data
+      preparation that yields          •     Handle missing data
+      accurate, consistent, and
+      reliable data suitable for       •     Deal with outliers
+      analysis and decision-           •     Make values consistent
+      making.                          •     …
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    28
+
+                                 Data     Data      Data      Data
+   Data preparation - Cleaning  engin    analyt     under    protec    Data
+                                eering    ics       standi    tion    ethics
+                                                    ng
+
+
+
+
+
+
+user_reviews(cleaned)
+
+Product     Category        UN1               R     D      M      Y        City       Stat     UN2               Name      Age     Range      Gender     City2
+                                                                                      e
+Apple       Electronics     helloKitty93      4     19     12     2011     Los        CA       helloKitty        Jane      46      46- 60     F          Los
+iPhone 6                                                                   Angeles                               Smith                                   Angeles
+Apple       Electronics     ⊥                 3     04     24     2012     New        NY              ⊥          ⊥         ⊥       ⊥               ⊥     New
+iPhone 6                                                                   York                                                                          York
+Samsung     Electronics     SecretUser007     5     21     01     2018     Austin     TX       SecretUser007     James     65      60- 75     M          Austin
+Galaxy                                                                                                           Bond
+A8
+⊥           ⊥               helloKitty93      4     29     09     2020     Los        CA       helloKitty        Jane      46      46- 60     F          Los
+                                                                           Angeles                               Smith                                   Angeles
+
+
+
+
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    29
+
+                              Data     Data      Data      Data
+Data preparation - Cleaning  engin    analyt     under    protec    Data
+                             eering    ics       standi    tion    ethics
+                                                 ng
+
+
+
+
+
+
+user_reviews(cleaned)
+
+Product               Category        R     D      M      Y        City            State     Name           Age     Range       Gender
+Apple iPhone 6        Electronics     4     19     12     2011     Los Angeles     CA        Jane Smith     46      46-  60     F
+Samsung Galaxy A8     Electronics     5     21     01     2018     Austin          TX        James Bond     65      60-  75     M
+
+
+
+
+
+
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    30
+
+                               Data     Data            Data        Data
+Data preparation – Wrap-up    engin    analyt           under      protec                                 Data
+                              eering    ics             standing    tion                                  ethics
+
+•     Data preparation, through its different stages,
+      transforms raw data into high-quality, well-structured
+      data that is suitable and ready-to-use for the analysis
+      needed by the target data science application.
+•     Such data are imperative for meaningful analytical
+      results (prevents “garbage-in-garbage-out” problem).
+•     Although presented as subsequent stages, the order
+      may vary, and some stages may apply more than once
+      before producing the final dataset.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.          31
+
+Data management  Data     Data      Data      Data
+                engin    analyt     under    protec    Data
+                eering    ics       standi    tion    ethics
+                                    ng
+
+
+
+•     Solutions devised for easy support of      …  Data
+      operations on data, e.g., organize,           task
+      protect, store, access, and manipulate        (queries)
+      data.
+•     Systems, algorithms, and methods that
+      support efficient and scalable use of      Data management
+      data.
+•     Ease of use via abstraction of data
+      handling issues from physical data storage
+      on disc to processing user queries.
+•     Many different types of data supported     …  …           Files
+      by different data management solutions.                   on disk
+                                                                (data)
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE     Nanyang Technological University. All rights reserved.    32
+
+Genealogy of Relational Database Management Systems
+Data management  v6.0. 2986  ASK Group (3990)  CA (1994)  2.01997  VR1.2004  v90  A  v1a  Actian (frenamed 2011)  ingnes
+– systems & platforms  Igres i5×,170s RT1  DABA (Robotron, UDe  O  O  Ingres Corp (2005)  Vectorwisee (Actian)
+PostgreSQL  MonetB (CW)  AEM  dshift (Amazon)
+v1.1995 v6.2997  PADB (ParAcce)  Actian  Recinit
+
+y Ingres  Empress  Red Brick  lustra  EMC v8 22010  Pivatal  Postgwsio%
+O  90200 BM InoriV20,2005  V11.2007  v1.709 2010  v1230 2013
+v1.41900s  sa,192  VG01994  O
+C  v4.01990  70.1995  informix  Rd Brick  H  esoft SgL. Se
+•Large variety (for  w11.5196  v11 198  CStore  Vertica Analytic DB
+Sybase SQL. Server  v3:0.1980  v4.0 1990   v10 1999  C  O DATAlegro  Volt DB
+relational data and  BAY AREA PARK  v1.0.1981  1.0.1987  Irand  Expressway 103 Sybase  11,15Sybase ASE  V12.199  212.01890   125,2001 1251,2000 1250₂₀₀₅  SAP HP
+C
+CODD RIVER  Microsoft SQL Server  Watcom SQLPowersoft  Sybase SQL Anywhere  v15, 2009
+beyond)  IDM S00 (Britton Lee)  Microsoft Access  v1, 192 w2.1993  va 205 1207 1.109  v10 2000 v11, 2008  412,207  v14, 2010
+FOO  w2.1989  O  v4.21,1993  095  v10 2008  w11,2012
+Oracle  VisualFoxPro (Microsoft)  moo  VES  12, 2009 Infobright  v32c. 2019
+O  v3,1983  v5.1985  o  031.2969 1321 198  v3.23  v11g 2007  95.6 2013 v5.3 2015
+•No one-size-fits-all  v2, 2579  7.1992  MysqL  on wi1, 2008
+Paradox (AnsalBorlaend  InnoDB (nnobase)  O  v10. 2013
+DBC 1012 (Teradata)  Oracle  MariaDB  V55.2010
+solution, different  O  Core  Oracile
+O  1990sᴼ
+Mutics Relational ta t  RDB (DEC)  TimesTen  Teradata vang 20s  V14.0 2012
+solutions fit different  Honeywell)  O  1980s O  NOCR  Aster Database
+ShareBas
+needs.  DB2 MVS  w3.1993  v4.1995  Cloudscape  O  Apache Derby  6.200  47,2020  2010s
+BAY AREA PARK  O  SQL/400  RELATIONAL CREEK D82/400  DB2 UDB for ISeries  O
+SOUOS S  O  O  5.1997  informix  NBM
+•Data scientists need to  V1,1988  w2 1992  DB2 for VSE & VM  wE 1992  v6,199  DB 2/0S v0  vi, 2004  v9,2007
+Sold DB  vf. 1990
+O  MemSOL
+know which data  System-R (IBM)  System/38  O 1.29  v12, 2988  OB UDE v1 193 104  TinO  f1999  EXASolution  OM
+Transbase  O
+(Transaction Software)
+management solution  REDABAS (Robotron)  O
+IBIM IS1  dBase (Ashton Tate)  1981  elase 1, 1954  2960  Borland  dBase Inc.  inB  OEE arO
+O O  Groton Database System  InterBase  Ashiton Tate  Frobbd  v1, 2003 1.5 2004  20200 daseLLC
+best fits their needs.  I8M P  O  2000s
+O  Cutfinet  GDBM  P  v1.8,2005  COOD RIVER  W2 2012
+Turbolmage (Esvel)  Allbase (HP)  sQUte
+0  SQLIte
+o  O  Gamma (Untv: Wisconsini)  Peapleofto  SAP  O HyPer (TUM)  TableauHP
+Mariposa @Berkeley)  HSQLDB1.6, 2001  17,2002
+1970s  O  J  O  P-TIME
+VDN/RDS  A  Siemens  Cohera  SAP DB  MaxOB
+o
+Prod  Nonistop SQOL
+N ( ((ade )  v1.1987 v2,1989  AdabasD (Software AG)  Compag  HP  A
+O  Neoview
+W12,1985  W.1999  2007  v10, 2009  11,2011425
+FileMaker Inc.
+
+HPI Hasso  Key to lines and symbols
+D Platther  Contact-Hasso Plattner Institut, University of Potsdam, felix.naumann@hpi.de
+W nstiut  ODBMS name (Company)  Acquisition  v2 20 Versions  Discontinued  Branch (ntelectual andre)  Version 6.0 - October 2018
+Engineering-Universita Potsdem  https:/mpi.de/naumann/projects/rdbms-genealogy.html
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    33
+
+Schema design    Data     Data      Data      Data
+                engin    analyt     under    protec    Data
+                eering    ics       standi    tion    ethics
+                                    ng
+
+
+•     A schema defines the structure, organization, and
+      relationships of data stored in a database.
+•     A clear structure of data supports data scientists in
+       –  Understanding the data
+       –  Efficient data exploration
+       –  Identification of data quality issues
+       –  Definition of data transformation
+       –  Model building
+       –  …
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    34
+
+Schema design example  Data     Data      Data        Data
+                      engin    analyt     under      protec    Data
+                      eering    ics       standing    tion    ethics
+
+
+•     A relational schema structures                                             CID          City               Order
+      data into tables with attributes                                           1            KL                 {P3, P506, …}
+      (colums); attributes have data                                             504          Kuala Lumpur       {P1, P205, …}
+      types, data in tuples (rows),                                              367          SG                 {P3, P5, …}
+      schema defines relationships, …
+•     A good relational schema is                                    CID         1            KL                 {P2, P2, P765,…}
+      normalized.                                                           OID         PID           Amount     PoorSchemaDB
+                                                CID     CityCode     1      1           P3            1
+Code   City                                     1       KL           1      1           P506          1
+KL     Kuala Lumpur                             504     KL           …      …           …             …
+SG     Singapore                                367     SG           1      4           P2            2         GoodSchemaDB
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                             Nanyang Technological University. All rights reserved.    35
+
+                  Data     Data      Data      Data
+                 engin    analyt     under    protec    Data
+Querying data    eering    ics       standi    tion    ethics
+                                     ng
+
+
+•     Different types of queries (analytical queries, search, top-k
+      queries, …)
+•     Different languages with different expressive power
+•     Efficient and scalable query execution strategies exist for each
+      type of query / language.
+•     Data scientists need to know to
+       –  Efficiently retrieve the data they need
+       –  Effectively and efficiently perform data cleaning on large volumes of
+          data
+       –  Implement easy selection of data subsets for model evaluation
+       –  …
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    36
+
+                            Data     Data      Data      Data
+                           engin    analyt     under    protec    Data
+  Querying data example    eering    ics       standi    tion    ethics
+                                               ng
+
+
+ import pandas as pd                                T
+
+# Read employee data from CSV                         SE
+ df = pd.read_csv('employee_data.csv')                SELECT *
+                                                      FR     employees
+                                                      FROM
+                                                      WHI     department = 'Sales'
+# Filter for employees in the 'Sales' department      WHERE     salary DESC
+                                                      ORI     BY
+ sales_employees = df[df['department'] == 'Sales']    ORDER
+                                                      LII    5;
+                                                      LIMIT
+# Sort employees by salary in descending order
+sorted_sales_employees = sales_employees.                    Get top-5   of best paid
+  sort_values(by='salary', ascending=False)                  sales employees (Python
+
+# Get the top 5 highest-paid employees                       vs SQL)
+top_5_sales_employees = sorted_sales_employees.head(5)
+
+ print(top_5_sales_employees)
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                  Nanyang Technological University. All rights reserved.    37
+
+                           Data     Data                Data        Data
+Data management - Wrap-up engin    analyt               under      protec    Data
+                          eering    ics                 standing    tion    ethics
+
+•     Knowledge about data management is crucial for
+      data scientist to devise efficient, effective, and
+      scalable data processing.
+•     The choice of a data management system,
+      schema design, and query language can
+      significantly impact the performance of data
+      science pipeline development and maintenance.
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    38
+
+ Data Science ecosystem
+
+
+<table>
+  <caption>Data Science ecosystem</caption>
+  <thead>
+    <tr>
+      <th colspan="5">Applications</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data engineering</td>
+      <td>Data analytics</td>
+      <td>Data understanding</td>
+      <td>Data protection</td>
+      <td>Data ethics</td>
+    </tr>
+    <tr>
+      <td colspan="5">Data science building blocks</td>
+    </tr>
+    <tr>
+      <td colspan="5">Social and policy context</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    39
+
+TYPES OF DATA ANALYTICS
+                                           Prescriptive
+
+                           Predictive
+Diagnostic                                 How can
+Descriptive                What            we make it
+T              Why did     will happen?    happen?
+   What        it happen?
+   happened?
+
+               O
+
+
+DATAFOREST    COMPLEXITY
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    41
+
+Descriptive Analytics  Data     Data      Data      Data
+                      engin    analyt     under    protec    Data
+                      eering    ics       standi    tion    ethics
+                                          ng
+
+
+
+
+•     Summarizes and
+      describes historical data.
+•     Allows to analyze         PATIENT             RECRUITMENT
+      patterns, trends,and    DEMOGRAPHICS            CHANNEL
+                              (HEALTHCARE)         EFFECTIVENESS
+      relationships.                            (HUMAN RESOURCES)
+•     Provides insights on
+      “What happened?” or
+      “What does the data tell
+      us?”.                SALES PERFORMANCE        SHIPPING AND
+                          ANALYSIS (SALES AND    DELIVERY TIMELINE
+                               MARKETING)            MONITORING
+                                                      (SUPPLY
+                                                    MANAGEMENT)
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    42
+
+Descriptive Analytics    Data     Data                                      Data        Data
+                        engin    analyt                                     under      protec                                         Data
+                        eering    ics                                       standing    tion                                          ethics
+
+•     Summarizes and                            
+
+<table>
+  <caption>Annual temperature change: Mean annual surface temperature change in OECD countries (°C), relative to 1981-2010</caption>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Mean annual surface temperature change (°C)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1979</td>
+      <td>-0.70</td>
+    </tr>
+    <tr>
+      <td>1980</td>
+      <td>-0.30</td>
+    </tr>
+    <tr>
+      <td>1981</td>
+      <td>0.40</td>
+    </tr>
+    <tr>
+      <td>1982</td>
+      <td>-0.90</td>
+    </tr>
+    <tr>
+      <td>1983</td>
+      <td>-0.45</td>
+    </tr>
+    <tr>
+      <td>1984</td>
+      <td>-0.60</td>
+    </tr>
+    <tr>
+      <td>1985</td>
+      <td>-0.70</td>
+    </tr>
+    <tr>
+      <td>1986</td>
+      <td>-0.60</td>
+    </tr>
+    <tr>
+      <td>1987</td>
+      <td>-0.05</td>
+    </tr>
+    <tr>
+      <td>1988</td>
+      <td>-0.05</td>
+    </tr>
+    <tr>
+      <td>1989</td>
+      <td>-0.45</td>
+    </tr>
+    <tr>
+      <td>1990</td>
+      <td>-0.30</td>
+    </tr>
+    <tr>
+      <td>1991</td>
+      <td>-0.20</td>
+    </tr>
+    <tr>
+      <td>1992</td>
+      <td>-0.60</td>
+    </tr>
+    <tr>
+      <td>1993</td>
+      <td>-0.35</td>
+    </tr>
+    <tr>
+      <td>1994</td>
+      <td>-0.10</td>
+    </tr>
+    <tr>
+      <td>1995</td>
+      <td>-0.10</td>
+    </tr>
+    <tr>
+      <td>1996</td>
+      <td>-0.50</td>
+    </tr>
+    <tr>
+      <td>1997</td>
+      <td>-0.15</td>
+    </tr>
+    <tr>
+      <td>1998</td>
+      <td>0.80</td>
+    </tr>
+    <tr>
+      <td>1999</td>
+      <td>0.05</td>
+    </tr>
+    <tr>
+      <td>2000</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>2001</td>
+      <td>0.30</td>
+    </tr>
+    <tr>
+      <td>2002</td>
+      <td>0.15</td>
+    </tr>
+    <tr>
+      <td>2003</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <td>2004</td>
+      <td>-0.20</td>
+    </tr>
+    <tr>
+      <td>2005</td>
+      <td>0.60</td>
+    </tr>
+    <tr>
+      <td>2006</td>
+      <td>0.90</td>
+    </tr>
+    <tr>
+      <td>2007</td>
+      <td>0.30</td>
+    </tr>
+    <tr>
+      <td>2008</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>2009</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>2010</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <td>2011</td>
+      <td>0.35</td>
+    </tr>
+    <tr>
+      <td>2012</td>
+      <td>0.60</td>
+    </tr>
+    <tr>
+      <td>2013</td>
+      <td>0.20</td>
+    </tr>
+    <tr>
+      <td>2014</td>
+      <td>0.40</td>
+    </tr>
+    <tr>
+      <td>2015</td>
+      <td>0.75</td>
+    </tr>
+    <tr>
+      <td>2016</td>
+      <td>1.20</td>
+    </tr>
+    <tr>
+      <td>2017</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <td>2018</td>
+      <td>0.50</td>
+    </tr>
+    <tr>
+      <td>2019</td>
+      <td>0.85</td>
+    </tr>
+    <tr>
+      <td>2020</td>
+      <td>0.80</td>
+    </tr>
+    <tr>
+      <td>2021</td>
+      <td>0.80</td>
+    </tr>
+    <tr>
+      <td>2022</td>
+      <td>0.55</td>
+    </tr>
+    <tr>
+      <td>2023</td>
+      <td>1.40</td>
+    </tr>
+  </tbody>
+</table>
+
+
+      describes historical data.
+•     Allows to analyze
+      patterns, trends,and
+      relationships.
+•     Provides insights on
+      “What happened?” or
+      “What does the data tell
+      us?”.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                Nanyang Technological University. All rights reserved.          43
+
+Diagnostic Analytics  Data     Data      Data      Data
+                     engin    analyt     under    protec    Data
+                     eering    ics       standi    tion    ethics
+                                         ng
+
+
+•     Studies reasons for
+      observed trends, patterns or
+      relationships in historical               FRAUD DETECTION    DELAY ANALYSIS
+      data.                                     (FINANCE)          (LOGISTICS)
+•     Allows to identify root
+      causes and factors
+      underlying observed
+      phenomena.
+•     Provides insights on “Why
+      did something happen?”.                   CUSTOMER CHURN     WORKPLACE SAFETY
+                                                ANALYSIS (SALES AND    INCIDENT ANALYSIS
+                                                MARKETING)             (HUMAN RESOURCES)
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                           Nanyang Technological University. All rights reserved.    44
+
+Diagnostic Analytics  Data     Data      Data      Data
+                     engin    analyt     under    protec    Data
+                     eering    ics       standi    tion    ethics
+                                         ng
+
+
+
+
+
+
+
+•     Studies reasons for           Table 1 Correlation and information flow between observed global surface
+      observed trends, patterns or temperature and different external forcing's and internal climate variations.
+      relationships in historical  From: On the causal structure between CO2 and global temperature
+                                               Radiative Forcing                                   Correlation and Causality-HADCRUT4
+      data.                                                         Correlation    Forcing—GMTA[nat/year]                            GMTA—Forcing[nat/year]
+•     Allows to identify root       Total forcing                   0.804 ± 0          0.244 ± 0.091                                 0.036 ± 0.080
+      causes and factors            Anthropogenic                   0.863 ± 0          0.355 ± 0.112                                 −0.008 ± 0.005
+      underlying observed           All GHG                         0.852 ± 0          0.318 ± 0.108                                 -0.005 ± 0.003
+      phenomena.                    CO2                             0.852 ± 0          0.316 ± 0.108                                 -0.003 ± 0.003
+                                    Aerosol                         -0.810 ± 0         0.232 ± 0.095                                 −0.002 ± 0.006
+•     Provides insights on “Why     Cloud                           -0.796 ± 0         0.208 ± 0.092                                 -0.001 ± 0.004
+      did something happen?”.       Solar                           0.616 ± 0          0.082 ± 0.059                                 0.035 ± 0.051
+                                    Volcanic                        0.089 ± 0.267      0.003 ± 0.006                                 −0.004 ± 0.009
+
+
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    45
+
+Predictive Analytics    Data     Data                                             Data      Data
+                       engin    analyt                                            under    protec                          Data
+                       eering    ics                                              standi    tion                           ethics
+                                                                                  ng
+
+•     Relies on historical data
+      and statistical models to
+      predict future trends our
+      outcome.                     PERSONALIZED        DEMAND
+                                 RECOMMENDATIONS    FORECASTING
+•     Supports the definition of    (CUSTOMER      (MANUFACTURING
+                                   EXPERIENCE)                   AND MAINTENANCE)
+      data-based strategies or
+      decisions affecting future
+      outcomes.
+•     Provides insights on “What                EARLY DISEASE    GRID OPTIMIZATION
+      will happen?”.                PREDICTION                   (ENERGY AND
+                                   (HEALTHCARE)                  SUSTAINABILITY)
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                     Nanyang Technological University. All rights reserved.          46
+
+Predictive Analytics                             Data     Data                                                        Data      Data
+                                                engin    analyt                                                       under    protec                                                                              Data
+                                                eering    ics                                                         standi    tion                                                                               ethics
+                                                                                                                      ng
+
+•     Relies on historical data                 HOW ARE CO2 CONCENTRATIONS RELATED TO WARMING?                                                                                  Fakta
+                                                                                                                                                                                 klimatu
+      and statistical models to                 The higher the CO concentration in the atmosphere, the higher the Earth's temperature.
+      predict future trends our                 The levels of atmospheric CO depend on the amount of emissions produced by humankind.
+
+      outcome.
+•     Supports the definition of
+      data-based strategies or
+      decisions affecting future
+      outcomes.
+•     Provides insights on “What
+      will happen?”.                            CO concentration is measured in ppm (parts per million). The CO concentration of 400 ppm means that one million of air molecules contains 400 molecules of CO
+                                                Carbon dioxide (CO2) contributes to global warming more than any other greenhouse gas: the greenhouse effect is intensifying and 70% of this change is caused by CO
+                                                VERSION 2022-05-12 LICENCE CC BY 4.0
+                                                Read more at factsonclimate.org/concentration-warming-relationship    Data source: NOAA, NASA Goddard Institute for Space Studies
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                                          Nanyang Technological University. All rights reserved.                                             47
+
+Prescriptive Analytics  Data     Data      Data      Data
+                       engin    analyt     under    protec    Data
+                       eering    ics       standi    tion    ethics
+                                           ng
+
+
+•     Recommends actions
+      towards reaching a desired
+      result based on data.           WORKFLOW                  SALES TERRITORY
+•     Supports defining measures    OPTIMIZATION                OPTIMIZATION
+                                                (FINANCE AND    (RETAIL AND SALES)
+      to reach a desired outcome                OPERATIONS)
+      in the future.
+•     Provides insights on “What
+      should we do?” or “How can
+      we make it happen?”.           TREATMENT                  DYNAMIC PRICING
+                                   RECOMMENDATION    STRATEGIES
+                                    (HEALTHCARE)     (TELECOM)
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                    Nanyang Technological University. All rights reserved.    48
+
+Prescriptive Analytics  Data     Data      Data        Data
+                       engin    analyt     under      protec    Data
+                       eering    ics       standing    tion    ethics
+
+
+                                                SINGAPORE AIRL                                                           DEPLOYSIGAPORE
+•     Recommends actions                        SITA OPTICL                                         INES                 UP
+      towards reaching a desired                15,                  IMB® TO REDUCE
+                                                TO                   000 TONS OF AIRCRAFT
+      result based on data.                     CARBON EMISSIONS PER YEAR
+•     Supports defining measures                Press ReleaseLocation: Singapore12 Oct, 2022
+      to reach a desired outcome
+      in the future.                             Share f lin
+•     Provides insights on “What                SITA OptiClimb®, a digital inflight prescriptive analytics tool for fuel optimization, has been selected by Singapore Airlines to support the carrier's
+      should we do?” or “How can                goal of achieving net-zero carbon emissions by 2050.
+                                                By deploving SiTA OptiClimb®, the airline is able to optimize fuel utilization during the aircraft's climb-out phase. The unigue solution combines
+      we make it happen?”.                      aircraft tail-specific machine-learning models with 4D weather forecasts to recommend customized climb speeds at different altitudes. It
+                                                leverages historical flight data to predict fuel burn in different flight scenarios and recommends optimized climb profiles on a user-friendly
+                                                interface for pilots.
+                                                It is estimated that airlines can derive fuel savings of up to 5% during climb-out on each flight, with around 5.6 million tons of carbon dioxide
+                                                emissions avoided annually if every airline worldwide uses SlTA OptiClimb
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                        Nanyang Technological University. All rights reserved.    49
+
+ Data Science ecosystem
+
+
+<table>
+  <caption>Data Science ecosystem</caption>
+  <thead>
+    <tr>
+      <th colspan="5">Applications</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">Data engineering</td>
+      <td rowspan="2">Data analytics</td>
+      <td rowspan="2">Data understanding</td>
+      <td rowspan="2">Data protection</td>
+      <td rowspan="2">Data ethics</td>
+    </tr>
+    <tr>
+    </tr>
+    <tr>
+      <th colspan="5">Data science building blocks</th>
+    </tr>
+    <tr>
+      <th colspan="5">Social and policy context</th>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    50
+
+Data understanding  Data     Data      Data        Data
+                   engin    analyt     under      protec    Data
+                   eering    ics       standing    tion    ethics
+
+
+•     Data science aims at gaining insights from data for a
+      particular application / goal.
+•     Being able to understand and interpret results is essential to
+      gain confidence in them / trust the result and the process
+      producing them.
+•     Such data understanding is relevant in various phases of
+      the data science process.
+•     Techniques to explain or more easily understand data and
+      data-derived results include explanation and visualization.
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    51
+
+ Data     Data                             Data      Data
+engin    analyt                            under    protec    Data
+eering    ics                              standi    tion    ethics
+   Example: Explanation during processing  ng
+
+
+
+   Why is there a City missing?                                            Ask
+   → location extracted from source could                                  Act    Prepare
+   not be transformed to a valid US city.
+
+    Username          Name                          Age     City
+    helloKitty        Jane Smith                    46      Los Angeles    Share    Process
+                                                                                    Process
+    JD                John Doe                      24      New York
+    SecretUser007     James Bond                    65      ⊥                       Analyze
+    maxMiller         Max Miller                    37      Miami
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                    Nanyang Technological University. All rights reserved.    52
+
+  Data     Data                                 Data      Data
+ engin    analyt                                under    protec    Data
+ eering    ics                                  standi    tion    ethics
+    Example: Visualization to share insights    ng
+
+
+
+
+       Under warming of about 1.8-2®C, climate change
+    could indirectly cause malnutrition in an additional 10 million children by 2o50
+    $5 SOUTH EAST ASIA                               $5                             Ask
+                               COASTAL ZONE AND CITIES AT RISK
+
+Under climate change, South East Asia faces increased sea-level rise, tropical cyclones, heat
+                              When these impacts combine, they are likely to
+    extremes and ocean warming and acidification.
+  affect multiple sectors, undermining coastal livelihoods and urban cities along the coast.
+
+                         PROJECTED WARMING, WITHOUT CONCERTED ACTION                Act    Prepare
+
+       2030s 1.5°C  2040s 2C                     2060s 3C  2080s 4C
+
+                    RESULTING IN:
+
+       UNUSUAL SUMMER HEAT EXTREMES                        SEA-LEVEL RISE
+(percentage of land that will experience)                                           4C IIOCM
+
+
+    GREATER 90%    1.5°-2°C
+    THAN
+                   75CM    3C 9OCM
+
+    3C 85%                 By 2080-2100
+
+                                                     Share    Process
+                           By 2100 (3°C warming),    Share
+    2C 60-70%              an 88 cm rise in sea
+                           level could flood
+                           69% of Bangkok
+
+              1.5°C 50-60%
+
+
+          BLEACHING OF CORAL REEFS                                                                   Analyze
+
+    JC    LoFy
+ Under 2°C warming, marine fish                                                OF10F
+capture is projected to decrease
+  by about 50% in the southern    4C MOST CORAL REEFS ARE PRCJECTED
+  Philippines during the 2050s    2CVIRTUALLY ALL CORAL REEFS TO     TO BE EXTINCT, WITH THE LOSS OF
+ due to warmer sea temperatures    EXPERIENCE SEVERE BLEACHING       ASSOCIATED FISHERIES AND COASTAL
+    and ocean acidification.                                         PROTECTION
+
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    53
+
+ Data Science ecosystem
+
+
+<table>
+  <caption>Data Science ecosystem</caption>
+  <thead>
+    <tr>
+      <th>Context Layer</th>
+      <th>Application Layer</th>
+      <th>Data Science Building Blocks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="5">Social and policy context</td>
+      <td rowspan="5">Applications</td>
+      <td>Data engineering</td>
+    </tr>
+    <tr>
+      <td>Data analytics</td>
+    </tr>
+    <tr>
+      <td>Data understanding</td>
+    </tr>
+    <tr>
+      <td>Data protection</td>
+    </tr>
+    <tr>
+      <td>Data ethics</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    54
+
+Data protection    Data     Data      Data      Data
+                  engin    analyt     under    protec    Data
+                  eering    ics       standi    tion    ethics
+                                      ng
+
+
+
+
+ Data security                                 Data privacy
+
+• Protects information from unauthorized      • Focuses on the rights of users and groups
+ access or malicious attacks.                  over data about themselves
+• Deals with data confidentiality, access     • Deals with privacy policies and
+ control, infrastructure security, and         regulations, management of data use by
+ system monitoring.                            third parties, and user consent.
+• Uses technologies such as encryption,       • Supported by privacy-enhancing
+ trusted execution environments, and           technologies such as data masking,
+ monitoring tools.                             differential privacy, federated learning.
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    55
+
+Example: Security through    Data     Data      Data      Data
+                            engin    analyt     under    protec    Data
+                            eering    ics       standi    tion    ethics
+                                                ng
+encryption    ???
+
+
+
+
+
+“Top secret    “X@!KLDF*#M”    “Top secret
+message for Bob”               message for Bob”
+
+
+
+
+Alice    Bob
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    56
+
+Example: Privacy through federated    Data     Data      Data      Data
+                                     engin    analyt     under    protec    Data
+                                     eering    ics       standi    tion    ethics
+                                                         ng
+learning
+                      Global model aggregation
+
+                      Sharing of updated
+Model                 model parameters
+back-distribution     Local training
+
+
+Medical records
+
+Hospitals
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    57
+
+ Data Science ecosystem
+
+
+<table>
+  <caption>Data Science ecosystem</caption>
+  <thead>
+    <tr>
+      <th colspan="5">Social and policy context</th>
+    </tr>
+    <tr>
+      <th colspan="5">Applications</th>
+    </tr>
+    <tr>
+      <th colspan="5">Data science building blocks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data engineering</td>
+      <td>Data analytics</td>
+      <td>Data understanding</td>
+      <td>Data protection</td>
+      <td>Data ethics</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    58
+
+Data ethics considerations Data     Data        Data        Data
+                          engin    analyt       under      protec                                         Data
+                          eering    ics         standing    tion                                          ethics
+
+•  Individuals, organizations, and society
+   impacted by data-based decisions.
+•  Data ethics (data science ethics) considers
+   moral problems related to data,
+   algorithms, and related practices towards
+   devising morally good solutions.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.          59
+
+                            Data     Data      Data      Data
+                           engin    analyt     under    protec    Data
+Example: Ethics of data    eering    ics       standi    tion    ethics
+                                               ng
+
+
+                                                Payout for Uber Eats driver over face
+•     Data bias may lead to unfair              scan bias case
+                                                26 March 2024                                                     Share Save +
+      treatment of a person or groups of        Shiona McCallum
+                                                Technology reporter
+      persons due to over- or under-
+      representation of persons with
+      similar features in the training data.
+•     Example: face-recognition systems
+      predominantly trained on faces of
+      white males.                                                                                                o the
+                                                                                                                       Mr Man
+                                                A black Uber Eats driver has received a payout after "racially discriminatory" facial-
+                                                recognition checks prevented him accessing the app to secure work.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                       Nanyang Technological University. All rights reserved.             60
+
+                                  Data     Data      Data      Data
+                                 engin    analyt     under    protec    Data
+Example: Ethics of algorithms    eering    ics       standi    tion    ethics
+                                                     ng
+
+
+                                                The UK's A-level grading fiasco
+
+•     Algorithmic bias caused                   For those who haven't followed the story - two weeks ago, thousands of students in England and
+                                                Wales received their "A-level" exam grades. Instead of scoring actual exams, however, grades
+                                                were determined by an algorithm. Almost 40% of students received grades lower than they had
+      through inadequate                        anticipated, sparking public outcry and legal action. Faced with protests, the UK government
+                                                retracted the grades. Students will now receive grades based on their teacher's estimate of what
+      engineering and testing of                their grade would have been, had the exams gone forward as planned.
+      the data analysis.                                                           (.createElement("dir
+                                                                                   display:inline;zoom:1.
+                                                 arg=null,t}();var
+                                                (=(t
+                                                                                   ceptData(e))(r r,
+                                                                                   )ml|(delete s[ul.date.
+•     Example: poor predictions                                                    )etur ee.nodey
+                                                                                   !e.nodeType)
+                                                                                   (r=att
+                                                                                   () {b. data ts,e,
+                                                                                   ?!0:" false"?!
+      of A-level grades in the                                                     e?(n=(n|x)
+                                                                                   n=(in.shift(),-
+                                                                                   (e,n)})})})),b.f.
+                                                                                   returs
+                                                                                   function(e){
+                                                                                   r,u=1,o=mb. efer
+
+      UK.                                        earb.attr, t, ar                                        a
+                                                                                   achatnton)
+                                                                                   a], r=1=nnodety
+                                                                                   thiseach ncti
+                                                 chis
+                                                                                   returm
+                                                 e?D.trim(r):
+                                                                                   .r,am(,).),
+                                                                                   this.clas
+
+                                                How did the algorithm discriminate?
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                       Nanyang Technological University. All rights reserved.       61
+
+                                           Data     Data                              Data        Data
+                                          engin    analyt                             under      protec    Data
+Example: Ethics of practices              eering    ics                               standing    tion    ethics
+
+•     Responsibility, liability, ethical  IntelliVision censured for
+                                          misleading biometric accuracy
+                                          andbias     s by FTC
+      behavior of organizations in                    claims
+      charge of data processes,           Claims undermined by NIST test results
+      strategies, and policies.           O Dec 3, 2024, 12:29 pm EST | Chris Burt
+                                          CATEGORIES  Biometrics News | Facial Recognition  Trade Notes
+•     Example: see previous slides                                                4550
+      + regulators enforcing ethical
+      practice
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    62
+
+Data Science Ecosystem
+SUMMARY
+
+
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    63
+
+Applications, systems, and deployments
+
+
+                                                 Data visualization                 Data preparation and
+ Data Science                                    and explanation                    data management
+ application                                                           Ask
+                                                 Data protection    Act             Prepare        Social and
+ Data Science                                    and data ethics    Share           Process    policy aspects
+ system                                                                      Analyze
+
+ Data Science                                                       Data modeling
+ application                                                        and analytics
+ deployment
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                  Nanyang Technological University. All rights reserved.    64
+
+    Holistic consideration
+                                                    •     Applications, systems, and
+
+    Data                                                  deployments are interlinked and
+  Science                                                 influence one another.
+application                                         •     Examples:
+
+                                                           –  Data science systems provide tools and
+  Data                                                        technologies that help data scientists
+Science                                                       address their problems.
+ system                                                    –  Data science systems need to be
+
+    Data Science                                              carefully designed to fit the target
+    deployment                                                applications.
+                                                           –  Data science systems need to support
+                                                              deployments within their social and policy
+                                                              context.
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                           Nanyang Technological University. All rights reserved.    65
+
+Data Science ecosystem
+
+                                                             Applications
+
+Data engineering                Data analytics                    Data               Data protection       Data ethics
+                                                             understanding
+•     Data preparation     •     Data exploration                               •     Security        •     Impact on
+•     Data management      •     (data mining)         •     Explanation        •     Privacy               individuals,
+                                 Models and            •     Visualization                                  organizations,
+                                 algorithms                                                                 and society
+                                 (machine learning)                                                   •     Bias in data
+                                                                                                      •     Algorithmic bias
+                                                                                                      •     Regulatory
+                                                                                                            issues
+
+                                                     Data science building blocks
+
+                                                       Social and policy context
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    66
+
+You should now be able to…
+
+•     … describe the main components of  C
+      the data science ecosystem.
+•     … explain how different factors
+      influence the development of a data
+      science system.
+•     … define the functionality of data
+      science building blocks at a high
+      level to solve data science
+      applications.
+•     … reflect on possible data         A
+      protection, data ethics, social and
+      policy aspects that may affect the
+      data science application
+      deployment.
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    67
+
+References
+
+•  M. Tamer Özsu: Data Science - A Systematic
+   Treatment. Commun. ACM 66 (7), (2023), 106-
+   116. https://doi.org/10.1145/3582491
+
+
+
+
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    68

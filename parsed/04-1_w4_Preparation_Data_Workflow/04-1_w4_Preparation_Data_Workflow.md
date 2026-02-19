@@ -1,0 +1,754 @@
+# Data Science Fundamentals
+[SC3021]
+
+## Chapter 4: Data Preparation
+
+Assoc. Prof. Melanie Herschel | CCDS
+
+---
+
+# Chapter content
+
+- Data science overview
+  - What is Data Science?
+  - Data Science Thinking vs. Computational Thinking
+  - Data Science Ecosystem
+- Data preparation and data management
+  - Flow of data
+  - Data profiling
+    - •Data profiling tasks
+    - •Data profiling tools
+  - Structuring
+  - Enriching
+  - Data cleaning
+  - Data management platforms
+  - Schema design
+  - Querying data
+- Data analytics and understanding
+  - Descriptive analytics
+  - Diagnostic Analytics
+  - Prescriptive analytics
+  - Predictive analytics
+  - Data visualization
+- Design considerations
+  - Privacy
+  - Security
+  - Ethics
+  - Psychology
+  - Policies
+
+
+
+<table>
+  <caption>Chapter content</caption>
+  <thead>
+    <tr>
+      <th>Data science overview</th>
+      <th>Data preparation and data management</th>
+      <th>Data analytics and understanding</th>
+      <th>Design considerations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>What is Data Science?</td>
+      <td>Flow of data</td>
+      <td>Descriptive analytics</td>
+      <td>Privacy</td>
+    </tr>
+    <tr>
+      <td>Data Science Thinking vs. Computational Thinking</td>
+      <td>Data profiling</td>
+      <td>Diagnostic Analytics</td>
+      <td>Security</td>
+    </tr>
+    <tr>
+      <td>Data Science Ecosystem</td>
+      <td>&bull; Data profiling tasks</td>
+      <td>Prescriptive analytics</td>
+      <td>Ethics</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>&bull; Data profiling tools</td>
+      <td>Predictive analytics</td>
+      <td>Psychology</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Structuring</td>
+      <td>Data visualization</td>
+      <td>Policies</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Enriching</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Data cleaning</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Data management platforms</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Schema design</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Querying data</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 2
+
+---
+
+# Chapter 4.1: Flow of data
+
+> NANYANG TECHNOLOGICAL UNIVERSITY SINGAPORE
+
+---
+
+# At the end of this sub-chapter, you should be able to...
+
+- ... describe how data moves from raw to production data within organizations.
+- ... explain how different data preparation tasks may apply at different data science stages.
+- ... recognize and discuss which actions are involved in reaching different objectives.
+
+> Nanyang Technological University. All rights reserved.
+
+---
+
+# Data preparation definition
+
+> Data preparation is the process of converting raw data into a form that allows to extract value from data.
+
+- Necessary to ensure that the data are ...
+  - ... structured in a way that they can be input to the analysis stage (**structure**)
+    - Many systems / algorithms used for analysis expect tabular data.
+  - ... of sufficient quality to ensure meaningful results (**content**).
+    - Avoids “garbage-in-garbage-out”
+    - Quality has many dimensions, e.g., completeness, correctness, timeliness, ...
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 5
+
+---
+
+# Data preparation definition
+
+> Data preparation is the process of converting raw data into a form that allows to extract value from data.
+
+- Necessary to ensure that the data are ...
+  - ... structured in a way that they can be input to the analysis stage (**structure**)
+    - Many systems / algorithms used for analysis expect tabular data.
+  - ... of sufficient quality to ensure meaningful results (**content**).
+    - Avoids “garbage-in-garbage-out”
+    - Quality has many dimensions, e.g., completeness, correctness, timeliness, ...
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 6
+
+---
+
+# Value from data
+
+Data preparation is the process of converting raw data into a form that allows to extract value from data.
+
+> Value from data
+
+- Type of value
+  - Near-term
+  - Long-term
+- Value delivery
+  - Indirect
+  - Direct
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 7
+
+---
+
+# Type of value
+
+- Near-term: clear questions to be answered with data
+  Example: “Are people really shifting toward interacting with us through their mobile devices?”
+- Long-term: exploratory questions with open answers that data can potentially support
+  Example: “Can we understand how the move to mobile is affecting customers’ purchasing patterns?”
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved.
+8
+
+---
+
+# Value delivery
+
+- Indirect: Data provides value to an organization by influencing people’s decisions or inspiring changes in processes.
+  > Example: risk modeling in the insurance industry.
+- Direct: Data provides value to an organization by feeding automated systems.
+  > Example: Netflix’s recommendation system.
+
+---
+
+# Progression of data projects
+
+- Near-term
+  - answering of
+  - known questions
+- Longer-term
+  - analysis to assess
+  - the core quality
+  - and potential
+  - applications of a
+  - dataset
+- Production
+  - systems that use
+  - data in an
+  - automated way.
+
+## Movement of data
+
+raw → refined → production
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved.
+10
+
+---
+
+# Data movement through stages
+
+<table>
+    <tr>
+        <th>Stage</th>
+        <th>Raw</th>
+        <th>Refined</th>
+        <th>Production</th>
+    </tr>
+    <tr>
+        <td>**Actions**</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Ingest data for widespread consumption</td>
+        <td>Create canonical data for widespread consumption</td>
+        <td>Create production-quality data</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Data discovery and metadata creation</td>
+        <td>Conduct analyses, modeling, and forecasting</td>
+        <td>Build regular reporting and automated data products/services</td>
+    </tr>
+</table>Nanyang Technological University. All rights reserved. 11
+
+---
+
+# Data movement through stages
+
+Stage
+
+
+
+<table>
+  <caption>Data movement through stages</caption>
+  <thead>
+    <tr>
+      <th rowspan="2">Actions</th>
+      <th colspan="3">Stage</th>
+    </tr>
+    <tr>
+      <th>Raw</th>
+      <th>Refined</th>
+      <th>Production</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Data actions (output data)</th>
+      <td>Ingest data</td>
+      <td>Design &amp; refine data</td>
+      <td>Optimize data</td>
+    </tr>
+    <tr>
+      <th rowspan="2">Analytical actions (output insights)</th>
+      <td>Describe data</td>
+      <td>Generate ad-hoc reports</td>
+      <td>Regular reporting</td>
+    </tr>
+    <tr>
+      <td>Assess data utility</td>
+      <td>Prototype modeling</td>
+      <td>Data products &amp; services</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE Nanyang Technological University. All rights reserved. 12
+
+---
+
+# Raw Data Stage Actions
+
+- **Ingest data** by accessing it and getting it in your sphere of control. Complexity highly varies (e.g., from downloading a file to using complex systems for real-time transfer of fine-granular data).
+- When ingesting (partially) unknown data, additional analytical actions are typically necessary to understand the data and determine if it can / should be used.
+  - **Describe data** by creating generic metadata (=data about data) to understand the characteristics of the data.
+  - **Assess data utility** using the characteristics of the data, producing custom metadata.
+  - Focus in both instances should be on understanding the **structure**, granularity, accuracy, temporality, and **scope** of the data.
+
+
+
+<table>
+  <caption>Raw Data Stage Actions</caption>
+  <thead>
+    <tr>
+      <th colspan="2">Ingest data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Describe data</td>
+      <td>Assess data utility</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 13
+
+---
+
+# Refined Data Stage Actions
+
+- **Design and refine data** to produce data that enables immediate application to a wide range of analyses. Involves a significant amount of transformation, in particular to address issues identified at the raw data stage.
+- Refined data allow to **output insights** and information derived from the data.
+  - **Generate ad-hoc reports** to answer specific retrospective questions using the data (e.g., “how many customers purchased item X last week”, “identify the key factors driving the customer trend of switching from desktop to mobile devices”)
+  - **Prototype modelling** to understand the relevant factors that drive a behavior to make predictions about future behavior (e.g., “total sales next quarter”, “likelihood of contract renewal”)
+
+> 
+
+<table>
+  <caption>Refined Data Stage Actions</caption>
+  <thead>
+    <tr>
+      <th colspan="2">Design &amp; refine data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Generate ad-hoc reports</td>
+      <td>Prototype modeling</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 14
+
+---
+
+# Production Data Stage Actions
+
+- **Optimize data** to obtain data that simplify any additional downstream work for a highly specified intended use. The goal is to robustly and efficiently support a very narrow set of analyses.
+- Production systems that operate in a largely **automated** way and with a well-defined level of **robustness** require further tasks to operationalize analytics.
+  - **Regular reporting** through new (or updated) data that is processed in an ongoing manner, coping with variations / deviations from historical data.
+  - **Data products and services** through generalized data preparation logic.
+
+> 
+
+<table>
+  <caption>Production Data Stage Actions</caption>
+  <thead>
+    <tr>
+      <th colspan="2">Optimize data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regular reporting</td>
+      <td>Data products &amp; services</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 15
+
+---
+
+# Value from data (summary)
+
+> Data preparation is the process of converting raw data into a form that allows to extract value from data.
+
+
+
+<table>
+  <caption>Value from data (summary)</caption>
+  <thead>
+    <tr>
+      <th colspan="2">Value: Indirect / Near-term</th>
+      <th colspan="2">Value: Intermediate</th>
+      <th colspan="2">Value: Direct / Long-term</th>
+    </tr>
+    <tr>
+      <th colspan="2">raw</th>
+      <th colspan="2">refined</th>
+      <th colspan="2">production</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">Ingest data</td>
+      <td colspan="2">Design &amp; refine data</td>
+      <td colspan="2">Optimize data</td>
+    </tr>
+    <tr>
+      <td>Describe data</td>
+      <td>Assess data utility</td>
+      <td>Generate ad-hoc reports</td>
+      <td>Prototype modeling</td>
+      <td>Regular reporting</td>
+      <td>Data products &amp; services</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE Nanyang Technological University. All rights reserved. 16
+
+
+<table>
+  <caption>Value from data (summary) - Production Stage</caption>
+  <thead>
+    <tr>
+      <th colspan="2">Optimize data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regular reporting</td>
+      <td>Data products &amp; services</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<table>
+  <caption>Value from data (summary)</caption>
+  <thead>
+    <tr>
+      <th colspan="2">raw</th>
+      <th colspan="2">refined</th>
+      <th colspan="2">production</th>
+    </tr>
+    <tr>
+      <th colspan="2">Ingest data</th>
+      <th colspan="2">Design &amp; refine data</th>
+      <th colspan="2">Optimize data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Describe data</td>
+      <td>Assess data utility</td>
+      <td>Generate ad-hoc reports</td>
+      <td>Prototype modeling</td>
+      <td>Regular reporting</td>
+      <td>Data products &amp; services</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th colspan="2">Indirect / Near-term</th>
+      <th colspan="2">Value from data</th>
+      <th colspan="2">Direct / Long-term</th>
+    </tr>
+  </tfoot>
+</table>
+
+
+
+<table>
+  <caption>Value from data (summary)</caption>
+  <thead>
+    <tr>
+      <th colspan="2">Indirect / Near-term</th>
+      <th colspan="2">Value from data</th>
+      <th colspan="2">Direct / Long-term</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2"><strong>Ingest data</strong></td>
+      <td colspan="2"><strong>Design &amp; refine data</strong></td>
+      <td colspan="2"><strong>Optimize data</strong></td>
+    </tr>
+    <tr>
+      <td>Describe data</td>
+      <td>Assess data utility</td>
+      <td>Generate ad-hoc reports</td>
+      <td>Prototype modeling</td>
+      <td>Regular reporting</td>
+      <td>Data products &amp; services</td>
+    </tr>
+    <tr>
+      <td colspan="2">raw</td>
+      <td colspan="2">refined</td>
+      <td colspan="2">production</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+# Data conversion process
+
+> Data preparation is the process of converting raw data into a form that allows to extract value from data.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 17
+
+---
+
+# Data conversion process
+
+Data preparation is the process of converting raw data into a form that allows to extract value from data.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 18
+
+---
+
+# Data conversion process
+
+Data preparation is the process of converting raw data into a form that allows to extract value from data.
+
+<table>
+  <tbody>
+    <tr>
+        <td>Access</td>
+        <td>Profile / transform</td>
+        <td>Publish</td>
+    </tr>
+  </tbody>
+</table>
+
+> The image shows a flowchart with three red rectangular boxes labeled "Access", "Profile / transform", and "Publish". Arrows connect the boxes in a loop: "Access" points to "Profile / transform", which points to "Publish", and "Publish" points back to "Access". There is also a feedback loop from "Profile / transform" back to "Access".
+
+Nanyang Technological University. All rights reserved. 19
+
+---
+
+# Data preparation
+
+Operations transforming data in multiple stages (cf Week 3):
+- Data profiling
+- Data structuring
+- Data enriching
+- Data cleaning
+
+> Profile / transform
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 20
+
+---
+
+# Data preparation along the flow of data
+
+
+
+<table>
+  <caption>Data preparation along the flow of data</caption>
+  <thead>
+    <tr>
+      <th>Process Step</th>
+      <th>Associated Data Preparation Activities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ingest data</td>
+      <td>
+        <ul>
+          <li>Structuring</li>
+          <li>Profiling</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Describe data</td>
+      <td>
+        <ul>
+          <li>Structuring</li>
+          <li>Profiling</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Assess data utility</td>
+      <td>
+        <ul>
+          <li>Enriching</li>
+          <li>Cleaning</li>
+          <li>Profiling</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+> raw refined production
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE Nanyang Technological University. All rights reserved. 21
+
+---
+
+# Data preparation along the flow of data
+
+
+
+<table>
+  <caption>Data preparation along the flow of data</caption>
+  <thead>
+    <tr>
+      <th>Data Process</th>
+      <th>Data Preparation Tasks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Design &amp; refine data</td>
+      <td>
+        <ul>
+          <li>Structuring</li>
+          <li>Enriching</li>
+          <li>Cleaning</li>
+          <li>Profiling</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Generate ad-hoc reports</td>
+      <td>Structuring</td>
+    </tr>
+    <tr>
+      <td>Prototype modeling</td>
+      <td>Structuring</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+> raw refined production
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE Nanyang Technological University. All rights reserved. 22
+
+---
+
+# Data preparation along the flow of data
+
+
+
+<table>
+  <caption>Data preparation along the flow of data</caption>
+  <thead>
+    <tr>
+      <th>Data Flow Stage</th>
+      <th>Data Process / Output</th>
+      <th>Preparation Activities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>refined</td>
+      <td>Optimize data</td>
+      <td>Profiling</td>
+    </tr>
+    <tr>
+      <td rowspan="2">production</td>
+      <td>Regular reporting</td>
+      <td>Structuring, Profiling</td>
+    </tr>
+    <tr>
+      <td>Data products &amp; services</td>
+      <td>Structuring, Profiling</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+> raw refined production
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE Nanyang Technological University. All rights reserved. 23
+
+---
+
+# Summary on flow of data
+
+- Data evolves through stages (from raw over refined to production)
+  - Not all applications go all the way (most frequent: refined)
+  - Relates to value gained from the data.
+- Data preparation is essential for data actions and analytical actions across all data flow stages.
+  - Data preparation comprises several tasks (i.e., profiling, structuring, enriching, cleaning).
+  - Relevance of different data preparation varies across data flow stages.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 24
+
+---
+
+# You should now be able to...
+
+- ... describe how data moves from raw to production data within organizations.
+- ... explain how different data preparation tasks may apply at different data science stages.
+- ... recognize and discuss which data / analytical actions are involved in reaching different objectives.
+
+> Nanyang Technological University. All rights reserved.
+
+25
+
+---
+
+# References
+
+- Joseph M. Hellerstein, Tye Rattenbury, Jeffrey Heer, Sean Kandel, Connor Carreras. Principles of Data Wrangling. O’Reilly Media. 2017
+- Book available via NTU Library, content based on Chapters 2 and 3.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+Nanyang Technological University. All rights reserved. 26

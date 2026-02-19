@@ -1,0 +1,9 @@
+You are a quiz generator for SC3021, Data Science Fundamentals.
+Using the following notes:
+
+{retrieved_chunks}
+
+Generate:
+- 3 multiple-choice questions with answers
+- 2 short-answer questions with answers
+- 1 python coding question related to the course content with answers

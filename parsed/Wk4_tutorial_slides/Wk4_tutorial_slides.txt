@@ -1,0 +1,421 @@
+    SC3021 Exercise: Data Science Ecosystems
+
+
+
+    Discussed in Week 4 Tutorial
+
+
+    Data Science Problem Setting
+
+In efforts to automatically generate reports for various government agencies, your company is contracted
+ with developing an image recognition system that detects and transcribes handwritten text from scanned
+ documents to digital form. The system shall be deployed in government archives to digitize historical
+    records efficiently and effectively.           1 of 22
+   String 2    E X E C U                    T I 0 N
+
+ Data engineering: list one example for required functionality for each data preparation step (i.e.,
+ profiling, structuring, enriching, cleaning)
+ Data engineering: What data should be managed by a data management system? Explain how the
+ required system(s) may differ from the relational data management systems introduced in class?
+Which type(s) of data analytics need to be considered for this application? Briefly explain your
+ answer.
+ Data understanding: Provide an example of an explanation that can support data understanding.
+ Which users benefiting from it do you have in mind? Why is the proposed explanation useful to
+ them?
+ Data understanding: Provide an example of a visualization that can support data understanding.
+ Which users benefiting from it do you have in mind? Why is the proposed visualization useful to
+ them?
+ Data protection: Give at least one example of a specific data security issue that you need to take
+ into account during system development.
+ Data protection: Give at least one example of a specific privacy issue that you need to take into
+ account during system development.
+ Data ethics: Give at least one example of a specific data ethics issue that may arise. Is it related
+ to data, algorithms, or practices?
+                                                                                                     2 of 22
+   String 2    E X E               C         U T I 0 N
+
+ DATA SCIENCE: A REDUCTIONIST VIEW
+
+
+
+ 1  import pandas aspd
+2   import sklearn
+3
+    # do something
+
+
+
+
+
+
+
+
+
+ 3of 22
+String 2    E X E C U T I 0 N
+
+ DATA SCIENCE: A COMPLETE VIEW (BOSS’)
+
+
+
+
+
+ Data engineering  Data analytics          Data             Data protection  Data ethics
+
+ Data preparation    Data exploration    understanding      Security         Impact on
+ Data management     (data mining)         Explanation      Privacy          individuals,
+                     Models and            Visualization                     organizations,
+                     algorithms                                              and society
+                     (machine learning)                                      Bias in data
+                                                                             Algorithmic bias
+                                                                             Regulatory
+                                                                             issues
+
+
+
+
+ 4of 22
+String 2    E X E C U T I 0 N
+
+ DEFINE THE PROBLEM
+
+
+                  In efforts to automatically generate reports for various government agencies, your company is contracted with
+                   developing an image recognition system that detects and transcribes handwritten text from scanned documents
+                 to digital form. The system shall be deployed in government archives to digitize historical records efficiently
+ and effectively.
+
+                 What features do we want the system to have?
+ ??              Hint: Becreative,bea boss
+
+
+
+ 5of 22
+String 2    E X E C U T I 0 N
+
+ FEATURES
+
+
+
+ •  A web interface to upload document scans and get transcripts in PDF, DOCX, etc…
+ •  A search engine to search through the scanned documents
+ •  Password-protection to restrict access to sensitive documents
+
+
+
+
+
+
+
+
+
+ 6 of 22
+String 2    E X E C U T I 0 N
+
+ DATA SCIENCE BOSS
+
+
+
+
+
+
+ Data engineering    Data analytics               Data    Data ethics
+                      Data analytics                      Data protection
+
+ Data preparation     Data exploration       understanding  Security     Impact on
+                       Data exploration
+                       (data mining)                      Privacy        individuals,
+ Data management       (data mining)         Explanation
+                       Models and                                        organizations,
+                       Modelsand             Visualization
+                       lgorithms                                         and society
+                       algorithms
+                      (inachine learning)                                Bias in data
+                       (inachine learning)
+                                                                         Algorithmic bias
+                                                                         Regulatory
+                                                                         issues
+
+
+
+
+ 7of 22
+String 2    E X E C U T I 0 N
+
+                   TYPES OF DATA ANALYTICS
+                                          Prescriptive
+                                 Predictive
+                   Diagnostic              How can    What kind of analytics is this?
+    Descriptive                  What      we make it
+    TI      Why did              will happen?    happen?
+   What    it happen?
+happened?          O
+
+
+
+
+
+    DATAFOREST     COMPLEXITY
+
+   In efforts to automatically generate reports for various government agencies, your company is contracted with
+   developing an image recognition system that detects and transcribes handwritten text from scanned documents
+   to digital form. The system shall be deployed in government archives to digitize historical records efficiently
+   and effectively.
+
+                                                                                                                  8of 22
+   String 2        E X E C U T I 0 N
+
+                                 Predictive: get the text
+            KINDSOF              from the image
+            ANALYTICS
+                                 Descriptive: get a
+                                 description of the
+                                 handwritten document
+
+                                                         9of 22
+String 2    E X        E C U T I 0 N
+
+ WHICH DATA DO WE NEED ?????
+
+
+
+
+
+
+
+
+ In efforts to automatically generate reports for various government agencies, your company is contracted with
+ developing an image recognition system that detects and transcribes handwritten text from scanned documents
+ to digital form. The system shall be deployed in government archives to digitize historical records efficiently
+ and effectively.
+
+
+
+
+
+
+ 10of 22
+String 2    E X E C U T I 0 N
+
+ WHICH DATA DO WE NEED?
+
+
+
+
+ The company probably already has an image-to-text model, but might
+ not be trained on administrative languages or notations; or old archives
+
+
+ The government provides the company with a representative sample of
+ handwritten documents, with (possibly) their transcriptions
+
+
+ What to do?
+            11 of 22
+String 2    E X E C U T I 0 N
+
+Data engineering
+ Data engineering  Data analytics             Data             Data protection  Data ethics
+
+   Data preparation     Data exploration      understanding    Security         Impact on
+   Data management      (data mining)         Explanation      Privacy          individuals,
+                        Models and            Visualization                     organizations,
+                        algorithms                                              and society
+                        (machine learning)                                      Bias in data
+                                                                                Algorithmic bias
+                                                                                Regulatory
+                                                                                issues
+
+  • Data engineering: list one example for required functionality for each data preparation step (i.e., profiling,
+   structuring, enriching, cleaning)
+
+
+    The government provides the company with a representative sample of  7
+    handwritten documents, with (possibly) their transcriptions
+
+
+
+
+
+    12 of 22
+   String 2    E X E C U T I 0 N
+
+ DATA PREPARATION
+
+
+              Profiling: investigate document types, languages; identify issues
+              such as faded pages or stained papers
+
+              Enriching: convert images to text with existing tools
+
+              Cleaning: use spell checker on resulting texts; improve images
+              through filters/contrast improvements
+
+                                                                               13of 22
+String 2    E X E C U T I 0 N
+
+• Data engineering: What data should be managed by a data management system? Explain how the
+   at data should be managed by a data managemer
+ required system(s) may differ from the relational data management systems introduced in class?
+   differ from the relational data management system
+
+
+   Name    Δ Kind                                     Relational data
+                                                      management systems =
+        civil_code_1992_page_1.jpg     JPEG image     tables;
+
+   TXT  civil_code_1992_page_1.txt     text           Here we need some
+        government_report_1995.jpg     JPEG image     other systems, such as
+                                                      e.g. a   file system
+
+   TXT  government_report_1995.txt    text
+
+
+
+
+
+
+
+
+
+   14 of 22
+  String 2    E X E C U T I 0 N
+
+ Name    A Kind
+
+      civil_code_1992_page_1.jpg    JPEG image
+
+ TXT  civil_code_1992_page_1.txt    text
+      government_report_1995.jpg    JPEG image     How to visualize?
+
+ TXT  government_report_1995.txt    text           Be creative!
+
+
+
+
+
+
+
+
+
+
+ • Data understanding: Provide an example of a visualization that can support data understanding. Which
+ users benefiting from it do you have in mind? Why is the proposed visualization useful to them?
+
+
+ 15of 22
+String 2    E X E C U T I 0 N
+
+CONVERT HANDWRITING TO TEXT
+
+ Before                                                            After
+   one is going to love you exactly like   one is going to love you exactly like you imagine.
+ you imagine. o one is is ever going       No one is ever going to read your mind and take
+ to read your mind and take every          every story from the sky at the perfect zyme and
+ stor from the sky at the perfect time     hand it to you. No one is going to show up at
+ and hand it to you. No one is going       one is going to love you exactly like you imagine.
+ to show up at your door on a horse,       hand it to you. No one is going to show up at
+with a shoe you lost. Do you               one is going to love you exactly like you imagine.
+ understand That's why you have to         No one is ever going to read your mind and take
+love yourself enough, so that asy          every story from the sky at the perfect zyme and
+other love just adds more candles to      hand it to you. No one is going to show up at
+the cake you've already Poed.             your door on a horse, with a shoe you lost. Do
+-Stephanie Bennett - Henoy                                         16 of 22
+                                          yourself enough, so that any other love just adds
+                                          Stephanie Bennett - Hendy
+
+DIFFERENCE      •  Security = prevent illegal access to data
+BETWEEN         •  Privacy = prevent illegal use by someone who has
+SECURITY AND       legal access to data
+PRIVACY?        •  A little bit too simplistic…
+
+
+
+
+
+17 of 22
+
+ In efforts to automatically generate reports for various government agencies, your company is contracted with
+ developing an image recognition system that detects and transcribes handwritten text from scanned documents
+ to digital form. The system shall be deployed in government archives to digitize historical records efficiently
+ and effectively.
+
+
+ SECURITY CONCERNS?
+
+ PRIVACY CONCERNS?
+
+
+
+
+
+
+
+
+
+
+ 18of 22
+String 2    E X E C U T I 0 N
+
+                •  Security: government data can be sensitive, needing
+SECURITY AND       appropriate access control
+PRIVACY         •  Privacy: make sure private data doesn’t enter into
+                   training procedure
+
+
+
+
+
+19 of 22
+
+         Data understanding: Provide an example of an explanation that can support data understanding. Which
+         users benefiting from it do you have in mind? Why is the proposed explanation useful to them?
+ Name                                  Ar     Kind
+
+         civil_code_1992_page_1.jpg           JPEG image     Example:
+
+ TXT     civil_code_1992_page_1.txt           text
+         government_report_1995.jpg           JPEG image     How to measure
+
+ TXT     government_report_1995.txt           text           transcription quality?
+
+
+
+
+
+
+
+
+                  •     Compare text to see the differences
+                  •     Test by document types
+                  •     Get, e.g. proporition of wrong/missing transcription per doc types
+
+                                                                                          20 of 22
+String 2    E X E      C U T I 0              N
+
+  The quick brown fox jumps over the lazy dog.    1 The yellow fox jumps over the smart handsome
+                                                  dog.
+  dog.
+  dog.
+
+
+
+
+
+
+
+
+
+    Edit Distance Example    enjoyalgorithms.com
+
+    Replace E  Insert C
+    Delete I    Replace x  Replace U
+
+    String 1    I N T E    N T      | 0 N
+
+
+
+                               21 of 22
+String 2                      N
+String 2     E X E C U T I 0
+             E X E C U T I 0  N

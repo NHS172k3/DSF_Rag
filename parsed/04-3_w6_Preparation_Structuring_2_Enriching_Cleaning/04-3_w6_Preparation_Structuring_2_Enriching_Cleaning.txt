@@ -1,0 +1,1492 @@
+NANYANG
+TECHNOLOGICAL
+UNIVERSITY
+SINGAPORE
+
+             Data Science Fundamentals
+             [SC3021]
+
+
+Chapter 4: Data Preparation
+
+Assoc. Prof. Melanie Herschel | CCDS
+
+Data transformation tasks
+
+Data Profiling    Data Structuring
+
+                  Data preparation
+
+Data Enriching                    Data Cleaning
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    2
+
+NANYANG
+TECHNOLOGICAL
+UNIVERSITY
+SINGAPORE
+
+
+
+
+
+
+
+
+Chapter 4.3: Data Transformation
+
+Overview of structuring transformations
+
+               Reordering
+               attributes
+
+Intrarecord    Creating attributes
+Structuring    Combining
+               attributes
+
+               Filtering dataset
+
+Interrecord                                     Aggregation
+
+               Pivot
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE               Nanyang Technological University. All rights reserved.    4
+
+Interrecord structuring
+
+
+
+
+
+
+
+  Filtering    Aggregation    Pivot
+  Removal of columns or  Attributes are added with  Attributes are merged into
+  rows.                  values extracted from      a single attribute
+                         existing attributes
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    5
+
+Filtering
+
+•     Removes records or attributes from a dataset.
+•     Is considered a structuring operation when it is
+      used to alter the granularity of a dataset by
+      changing the types of represented records and
+      attributes.
+•     Two sub-types:
+       – Record-based filtering removes records (rows)
+       – Attribute-based filtering removes attributes (columns)
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    6
+
+Filtering - Examples
+•     Record-based filtering:         
+
+<table>
+    <caption>Filtering Examples: Record-based and Attribute-based</caption>
+    <thead>
+        <tr>
+            <th colspan="4">Record-based Filtering Results</th>
+        </tr>
+        <tr>
+            <th>Column1</th>
+            <th>Column2</th>
+            <th>Column3</th>
+            <th>Column4</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C00495580</td>
+            <td>N</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00495580</td>
+            <td>N</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00495580</td>
+            <td>N</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00495580</td>
+            <td>N</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00495580</td>
+            <td>N</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00515049</td>
+            <td>N</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00563601</td>
+            <td>N</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00587030</td>
+            <td>N</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00603084</td>
+            <td>N</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00578997</td>
+            <td>A</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00114439</td>
+            <td>A</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00114439</td>
+            <td>A</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00536664</td>
+            <td>A</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+        <tr>
+            <td>C00626390</td>
+            <td>A</td>
+            <td>YE</td>
+            <td>P</td>
+        </tr>
+    </tbody>
+    <thead>
+        <tr>
+            <th colspan="4">Attribute-based Filtering Results</th>
+        </tr>
+        <tr>
+            <th>Column1</th>
+            <th>Column2</th>
+            <th>Column3</th>
+            <th>Column4</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C00276311</td>
+            <td>15</td>
+            <td>IND</td>
+            <td>NE</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>VA</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>NY</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>DC</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>DC</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>VA</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>VA</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>VA</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>CA</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>NY</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>MA</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>VA</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>FL</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>VA</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15E</td>
+            <td>IND</td>
+            <td>VA</td>
+        </tr>
+        <tr>
+            <td>C00495351</td>
+            <td>15</td>
+            <td>IND</td>
+            <td>MA</td>
+        </tr>
+    </tbody>
+</table>
+
+
+      “Zoom-in” to only one type of
+      entity that made each donation
+      by limiting dataset to rows with
+      Column7 = “PAC”
+•     Attribute-based filtering:
+      “Zoom-in” by retaining only
+      relevant attributes.
+•     Both result in a finer-grained
+      granularity than the original
+      dataset.
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    7
+
+Aggregation
+                                                Input    Output
+•     Combination of data that obtains
+      new attributes with a shifted
+      granularity compared to the
+      original data.
+•     Each input record maps to exactly
+      one output record.
+•     Each output record combines one
+      or more input records.
+•     Values of the new attributes in the
+      output are obtained through
+      aggregation functions (sum,
+      mean, min, list concatenation, etc.)
+      of input record attributes.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE             Nanyang Technological University. All rights reserved.    8
+
+       Aggregation –
+       Example                           # Group by 'Column1' and calculate the average, sum, and count of 'Column15
+                                         grouped = df.groupby('Column1')['Column15'].agg(['mean', 'sum', 'count'])
+
+•     Manipulate the granularity of the  # Rename the columns for clarity
+                                         grouped = grouped.rename(columns={
+      dataset so that each row               mean': 'Average Column15'
+                                             'sum': 'Sum Column15',
+      summarizes the campaign            })  'count': 'Count Column15'
+      contributions made to each         print(grouped)
+
+
+•     campaign committee.                                         Average_Column15 SumColumn15     Count Column15
+      For each campaign committee,                     Column1    101.250000  86670                           856
+                                                 C00001016
+      we create three new colums:                C00001198     896.275862     25992                            29
+                                                 C00001214    1151.478261     26484                            23
+       –  The average contribution made to it    C00001727     500.000000          500                          1
+                                                 C00002469      92.820724          112870          1216
+       –  The sum of contributions made to it                 2000.000000                  2000    ..
+                                                 C00629956                                                      1
+       –  The number of contributions made       C00630012    5000.000000                  5000                 1
+                                                 C00630103     500.000000                   500                 1
+          to it                                  C00630186     328.000000                  1640                 5
+                                                 C90016742      29.500000                    59    2
+
+       NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                Nanyang Technological University. All rights reserved.    9
+
+Pivot
+
+•  Flips between row values and columns
+•  Two types of pivot:
+    – Row-to-column pivot
+    – Column-to-row pivot (aka unpivot)
+
+
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    10
+
+Row-to-column pivot
+
+•     Output records are based on multiple input records
+•     Values of output record attributes are based on some aggregation of
+      input record attribute values.
+•     Frequently combined with aggregation, such that input records can
+      contribute to multiple output records.
+
+
+A                                               A  B  C
+B                                               Pivot
+A
+C
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE           Nanyang Technological University. All rights reserved.    11
+
+Column-to-row pivot (unpivot)
+
+•     Each input record maps to multiple output records.
+•     Each output record is based on exactly one input record.
+•     Values of separate attributes of the input are unified into a
+      single attribute in the output.
+
+                                                                 A
+      A  B                                      C                A
+                                                     Unpivot     B
+                                                                 B
+                                                                 C
+                                                                 C
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                      Nanyang Technological University. All rights reserved.    12
+
+     Pivot –                                         #Create data grouped by source type and state
+                                                     grouped = df.groupby(
+                                                     ['Column7','Column10'])['Column1'].agg(['count'])
+     Example                                         #Pivot grouped to get Column7 as columns
+                                                     pivot_table = grouped.pivot _table(
+                                                      index='Column10',
+                                                      columns='Column7',
+•     Six distinct values of Column7                  values='count',
+      identify different source types of              aggfunc='sum',
+
+•     contributions.                                 ) fill value=0
+      Contributions made from                        print(pivot_table)
+      various US states.
+•     Aggregation + pivot to count the               Column7  CAN  CCM COM      IND     ORG PAC
+      number of contributions per                    Column10
+      state (i.e., Column10 remains)                 AA       0    0      0       1      0     0
+      and source type (pivots from                   AE       0    0      0     2        0     0
+      row values to columns)                         AK       0    0       0    402      0     0
+                                                     AL       0    0       0    2242     1     0
+                                                     AR       0    0      0     1683     0     0
+                                                     AZ       0    0      0     2278     0     0
+                                                     Ca       7    a      a 19391       17     a
+
+     NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                               Nanyang Technological University. All rights reserved.    13
+
+Unpivot –                      # Unpivot the pivot table
+                               unpivoted_df = pd.melt(
+Example                               pivot table.reset index(),
+                                      id_vars='Column10',
+                                      value_vars=['CAN','CCM', 'COM', 'IND', 'ORG', 'PAC'])
+•     “Reverse” the            print(unpivoted_df.sort_values(by='Column10'))
+      previous example.
+                                      Column10    value
+•     Each state will be       0      Column7
+      associated with six      57     AA    CAN          0
+                                      AA    CCM          0
+      values that              171    AA    IND          1
+      correspond to the        228    AA    ORG          0
+                               285    AA    PAC          0
+      six attributes we        ..     :           :
+      will “put back” from     227    ZZ    IND          28
+                               113    ZZ    CCM          0
+      the column header        56     ZZ    CAN          0
+      to the data records.     284    ZZ    ORG          0
+                               341    ZZ    PAC          0
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    14
+
+Summary of structuring transformations
+
+•     Structuring as a             Reordering
+                                   attributes
+      transformation action                     Intrarecord    Creating attributes
+      involves changing the                     Structuring
+      structure and granularity    Combining
+      of a dataset.                attributes
+•     Structuring transformations                              Filtering dataset
+      create new data based on                  Interrecord    Aggregation
+      data already present in the
+      dataset.                                                 Pivot
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                   Nanyang Technological University. All rights reserved.    15
+
+ENRICHING
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    16
+
+Overview of enriching
+
+•     Results in the net addition of information to a
+      dataset.
+       – Inserts additional records or attributes from other related
+       datasets.
+       – Use formulas to calculate new fields.
+•     Three primary types of enriching transformations:
+       – Unions
+       – Joins
+       – Deriving new fields
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    17
+
+    Overview of enriching
+           Set and bag
+    Unions    union
+              Outer union
+
+    EnrichingJoins    Inner join
+                      Outer joins
+
+
+Derivation of                                       Generic
+    values                                          Proprietary
+
+    Metadata
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE               Nanyang Technological University. All rights reserved.    18
+
+Unions – Set and bag union
+
+•     Given relations 𝑅 and 𝑆 with         A B C D  A B C  D
+      compatible schemas, union (∪)                   ∪
+      creates a relation that includes all
+      tuples from 𝑹 and all tuples from 𝑺.
+•     Compatible schemas have the same                =
+      number of attributes and each attribute
+
+•     𝑅. 𝐴<sub>𝑖</sub>    has the same data type as 𝑆. 𝐴<sub>𝑖</sub> .    A B C  D
+      Depending on the semantics, duplicate
+      records are removed (set-semantics)
+      or not (bag-semantics).
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    19
+
+Unions - Outer union
+•     When combining data from multiple
+      sources, they do not necessarily have               A B C                                                                               A B D
+      compatible schemas.                                        ⨄
+       –  Overlap on some attributes
+       –  Other attributes are only present in some              =
+          sources.
+•     Given two relations 𝑅(𝐴1 𝐴2 ,…,        𝐴𝑚) and     A  B C                                                                           D
+      𝑆(𝐵1 𝐵2 ,…,       𝐵𝑛),  the outer union (⨄)                                                                                         ⊥
+       –  Creates a relation with schema attributes                                                                                            ⊥
+          {𝐴<sub>1</sub>  𝐴<sub>2</sub>    ,…,    𝐴<sub>𝑚</sub>    } ∪ {𝐵<sub>1</sub>  𝐵<sub>2</sub>    ,…,    𝐵<sub>𝑛</sub>    }    ⊥
+       –  Adds null values (⊥) to attributes of 𝑅 not                                                                                       ⊥
+          present in 𝑆 and vice versa.                                                                                                      ⊥
+       –  Unifies the resulting tuples to obtain the
+          final result.
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                                                                 Nanyang Technological University. All rights reserved.    20
+
+Outer union - example
+
+# Sample data for two tables
+data1 = {'ID': [1, 2], 'Value1': ['A', 'B']}             ID Value1
+data2 = {'ID': [2, 3], 'Value2': ['B', 'C']}           0 1   A
+                                                       1  2  B
+df1 = pd.DataFrame(data1)                                ID Value2
+df2 = pd.DataFrame(data2)                              0  2  B
+                                                       1  3  c
+# (Outer) union of the two tables                        ID Value1 Value2
+union_df = pd.concat([df1, df2]).drop_duplicates()     0  1  A    NaN
+print(df1)                                             1  2  B    NaN
+print(df2)                                             0  2  NaN  B
+print(union_df)                                        1  3  NaN  C
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    21
+
+Joins
+
+•     Linking records from one dataset 𝑅    A B C    A B D
+
+•     to records from another dataset 𝑆.             𝐽𝑜𝑖𝑛(𝐴, 𝐵)
+      Linking based on a condition on
+      (join) key attributes, e.g.,                    =
+       – Exact match of key values (most
+        common)                                       A B C  D
+       – Approximate match of key values
+        (e.g., to account for data quality
+        issues)
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    22
+
+  Types of joins for enrichment
+
+
+
+
+
+
+
+    Inner join    Left outer join    Right outer join    Full outer join
+   Only produce a record        Retains all records from       Retains all records from      Full outer joins retain all
+  when there are matching    the left (or initial) dataset,    the right (or incoming)            records from both
+ records from each dataset        even if there is no        dataset, even if there is no    datasets, even if they have
+being blended. If there are      matching record in the      matching record in the left        a corresponding match.
+  duplicate join keys, the        right (or incoming)       (or initial) dataset. Missing     Missing values from either
+     output records are         dataset. Missing values        values from the left are      side are padded with nulls.
+   similarly duplicated.       from the right are padded       padded with null values.
+                                   with null values.
+
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    23
+
+Left outer join - example
+
+
+  # Sample data for two tables
+  data1 = {'ID': [1, 2], 'Value1': ['A', 'B']}                Value1
+  data2 = {'ID': [1, 3], 'Value2': ['B', 'C']}             ID
+                                                         0 1  A
+
+  df1 = pd.DataFrame(data1)                              1 2  B
+  df2 = pd.DataFrame(data2)                              0 ID Value2
+                                                           1    B
+  # Left outer join of the two tables                    1 3    c
+  joined_df = pd.merge(df1, df2, on='ID', how='left')      ID Value1 Value2
+  print(df1)                                             0 1  A     B
+  print(df2)                                             1 2  B     NaN
+  print(joined_df)
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    24
+
+Generic derivation of values
+
+•     Generic derivations apply to many datasets and
+      rely on general rules or formulas.
+•     May call external services for enrichment.
+•     Examples:
+       – Enrichment to address the time dimension
+       – Enrichment to obtain geography or spatial encodings
+       – Enrichment based on analyzing data (e.g., text)
+       – Values derived from numeric calculations
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    25
+
+Proprietary derivation of values
+•     Organizations may have custom models that
+      derive information to enrich their data.
+•      Examples:
+       – Custom models for credit scoring
+       – Custom model for health status of patients
+•     In data preparation systems, proprietary
+      functionality is often encoded as user-defined
+      functions (UDFs).
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    26
+
+Metadata
+•  (Retrieved) Metadata are integrated into the
+   records as additional attributes.
+•  Common examples:
+    – filenames of the source data
+    – Byte offsets and/or record numbers
+    – current date and/or time
+    – creation/update/access timestamps
+    – record and/or record attribute provenance
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    27
+
+Summary of enriching
+                           Set and bag
+                    Unions    union
+                                                Outer union
+Results in the      Enriching                   Inner join
+addition of         Joins
+information to a                                Outer joins
+dataset.    Derivation of                       Generic
+                values                          Proprietary
+
+                    Metadata
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    28
+
+DATA CLEANING
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    29
+
+Data cleaning overview
+•     Data cleaning is the process of identifying and
+      mitigating data errors within a dataset.
+•     It is an essential step in data science that ensures
+      that the quality of data is high to allow effective
+      and reliable analysis and decision-making.
+•     Data cleaning transformation actions fall in two
+      categories:
+       – Identification of data quality issues
+       – Correction or repair of the data
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    30
+
+Data cleaning overview
+
+• Throughout this sub-chapter, we cover:
+  – Data quality: What is it? What dimensions are
+   important?
+  – Data errors: What types of errors to look out for?
+  – Data cleaning transformation actions:
+   Overview of detection and correction
+   transformation actions.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    31
+
+DATA QUALITY
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    32
+
+    What is data quality?  Many dimensions!
+                           Not all of them
+                           fixable by data
+    Fitness for use        1    cleaning (or
+                                transformation).
+Accuracy, Objectivity, Believability,    Understanding
+ Reputation, Accessibility, Security,
+ Relevance, Value-Added, Timeliness,    important
+    Completeness, Amount of Data,    15    dimensions still
+ Interpretability, Understandability,      relevant when
+ Consistency, Concise Representation       developing data
+
+                                           science systems.
+
+    > 150 dimensions    Too detailed
+
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    33
+
+   Many classifications of quality dimensions
+
+
+
+
+
+
+
+
+
+
+ SEMANTIC-ORIENTED CLASSIFICATIONS    PROCESS-ORIENTED CLASSIFICATIONS       GOAL-ORIENTED CLASSIFICATIONS
+PARTITION QUALITY DIMENSIONS SOLELY     PARTITION QUALITY DIMENSIONS       MATCH GOALS THAT ARE TO BE REACHED
+       BASED ON THEIR MEANING         ACCORDING TO THEIR DEPLOYMENT IN    WITH THE HELP OF QUALITY REASONING.
+                                    DIFFERENT PHASES OF DATA PROCESSING
+
+
+
+
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    34
+
+Requirement Survey – A comprehensive semantic-oriented
+classification
+
+
+ Content-related criteria      Technical criteria         Intellectual criteria     Instantiation-related
+                                                                                              criteria
+• Concern the actual data     • Concern software and     • Concern subjective      • Concern the presentation
+• Criteria:                    hardware                   aspects.                  of retrieved data.
+ • Accuracy                   • Criteria:                • Criteria:               • Criteria:
+ • Documentation               • Timeliness               • Believability           • Verifiability
+ • Relevancy                   • Reliability              • Reputation              • Amount of data
+ • Value-added                 • Latency                  • Objectivity             • Understandability
+ • Completeness                • Performability                                     • Concise representation
+ • Interpretability            • Response time                                      • Consistent
+                               • Security                                           representation
+                               • Accessibility
+                               • Price
+                               • Customer support
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    35
+
+Requirement Survey –
+Content-based criteria
+•     Accuracy is the extent to which data is correct, reliable, and certified free of error. [WS96]
+•     Completeness is the extent to which data is not missing and is of sufficient breadth, depth,
+      and scope for the task at hand. [WS96]
+•     Customer support is the amount and usefulness of human help via email or telephone.
+•     Documentation is the amount and usefulness of documents with metadata.
+•     Interpretability is the extent to which data is in appropriate languages, symbols, and units,
+      and the definitions are clear. [WS96]
+•     Relevancy (or relevance) is the extent to which data is applicable and helpful for the task
+      at hand. [WS96]
+•     Reliability is the degree to which the user can trust the information
+•     Value-Added is the extent to which data is beneficial and provides advantages from its
+      use. [WS96]
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    36
+
+Requirement Survey –
+Technical criteria
+•     Accessibility (or availability) of a DBMS
+       –  is the probability that a feasible query is correctly answered must time range.
+       –  Is the extent to which data are available or easily and quickly receivable [WS96].
+•     Latency is the amount of time from issuing the query until the first data item reaches the user
+•     Price (cost effectiveness)
+       –  is the amount of money a user must pay for a query.
+       –  is the extent to which the cost of collecting appropriate data is reasonable [WS96].
+•     Response time measures the delay in seconds between submission of a query by the user and
+      reception of the complete response from the information system.
+•     Security is the extent to which access to data is restricted appropriately to maintain its security
+      [WS96].
+•     Timeliness is the extent to which the age of the data is appropriate for the task at hand [WS96].
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                         Nanyang Technological University. All rights reserved.    37
+
+Requirement Survey –
+Intellectual criteria
+
+•     Believability is the extent to which data is regarded as true, real, and credible [WS96].
+•     Objectivity is the extent to which data is unbiased, unprejudiced, and impartial [WS96].
+•     Reputation is the extent to which data is trusted or highly regarded in terms of its source or
+      content [WS96].
+
+
+
+
+
+
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    38
+
+Requirement Survey –
+Instantiation-related criteria
+
+•     Amount of data is the extent to which the quantity or volume of available data is
+      appropriate [WS96].
+•     Representational conciseness is the extent to which data is compactly represented
+      without being overwhelming [WS96].
+•     Representational consistency is the extent to which data is always represented in the
+      same format and are compatible with previous data [WS96].
+•     Understandability (ease of understanding) is the extent to which data are clear without
+      ambiguity and easily comprehended [WS96].
+•     Verifiability (traceability, lineage) Is the extent to which data are well documented,
+      verifiable, and easily attributed to a source [WS96].
+
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    39
+
+Requirement Survey – Summary
+
+
+  Content-related criteria                       Technical criteria     Intellectual criteria     Instantiation-related
+                                                                                                            criteria
+ • Concern the actual data     • Concern software and                  • Concern subjective      • Concern the presentation
+ • Criteria:                                     hardware               aspects.                  of retrieved data.
+  • Accuracy                   • Criteria:                             • Criteria:               • Criteria:
+  • Documentation                                • Timeliness           • Believability           • Verifiability
+  • Relevancy                                    • Reliability          • Reputation              • Amount of data
+  • Value-added                                  • Latency              • Objectivity             • Understandability
+  • Completeness                                 • Performability                                 • Concise representation
+  • Interpretability                             • Response time                                  • Consistent
+                                                 • Security                                       representation
+                                                 • Accessibility
+   Multiple content-related                      • Price
+   criteria can be improved                      • Customer support     Intellectual criteria    Multiple problems related
+     through proper data      Technical criteria Influence data          are essential during     to instantiation-related
+  preparation, in particular  management and data science                  data selection.       criteria can be mitigated
+ data cleaning.               deployment considerations                                          through data preparation.
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                    Nanyang Technological University. All rights reserved.    40
+
+DATA ERRORS
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    41
+
+ Examples of data errors that affect data quality
+
+representation                                   contradiction                          referential integrity
+                  CNr       Name                 Birthday         Age    Sex   Phone        ZIP
+                  1234      Smith, John          18.2.80          21     m     999-9999     70567
+                  1234      Jane Doe             32.2.70          46     f     768-4511     55555
+uniqueness        1235      John Smith           18.2.80          36     m     567-3211     70567
+
+                   ZIP       Place                                      dummy value            duplicates
+                   70567     Stuttgart           incorrect values
+                   70567     Stutgart
+
+ typo              70569     Germany
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                              Nanyang Technological University. All rights reserved.    42
+
+Classification of errors [DR00]
+
+                   Single data source                                    Integrated (clean) data sources
+Schema level       Lack of integrity constraints, poor schema design     Heterogeneous data models and schema designs
+                   -     Invalid value                                   -     Labeling conflicts
+                   -     Violation of attribute dependency               -     Modeling conflicts
+                   -     Uniqueness violation
+                   -     Violation of referential integrity
+Instance level     Data entry errors                                     Overlapping, contradicting and inconsistent data
+                   -     Missing value                                   -     Contradictory values*
+                   -     Typographical error or wrong value              -     Different representations
+                   -     Cryptic value                                   -     Different scales
+                   -     Embedded value                                  -     Different precision
+                   -     Misfielded value                                -     Different level of aggregation
+                   -     Contradictory values                            -     Duplicates*
+                   -     Transposition                                   -     Data conflicts*
+                   -     Duplicates
+                   -     Data conflicts
+                   -     Wrong references
+* Same error types as in a single data source, but the process of data integration can result in additional instances of these error types (even if individual
+sources are clean)
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                   Nanyang Technological University. All rights reserved.         43
+
+    Single data source – Schema level
+                       Problem                      Dirty Data        Reasons/Remarks
+
+    Attribute level    Illegal values               bdate=30.13.70    values outside of domain
+                                                                      range
+
+    Intra-record  Violated attribute                  age=22,         age = (current date – birth
+    level            dependencies                  bdate=12.02.70     date)
+                                                                      should hold
+
+Inter-record                                  emp1=(name=”John Smith”, uniqueness of FIN (Foreigner
+                       Uniqueness violation        FIN=”123456”)      Identification number) is
+   level                                         emp2=(name=”Peter    violated
+                                               Miller”, FIN=”123456”)
+
+Inter-table            Referential integrity  emp=(name=”John Smith”, referenced department (127)
+   level               violation                    deptno=127)       is not defined in department
+                                                                      table
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                      Nanyang Technological University. All rights reserved.    44
+
+  Single data source – Instance level
+
+
+                 Problem               Dirty Data                         Reasons/Remarks
+
+                 Missing values        phone=9999-999999                  unavailable values during data
+                                                                          entry(dummy values or null)
+                 Misspellings          city=”Bellin”                      usually typos, phonetic errors
+                 Cryptic values,    experience=”B”; occupation=”DB
+Attribute        abbreviations                  Prog.”
+  level          Embedded values       name=”J. Smith 12.02.70 New York”  multiple values entered in one
+                                                                      attribute (e.g. in a free-form field)
+
+                 Misfielded values     city=”Germany”
+
+   Intra-record  Violated attribute    city=”Redmond”, zip=77777          city and zip code should
+    level        dependencies                                             correspond
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    45
+
+Single data source – Instance level
+(continued)
+
+Problem                                         Dirty Data                            Reasons/Remarks
+             Word           name1= “J. Smith”,                                        usually in a free-form field
+        transpositions      name2=”Miller P.”
+
+Inter-    Duplicated                            emp1=(name=”John Smith”,...);         same employee represented twice
+record     records                              emp2=(name=”J. Smith”,...)            due to some data entry errors
+level                        emp1=(name=”John
+        Contradicting    Smith”,bdate=12.02.70);                                      the same real-world entity is
+           records       emp2=(name=”John Smith”,                                     described by different values
+                             bdate=12.12.70)
+Inter-      Wrong                                                                     referenced department (17) is
+table     references                            emp=(name=”John Smith”, deptno=17)    defined but wrong
+level
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                          Nanyang Technological University. All rights reserved.    46
+
+Integrated data sources – Schema level
+                         IC conflict
+Table-table conflicts    (uniqueness)                                     Employee
+• Labeling conflicts                            EID          Firstname            lastname     role
+  –  Semantically equivalent tables             1            Peter                Müller       Assistant
+
+  –  have different names (synonyms)            5            Petra                Schmidt      Asst.
+     Semantically different tables have
+     equal names (homonym)
+• Modeling conflicts                            Employee (Semantic: managing)
+  –  Missing attributes
+  –  Missing but derivable attributes           Homonym     EID       firstname     lastname
+  –  IC conflicts (IC = integrity                           2         Stefanie      Meier           Missing but
+     constraint)                                            2         Petra         Schmidt         derivable
+                                                                                                    attribute
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                      Nanyang Technological University. All rights reserved.    47
+
+Integrated data sources – Schema level
+(continued)                                                                                                      IC conflict
+
+Attribute-attribute conflicts                   p_id          firstn          Employee                           (age > 18)
+                                                                            VARCHAR(35)     lastname          age
+● Labeling conflicts                            1             Wolfgang                      Meyer             33
+    ‣     Different names for semantically      5             Klaus                         Schmidt           NULL
+          equal attributes (synonyms)
+    ‣     Same label for attributes with        ...           ...                           ...               ...
+
+●         different semantics (homonyms)                                      Employee                                                             Default
+     Modeling conflicts                                                                                                                            value
+    ●    Default value conflicts                       p_id          firstn VARCHAR(20)            name       age
+    ●    IC conflicts                                  1             Peter                         Müller     0
+           ‣     Data type conflicts                   5             Petra                         Weger      17
+           ‣     Condition conflicts
+                                                       ...           ...                           ...        ...
+                                                                            Data type              Synonym
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                             Nanyang Technological University. All rights reserved.           48
+
+Integrated data sources – Instance level
+Errors that arise due to the
+integration of overlapping,             CID   Name            Size     Billing     Phone
+contradicting and inconsistent
+data across sources.                    1     Smith, John     8.5      80 USD      (123) 4567
+-     Contradictory values              2     Doe, Jane       7.0      70 USD      (408) 9012
+-     Different representations         A     John Smith      42       580 SGD     4444 8888
+-     Different scales                  B     Chris Lim       42       420 SGD     9182 7374
+-     Different precision
+-     Duplicates
+-     Data conflicts                                                    Data from source 1
+-     Different level of aggregation                                    Data from source 2
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    49
+
+Data errors summary
+
+•  Various types of errors need to be considered.
+   – This entails a high variety of solutions to detect and
+   correct these errors.
+•  Errors are either defined at schema or data level.
+   – Knowledge of this distinction helps in choosing suited
+   methods for error detection and correction.
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    50
+
+CLEANING TRANSFORMATION
+ACTIONS
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    51
+
+   Cleaning actions overview
+
+
+
+
+
+
+
+
+
+
+      ERROR DETECTION                ERROR CORRECTION
+IDENTIFIES ERRONEOUS RECORDS    CHANGES VALUES TO CORRECT
+    OR ATTRIBUTE VALUES.                 ERRORS.
+
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    52
+
+Error detection
+
+•     Can be performed by leveraging metadata gathered during
+      data profiling.
+      Examples: approximate functional dependencies, cardinalities
+•     Further data mining or data analysis methods can be used.
+      Examples: outlier detection, entity resolution to identify
+      different representations of a same entity
+•     Can produce additional metadata pinpointing detected quality
+      issues, subsequently used to fix them manually, semi-
+      automatically, or fully automatically.
+      Example: additional duplicate entityID as a result of entity
+      resolution, Boolean flag indicating an error in a specific field.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    53
+
+Error correction
+•  Distinction between cleaning actions
+   addressing missing values and erroneous
+   values.
+•  A simple cleaning action to correct both types
+   of errors is to delete (filter) affected records.
+•  Error correction beyond deletion discussed
+   based on the classification on the next slide.
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    54
+
+    Error correction beyond deletion
+
+  Error
+correction
+
+
+    Missing    Erroneous
+    values       values
+
+
+    Densification  Imputation  Possible  Standardization    Value
+                               worlds                       derivation
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    55
+
+Correcting missing values
+•  Data densification: merge records that
+   complement each other to reduce / eliminate
+   missing or NULL values.
+•  Data imputation: fills in the missing values
+   through
+    – Computation, approximation, or extrapolation
+    – Inference based on similar or related records
+    – Generation using generative models
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    56
+
+Correcting missing values
+
+Date           Product          Price     Category
+01/01/2024     Rubik’s cube     10        NULL
+01/01/2024     Bath towel       13        Home
+01/01/2024     Rubik’s cube     NULL      Puzzle
+02/01/2024     Beach towel      NULL      NULL
+03/01/2024     Large towel      15        Home
+NULL           Jigsaw           20        Puzzle
+05/01/2024     NULL             14        Home
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    57
+
+Correcting missing values
+
+Date           Product          Price     Category
+01/01/2024     Rubik’s cube     10        NULL      Records complement each
+01/01/2024     Bath towel       13        Home      other and can be densified
+                                                    into one single tuple with no
+01/01/2024     Rubik’s cube     NULL      Puzzle    missing values
+02/01/2024     Beach towel      NULL      NULL
+03/01/2024     Large towel      15        Home
+NULL           Jigsaw           20        Puzzle
+05/01/2024     NULL             14        Home
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    58
+
+Correcting missing values
+
+Date           Product          Price     Category
+01/01/2024     Rubik’s cube     10        Puzzle    Price is approximated based
+01/01/2024     Bath towel       13        Home      on the price of similar
+                                                    products (e.g., using the
+02/01/2024     Beach towel      NULL      NULL      average)
+03/01/2024     Large towel      15        Home
+NULL           Jigsaw           20        Puzzle
+05/01/2024     NULL             14        Home
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    59
+
+Correcting missing values
+
+Date           Product          Price     Category
+01/01/2024     Rubik’s cube     10        Puzzle
+01/01/2024     Bath towel       13        Home    Category can be
+02/01/2024     Beach towel      14        NULL    inferred by the category
+03/01/2024     Large towel      15        Home    of similar products.
+NULL           Jigsaw           20        Puzzle
+05/01/2024     NULL             14        Home
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    60
+
+Correcting missing values
+
+Date           Product          Price     Category
+01/01/2024     Rubik’s cube     10        Puzzle
+01/01/2024     Bath towel       13        Home
+02/01/2024     Beach towel      14        Home
+03/01/2024     Large towel      15        Home      Strong order of records
+NULL           Jigsaw           20        Puzzle    allows to extrapolate
+05/01/2024     NULL             14        Home      possible date
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    61
+
+Correcting missing values
+
+Date           Product          Price     Category
+01/01/2024     Rubik’s cube     10        Puzzle
+01/01/2024     Bath towel       13        Home
+02/01/2024     Beach towel      14        Home
+03/01/2024     Large towel      15        Home
+04/01/2024     Jigsaw           20        Puzzle
+05/01/2024     NULL             19        Home    Generative model can
+                                                  generate a likely value
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    62
+
+Correcting missing values
+
+Date           Product          Price     Category
+01/01/2024     Rubik’s cube     10        Puzzle
+01/01/2024     Bath towel       13        Home
+02/01/2024     Beach towel      14        HOME
+03/01/2024     Large towel      15        Home    No more missing values
+04/01/2024     Jigsaw           20        Puzzle
+05/01/2024     XL towel         19        Home
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    63
+
+Correcting erroneous values
+
+•     Possible worlds: Conduct downstream processing
+      (e.g., analysis) both with invalid value and without to
+      assess its impact on possible insights.
+•     Standardization: Uses dictionaries, external services,
+      rules to correct errors.
+•     Value derivation: Obtain correct / consistent value for
+      an attribute that overwrites the original (invalid) value
+      through conversion, calculation, statistical modelling,
+      etc.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    64
+
+Correcting erroneous values
+
+Object      Mass       Type                   Surface
+Earth       597.20     Terrestrial planet     Solid
+Venus       486.70     Terrestril planet      Solid
+Jupiter     1.9        Jovian planet          Gas      Standardization based on
+Uranus      8700       Jovian planet          Gas      fixed library of valid names of
+Zerez       0.09       Dwarf planet           Ice      solar system object. Replaced
+Pluto       1.30       Dwarf planet           Glace    by most similar one.
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    65
+
+Correcting erroneous values
+
+Object      Mass       Type                   Surface
+Earth       597.20     Terrestrial planet     Solid
+Venus       486.70     Terrestril planet      Solid    Standardization using domain
+Jupiter     1.9        Jovian planet          Gas      knowledge mapping planet
+                                                       names to their mass.
+Uranus      8700       Jovian planet          Gas
+Ceres       0.09       Dwarf planet           Ice
+Pluto       1.30       Dwarf planet           Glace
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    66
+
+Correcting erroneous values
+
+Object      Mass          Type                   Surface
+Earth       597.20        Terrestrial planet     Solid
+Venus       486.70        Terrestril planet      Solid
+Jupiter     189870.00     Jovian planet          Gas    Derivation of correctly
+Uranus      8700          Jovian planet          Gas    formatted value (all others
+                                                        have two decimals).
+Ceres       0.09          Dwarf planet           Ice
+Pluto       1.30          Dwarf planet           Glace
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    67
+
+Correcting erroneous values
+
+Object      Mass          Type                   Surface
+Earth       597.20        Terrestrial planet     Solid    Correction of
+Venus       486.70        Terrestril planet      Solid    typographical error by
+Jupiter     189870.00     Jovian planet          Gas      replacing this outlier
+                                                          value by more frequent
+Uranus      8700.00       Jovian planet          Gas      type (assume a larger
+Ceres       0.09          Dwarf planet           Ice      table with few errors)
+Pluto       1.30          Dwarf planet           Glace
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    68
+
+Correcting erroneous values
+
+Object      Mass                                Type                   Surface
+Earth       597.20                              Terrestrial planet     Solid
+Venus       486.70                              Terrestrial planet     Solid    Discovered functional
+Jupiter     189870.00                           Jovian planet          Gas      dependency
+Uranus      8700.00                             Jovian planet          Gas      Type → Surface
+Ceres       0.09                                Dwarf planet           Ice      and value distribution
+                                                                                allow to determine Ice
+Pluto       1.30                                Dwarf planet           Glace    as the correct value
+                                                                                (assume a more
+                                                                                complete relation)
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                    Nanyang Technological University. All rights reserved.    69
+
+Correcting erroneous values
+
+Object      Mass          Type                   Surface
+Earth       597.20        Terrestrial planet     Solid
+Venus       486.70        Terrestrial planet     Solid
+Jupiter     189870.00     Jovian planet          Gas
+Uranus      8700.00       Jovian planet          Gas    No more erroneous values
+Ceres       0.09          Dwarf planet           Ice
+Pluto       1.30          Dwarf planet           Ice
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    70
+
+DATA TRANSFORMATION
+CONCLUSION
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    71
+
+Data transformation tasks
+
+Data Profiling    Data Structuring
+
+                  Data preparation
+
+Data Enriching                    Data Cleaning
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    72
+
+Structuring transformations
+
+               Reordering
+               attributes
+
+Intrarecord    Creating attributes
+Structuring    Combining
+               attributes
+
+               Filtering dataset
+
+Interrecord                                     Aggregation
+
+               Pivot
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE               Nanyang Technological University. All rights reserved.    73
+
+    Enriching transformations
+           Set and bag
+    Unions    union
+              Outer union
+
+    EnrichingJoins    Inner join
+                      Outer joins
+
+
+Derivation of                                       Generic
+    values                                          Proprietary
+
+    Metadata
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE               Nanyang Technological University. All rights reserved.    74
+
+ Error detection and correction
+
+
+<table>
+  <caption>Error detection and correction transformations</caption>
+  <thead>
+    <tr>
+      <th colspan="3">Error detection</th>
+      <th colspan="5">Error correction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="2">Metadata</td>
+      <td rowspan="2">Data mining</td>
+      <td rowspan="2">Data analysis</td>
+      <th colspan="2">Missing values</th>
+      <th colspan="3">Erroneous values</th>
+    </tr>
+    <tr>
+      <td>Densification</td>
+      <td>Imputation</td>
+      <td>Possible worlds</td>
+      <td>Standardization</td>
+      <td>Value derivation</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    75
+
+ Data preparation is a process
+
+Data preparation is the    
+
+<table>
+  <caption>Data preparation is a process</caption>
+  <thead>
+    <tr>
+      <th>Process Stage</th>
+      <th>Next Sequential Step</th>
+      <th>Feedback Loops (Return to)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Access</td>
+      <td>Profile / transform</td>
+      <td>—</td>
+    </tr>
+    <tr>
+      <td>Profile / transform</td>
+      <td>Publish</td>
+      <td>Access</td>
+    </tr>
+    <tr>
+      <td>Publish</td>
+      <td>—</td>
+      <td>Access, Profile / transform</td>
+    </tr>
+  </tbody>
+</table>
+
+
+process of converting raw
+data into a form that
+allows to extract value
+from data.
+
+
+
+
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    76
+
+For each of these types of data transformations, you
+should now be able to…
+•     … define and classify various             C
+      sub-tasks.
+•     … determine which data
+      transformations can be used to
+      prepare the data for a specific
+      data science application.
+•     … describe and recognize                  A
+      various data quality issues
+      within and across datasets.
+•     … implement various data
+      transformation tasks.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    77
+
+References and credits
+
+•     Joseph M. Hellerstein, Tye Rattenbury, Jeffrey
+      Heer, Sean Kandel, Connor Carreras. Principles of Data
+      Wrangling. O’Reilly Media. 2017 – Chapter 4 - 7
+•     Erhard Rahm, Hong Hai Do: Data Cleaning: Problems
+      and Current Approaches. IEEE Data Eng. Bull. 23(4): 3-
+      13 (2000)
+•     Felix Naumann, Claudia Rolker: Do Metadata Models
+      meet IQ Requirements? IQ 1999: 99- 114
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    78

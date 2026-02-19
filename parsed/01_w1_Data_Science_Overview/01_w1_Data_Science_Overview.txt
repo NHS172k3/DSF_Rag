@@ -1,0 +1,885 @@
+NANYANG
+TECHNOLOGICAL
+UNIVERSITY
+SINGAPORE
+
+             Data Science Fundamentals
+             [SC3021]
+
+
+Chapter 1: What is Data Science?
+
+Assoc. Prof. Melanie Herschel | CCDS
+
+Course content
+
+
+
+
+
+
+
+
+  Data science overview             Data preparation and          Data analytics and         Design considerations
+                                    data management               understanding
+  What is Data Science?             Data profiling                Descriptive analytics      Privacy
+  •Definitions                      Structuring                   Diagnostic Analytics       Security
+  •Misconceptions                   Enriching                     Prescriptive analytics     Ethics
+  •Differentiation from related     Data cleaning                 Predictive analytics       Psychology
+  fields
+  Data Science Thinking vs.         Data management platforms     Data visualization         Policies
+  Computational Thinking            Schema design
+  Data Science Ecosystems           Querying data
+
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+At the end of this lecture, you should be able to…
+•     …define and characterize
+      data science.
+•     … explain how data science
+      positions itself compared to
+      computer science, maths,
+      statistics, and AI.
+•     … argue when a problem is
+      considered a data science
+      problem or not.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+No one to rule them all…
+DEFINITIONS OF DATA SCIENCE
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+  Tuas otoully
+  Tn O
+Take notes    2040
+
+
+
+
+
+
+
+
+  Ty
+ ellin
+                                                nagement platforms
+ engneeringw
+
+ StraitsTimes, 4/10/2019
+ ONANYANG TECHNOLOGICAL UNIVERSITY SINGAPORE                      Nanyang Technological University. All rights reserved.
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                    Nanyang Technological University. All rights reserved.
+
+Berkeley
+Public
+Health
+60 I Nevad d  Eplr Fre  aply Q MENU
+Take notes  How big data can save ives
+Tranomine e
+By Austi Price
+By Austi Price
+6minrd  t Auguts, 019
+6 min rad  ie Augut s, 019  Sh
+ad
+denlya
+X  c
+preeddiction."  X  A
+W
+NMA
+A
+EM
+i
+th
+to
+prediction."
+prediction."
+Ap
+ Berkeley Public Health, 25/18/2019  Cry
+/18/2019
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE  Nanyang Technological University. All rights reserved.
+Nanyang Technological University. All rights reserved.
+
+                    AI hiring tools may be filtering out the
+
+    Take notes     best job applicants
+                   16 February 2024       Share Save +
+                    Charlotte Lytton
+                    Features correspondent
+
+
+
+
+
+
+                 y
+    . Alamy
+                 such as one-way video interviews, can leave some highly qualified candidates without the  Alamy
+                 heway vide nterviws,can leave somehighly qualif candidat wihou the
+                 vews they deserve (Credit: Alamy)
+    company."    ney deserve (Credit: Alamy)
+                 As firms increasingly rely on artificial intelligence-driven hiring platforms, many
+                 As firms increasingly rely on artificial intelligence-driven hiring platforms, many
+highly qualified candidates are finding themselves on the cutting room floor.
+highly qualified candidates are finding themselves on the cutting room floor.
+
+                                                  Nanyang Technological University. All rights reserved.
+                                                  Nanyang Technological University. All rights re
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE      Nanyang Technological University. All rights reserved.
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE
+
+Takeaways from examples
+
+•     Various terms are seemingly used interchangeably
+      for similar problems being solved based on data.
+•     Problems tackled are from diverse domains.
+•     A specific problem, question, or application drives
+      the development.
+•     Opportunities and risks associated with using data to
+      derive insights.
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+A little bit of History…
+
+
+
+
+  Origins in the
+  statistics community
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+  A little bit of History…
+
+
+
+
+
+
+Evolution into a mature field with
+ computer science advancements in
+ knowledge discovery, data mining
+
+    1990s
+
+   Origins in the
+statistics community
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+  A little bit of History…
+
+
+
+
+
+
+Evolution into a mature field with
+ computer science advancements in
+ knowledge discovery, data mining    Domain-specific data analytics
+                                       to draw new conclusions or
+    1990s                              insights, supported by Big
+                                             Data solutions
+   Origins in the
+statistics community
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+  A little bit of History…
+
+
+   Success of machine
+learning (deep learning)
+
+Evolution into a mature field with                  2010s
+ computer science advancements in
+ knowledge discovery, data mining    Domain-specific data analytics
+                                       to draw new conclusions or
+    1990s                              insights, supported by Big
+                                             Data solutions
+   Origins in the
+statistics community
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE         Nanyang Technological University. All rights reserved.
+
+  A little bit of History…
+
+
+   Success of machine                                         Domain-specific, data-specific,
+learning (deep learning)                                      and theoretical data analytics
+                                                              have formed the keystones of
+Evolution into a mature field with                  2010s     data science
+ computer science advancements in
+ knowledge discovery, data mining    Domain-specific data analytics
+                                       to draw new conclusions or
+    1990s                              insights, supported by Big
+                                             Data solutions
+   Origins in the
+statistics community
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE              Nanyang Technological University. All rights reserved.
+
+ Definitions of Data Science
+ Process-based and goal-based perspectives
+
+“ Data science         encompasses a set of principles, problem
+ definitions, algorithms, and processes for extracting  non-
+ obvious and useful patterns from large data sets. ” [MacKay00]
+
+“ Systematic study of organization and use of digital data
+ for research discoveries, decision-making, and data-driven
+ economy. ” [Agrawal12]
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Definitions of Data Science
+Disciplinary perspective
+                                         
+
+<table>
+  <caption>Definitions of Data Science: Disciplinary Perspective (Adaptation of original figure by Drew Conway)</caption>
+  <thead>
+    <tr>
+      <th>Hacking skills</th>
+      <th>Math and Statistics</th>
+      <th>Substantive expertise</th>
+      <th>Resulting Discipline</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Hacking skills</td>
+    </tr>
+    <tr>
+      <td>No</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Math and Statistics</td>
+    </tr>
+    <tr>
+      <td>No</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>Substantive expertise</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Machine learning</td>
+    </tr>
+    <tr>
+      <td>No</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Traditional research</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>Danger zone!</td>
+    </tr>
+    <tr>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Data Science</td>
+    </tr>
+  </tbody>
+</table>
+
+
+“ Data science comprises three distinct
+and overlapping areas: the skills of a
+statistician who knows how to model and
+summarize datasets […]; the skills of a
+computer scientist who can design and
+use algorithms to efficiently store,
+process, and visualize this data; and the
+domain expertise […] necessary both to
+formulate the right questions and to put
+their answers in context. ”<sub>[VanderPlas]</sub>
+
+                                                  Adaptation of original figure byDrew Conway
+                                                  http://drewconway.com/zia/2013/3/26/the-data-science-venn-diagram
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                 Nanyang Technological University. All rights reserved.
+
+Definitions of Data Science
+Coverage of different relevant aspects
+
+•     Interdisciplinarity
+•     Data-based approach to problem solving
+•     Use of large and multi-modal data
+•     Focus on deriving insights and value by discovering patterns and
+      relationships in data
+•     Underlying process-oriented life-cycle
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Working comprehensive definition
+Used throughout this course
+
+“Data science is a data-based
+approach to problem solving by
+analyzing and exploring possibly
+multi-modal and heterogeneous data,
+extracting knowledge and insight from
+it, and using information for better
+decision-making. It involves the
+process of collecting, preparing,
+managing, analyzing, explaining, and
+disseminating the data and analysis
+results.”<sub>[Öszu23]</sub>
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Clarifications
+
+
+  What is data?                       Multi-modal and                     Data-based vs data-driven?
+                                      heterogeneous?
+  • A representation of facts or     • Multi-modal data comprises         • Data-driven is often
+  ideas in a formalized manner        different types of information      understood as “we mainly
+  capable of being                    (text, images, time series from     (solely) rely on data to make a
+  communicated or                     sensors, tabular data, …)           decision”. While data
+  manipulated by some                • Heterogeneous data presents        represents facts that data
+  process.                            differences in syntax and           science may reveal, properly
+                                      semantics relating to               interpreting them is essential.
+                                      represented facts (e.g., text vs    • Data-based indicates that data
+                                      XML vs CSV data or different        science supports decision
+                                      attribute labels albeit having      making, without having its
+                                      the same meaning).                  own agency.
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+MISCONCEPTIONS
+
+
+
+
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Misconceptions about data science
+
+•     Some possible reasons:                    ?
+       –  The diversity of definitions
+       –  The different disciplines involved     ?
+       –  Overselling of the benefits
+       –  Strong focus on single aspects
+•     Knowing about common misconceptions
+      is important
+       –  Supports understanding of what
+          data science is and is not
+       –  Complements the general definition
+          by stressing different relevant
+          aspects
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+MYTHS               FACTS                         Beyond programming
+                                                  (and more generally
+                                                 The fo
+                               YES                Computer Science)
+                    volumes           YES        Scienc
+         large                 of dataare         skills, Data Science
+Data Science                                     value
+Data                           coding skills are
+                necessary                         involves understanding
+only    =                      methods           availa
+                               essential          statistics, data
+on      Coding                                   big. D
+                                                  management, machine
+        (Python)               BUT              availa
+datasets                              BUT         learning, and domain-
+                    Data                        challe
+                    data science is more          specific knowledge to
+                    applies                      tackle
+                    than programming.             extract meaningful
+                                                 Data S
+                                                  insights from data.
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+MYTHS                 FACTS                          The fo
+                         YES                         Important Data Science
+                                                     Scienc
+                      volumes         YES            aspects like collecting,
+Data Science    large         of dataare             value
+Data            a strong foundation in               preparing, managing,
+        =                                            availa
+only                     statistics is crucial       explaining, analyzing,
+        Statistics                                   big. D
+on                                                   and disseminating the
+                                                    availa
+datasets                 BUTBUT                      data and analysis
+                      Data Science                  challe
+                      applies further skills are     results are not (purely)
+                                                     tackle
+                         required by data            solved by statistics.
+                         scientists                  Data S
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+MYTHS  FACTS                                      The fo
+       YES YES                                    More generally, data
+                                                  Scienc
+                making predictions based          science encompasses
+Data Science    large                             value
+Data            on (trained) models is a          further types of
+        =                                         availa
+only            significant component of          analytics and involves
+        Prediction    data science                big. D
+on                                                tasks such as data
+                          BUT                    availa
+datasets                 BUT                      exploration, data
+                data science comprises a         challe
+                      Data whole ecosystem to     cleaning, visualization,
+                      applies                     tackle
+                  support this type of            etc.
+                       analytics.                 Data S
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+MYTHS  FACTS                             The fo
+       YES YES                           Scienc
+       largeData Science can provide     Careful considerations
+Data Science                             value
+Data     valuable insights in many       on data adequacy, data
+        solves    domains                availa
+only              methods                quality, and domain-
+on everything                            big. D
+                                         specific interpretation
+datasets          BUT BUT               availa
+                                         are some key factors!
+          there are no guarantees       challe
+                  Data
+         and expertise is required
+                  applies                tackle
+        for correct interpretation.      Data S
+
+
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+MYTHS  FACTS                                      The focus of Data
+                  YES                             The fo
+       YES                                        Science is on extracting
+       large volumes of data are                  Scienc
+       large                                      value from the
+Data Science                                      value
+Data       necessary for some
+                necessary                         available data, small or
+only applies    methods                           availa
+only            methods                           big. Depending on the
+on      on large                                  big. D
+                                                  available data, different
+        datasets    BUT BUT                      availa
+datasets                                          challenges need to be
+            DataData Science equally             challe
+                    applies on small datasets     tackled as part of a
+                    applies                       tackle
+                                                  Data Science solution.
+                                                  Data S
+
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Summary of misconceptions
+
+•     Various reasons exists for misconceptions about what data
+      science is.
+•     The definition we elaborated allows to debunk such
+      misconceptions.
+•     It is part of a data scientist’s work to clarify, rectify, and
+      educate different stakeholders to manage their expectations
+      or make them appreciate the broad work needed to devise a
+      data science solution.
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Data science vs computer science, statistics, maths, AI
+DIFFERENTIATION
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Differentiation overview
+
+•     Being multi-disciplinary, data science is related to multiple fields
+•     We focus on comparing data science to
+       –  Computer science
+       –  Mathematics
+       –  Statistics
+       –  Artificial intelligence(AI)
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Differentiation overview
+
+  
+
+<table>
+  <caption>Differentiation overview: Lists are not exhaustive but provide prominent examples</caption>
+  <thead>
+    <tr>
+      <th colspan="3">Comparison in terms of</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Focus</td>
+      <td>Methods involved</td>
+      <td>Application areas</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+  Lists are not exhaustive but provide prominent examples
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Data science
+            Focus: Application-specific extraction of
+            insights and knowledge from data
+
+
+Methods: data cleaning, data profiling,
+statistics, machine learning, visualization
+
+
+Applications: Business intelligence,
+predictive analytics, scientific discovery,
+machine learning models, data-based
+decision-making
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+    Computer science
+               Focus: Design, development, and
+0000100001     implementation of computer systems and
+1000111110     software
+0001011110
+               Methods: algorithms, data structures,
+               software engineering, programming
+               languages, computer architecture
+
+               Applications: Software development, web
+               development, cybersecurity, artificial
+               intelligence, database management
+               systems.
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Mathematics
+
+$SS z{2dryd=$                  $2$\s{{}x}$  $x_{2y^{3,x=5                                       Focus: the study of numbers,
+V:z=10(x+3yry=1                             $z=1+\_^{4y42}$                  X=
+x=0y=0,z=0                                  $2-4+\qr^+4y^{4}$                                   shapes, and patterns
+1,10(x+38                                                     4+V@x^{4g}$
+$=Sdx5dyx{d=$                  V=-Sdy}{dx5                              %2
+=\8dx{^x20xdy=$ₒ                            2_g^{2+31+\sqx4$
+$\sqrarrsiny$  1 arccosy
+yfdx+$
+oyy             +fdy $f2x=     =6(y-3y)1-61-5+1-3)=8.
+%9 cosy        $\sqrt2}$  U    y=sinx                      $y^{2 8}+^}=0$    y{T=311592         Methods: Algebra, geometry,
+={dxfdy$                       y=-cosx                     $y{}10yx{0$                          calculus, discrete mathematics,
+siny                           B                           $y$ssqr{y3x$      5
+y↑      x=arcyiny                                          $∫x-rcogy                            trigonometry
+    X=arccosy                  11  1021hu                  $y=rsiny
+               X          S-SdeSrdr =
+                                   Prince
+    T=3141592                  $\frac {  2 }$    re,10gin8
+                               1/                r6inue    1%                                   Applications: engineering,
+$y=\(x)$                  =94d95---=$f
+f1-a)       t(a)               1                           y                 y^=asaryy5=2πR     physics, finance, economics,
+                               $f(a)                          9  1
+                                                           $y^=co2           y1=cosr1           computer science
+0                                                f-) y=20s(2x)+1             $y=20s(2x-π+1$
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Statistics
+0 Focus: Collection, analysis,
+                                                interpretation, presentation, and
+                                                organization of data
+                                                Methods: statistical inference,
+                                                hypothesis testing, regression
+H                                               analysis, experimental design
+                                                Applications: Research, quality
+                                                control, market research, social
+                                                sciences, medical research
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Artificial intelligence (AI)
+ Focus: Intelligent agents
+
+
+ Methods: machine learning, deep
+ learning, natural language processing
+
+ H (NLP), computer vision, robotics
+ Applications: AI assistants,
+ autonomous cars, medical diagnosis,
+ game playing
+
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Comparison summary
+
+                 Data science                   Computer         Statistics        Mathematics        Artificial intelligence
+                                                science
+Focus            Data insights                  Computer         Data              Mathematical       Intelligent agents
+                                                systems          analysis          concepts
+Methods          Data cleaning,                 Algorithms,      Statistical       Algebra,           Machine learning,
+                 statistics,                    programming,     inference,        geometry,          natural language
+                 machine                        software         hypotheses        calculus,          processing,
+                 learning,                      engineering      testing, data     trigonometry,      computer vision,
+                 visualization                                   organization      Discrete math      robotics
+Applications     Business,                      Software         Research,         Various fields     Autonomous
+                 research                       development      business                             systems, AI
+                                                                                                      assistants
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                    Nanyang Technological University. All rights reserved.
+
+    Data science-centric summary
+
+    Computer Science    Artificial intelligence
+
+
+Data structures &
+ Datastructures &         Machine learning
+                                  learning
+    algorithms     Machine
+    algorithms       NLP
+ Software systems    NLP
+ Softwaresystems        computer vision
+ Database systems       computer vision
+ Databasesystems   Data
+                   science
+Statistical inference    Linear algebra
+Statistical inference    Linear algebra
+  Probability theory
+  Probabilitytheory       Discrete
+                      Discrete mathematics
+                                  mathematics
+    Hypothesist             Calculus
+    Hypothesis testing
+    testing                 Calculus
+
+
+    Statistics    Mathematics
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+    Data science-centric summary
+
+    Computer Science                Artificial intelligence
+
+    Data structures &               Machine learning
+                                        learning
+    algorithms           Machine
+                    NLP
+Software systems    NLP
+                                computer vision
+Database systems         Data   computer vision
+                         science
+Statistical inference            Linear algebra
+Statistical inference            Linear algebra
+  Probability theory
+  Probabilitytheory             Discrete
+                              Discrete mathematics
+                                        mathematics
+    Hypothesist                     Calculus
+    Hypothesis testing
+                         testing    Calculus
+
+
+    Statistics    Mathematics
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+    Data science-centric summary
+
+    Computer Science                Artificial intelligence
+
+    Data structures &    Machine learning
+    algorithms                          NLP
+Software systems         computer vision
+Database systems         Data
+                         science
+Statistical inference            Linear algebra
+Statistical inference            Linear algebra
+  Probability theory
+  Probabilitytheory             Discrete
+                              Discrete mathematics
+                                        mathematics
+    Hypothesist                     Calculus
+    Hypothesis testing
+                         testing    Calculus
+
+
+    Statistics    Mathematics
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+    Data science-centric summary
+
+    Computer Science             Artificial intelligence
+
+Data structures &                Machine learning
+    algorithms                           NLP
+ Software systems                computer vision
+ Database systems       Data
+
+Statistical inference   science  Linear algebra
+  Probability theory             Linear algebra
+                                 Discrete
+                              Discrete mathematics
+                                         mathematics
+  Hypothesis testing                Calculus
+                                    Calculus
+
+
+    Statistics    Mathematics
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+    Data science-centric summary
+
+    Computer Science    Artificial intelligence
+
+Data structures &       Machine learning
+    algorithms          NLP
+ Software systems       computer vision
+ Database systems       Data
+
+Statistical inference   science  Linear algebra
+  Probability theory             Discrete mathematics
+  Hypothesis testing             Calculus
+
+
+    Statistics    Mathematics
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+SUMMARY
+
+
+
+
+
+
+
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+Data science problems
+
+
+
+  •     Are driven by a domain-specific question to be solved based on data
+  •     Require several stages of processing the data (e.g., data collection, analysis,
+        visualization)
+  •     Rely on methods from different but related disciplines chosen based on the available
+        data and problem to be solved.
+  •     Are frequently ill-defined due to misconceptions about data science.
+  •     No one size fits all solution, careful engineering throughout the whole process.
+  •     This course will equip you with the necessary foundational knowledge and basic coding
+        skills to technically address data science problems end-to-end.
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+You should now be able to…
+•     …define and characterize                  C
+      data science.
+•     … explain how data science
+      positions itself compared to
+      computer science, maths,
+      statistics, and AI.
+•     … argue when a problem is                 A
+      considered a data science
+      problem or not.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+References / Reading List
+
+•     MacKay, R.J. and Oldford, R.W. 2000. Scientific method,
+      statistical method and the speed of light. Statistical Science
+      15, 3 (2000), 254–278; https://bit.ly/41W5m3e
+•     Agrawal, D.   et al. Challenges and opportunities with big data.
+      The Computing Community Consortium of the CRA (2012);
+      http://bit.ly/3UG0EDN
+•     M. Tamer Özsu: Data Science - A Systematic Treatment.
+      Commun. ACM 66 (7), (2023), 106-116.
+      https://doi.org/10.1145/3582491
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.

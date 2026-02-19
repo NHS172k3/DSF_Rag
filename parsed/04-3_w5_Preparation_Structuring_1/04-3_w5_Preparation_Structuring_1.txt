@@ -1,0 +1,514 @@
+NANYANG
+TECHNOLOGICAL
+UNIVERSITY
+SINGAPORE
+
+             Data Science Fundamentals
+             [SC3021]
+
+
+Chapter 4: Data Preparation
+
+Assoc. Prof. Melanie Herschel | CCDS
+
+Data preparation (reminder)
+
+Data preparation is the process of converting raw data into a
+form that allows to extract value from data.
+
+
+
+
+
+Access    Profile /    Publish
+          transform
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    2
+
+Data transformation tasks
+
+Data Profiling    Data Structuring
+
+                  Data preparation
+
+Data Enriching                    Data Cleaning
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    3
+
+NANYANG
+TECHNOLOGICAL
+UNIVERSITY
+SINGAPORE
+
+
+
+
+
+
+
+
+Chapter 4.3: Data Transformation
+
+At the end of Chapter 4.3, you should be able to…
+
+•     … define and classify various
+      data transformation tasks.
+•     … determine which data
+      transformations can be used to
+      prepare the data for a specific
+      data science application.
+•     … describe and recognize
+      various data quality issues
+      within and across datasets.
+•     … implement various data
+      transformation tasks.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    5
+
+STRUCTURING
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    6
+
+Overview of structuring transformations
+•     Structuring as a transformation action involves
+      changing the structure and granularity of a dataset.
+       –  Changes form and schema of the data.
+•     Structuring transformations create new data based on
+      data already present in the dataset.
+•     Two main subclasses:
+       –  Intrarecord structuring transformations involve manipulating
+          individual attributes and tuples.
+       –  Interrecord structuring transformations involve tuples and
+          attributes at once.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    7
+
+Overview of structuring transformations
+
+               Reordering
+               attributes
+
+Intrarecord    Creating attributes
+Structuring    Combining
+               attributes
+
+               Filtering dataset
+
+Interrecord                                     Aggregation
+
+               Pivot
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE               Nanyang Technological University. All rights reserved.    8
+
+Running example
+
+Example data                                    Data dictionary
+•     “Contributions by                         •     Can help understand the
+      Individuals” file from                          permissible values.
+      election year 2015-2016                   •     Metadata available at
+•     Data available at                               http://www.fec.gov/financ
+      http://www.fec.gov/financ                       e/disclosure/metadata/Da
+      e/disclosure/ftpdet.shtml#                      taDictionaryContributions
+      a2015_2016                                      byIndividuals.shtml
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE          Nanyang Technological University. All rights reserved.    9
+
+ Running example – Data excerpt
+
+
+
+      A                             c     D                            G                     H                                           K                                                            M                N             O
+ Column1Column2 Column3
+                                       Column4 Column5 Column6Column7Column8                             Column9                 Column10 Column11  Column12                          Column13                Column14  Column15 Column16  Column1
+2 C00276311 N                 YE       P            2.01601E+17 15     IND      KENNEDY, CHARLIE           SCOTTSBLUFF            NE     69361 BLUE CROSS BLUE SHIELD OF NE           PROVIDER RELATIONSHIP MANAGER      12312016     264                SA0308162
+3 C00495358 A             YE           P2018        2.01804E+17 15E    IND     MILLER, LUCILE S           RICHMOND                VA     232263208 N/A                                NOT EMPLOYED                       12302016     100 C00401224      SA0426188
+4 C00495358A              YE           P2018        2.01804E+17 15E    IND      SCHULZ, ANDREA             NEW YORK               NY     100106410 PENGUIN                            EDITOR                             12282016     250 C00401224      SA0426188
+          C00495358 A     YE           P2018        2.01804E+17 15E    IND      FINLEY, SHANNON J         WASHINGTON              DC     200071107 CAPITOL COUNSEL, LLC               LOBBYIST                           12302016    1700 C00401224      SA0426188
+6 C00495358 A             YE           P2018        2.01804E+17 15E    IND      DAKIN, WILLIAM G           WASHINGTON             DC     200082663 N/A                                RETIRED                            12272016     100 C00401224      SA0426188
+7 C00495358 A             YE           P2018        2.01804E+17 15E    IND      LESTER, HARRY T           VIRGINIA BEACH          VA                                                  PRESIDENT                          12292016     2700 C00401224     SA0426188
+8 C00495358A              YE           P2018        2.01804E+17 15E    IND      EVANS, MEGAN              ALEXANDRIA              VA         223143821 N/A                            NOT EMPLOYED                       12302016     500 C00401224      SA0426188
+9C00495358 A              YE           P2018        2.01804E+17 15E    IND     KNAPP, JOHN W SR           LEXINGTON               VA     244501789 N/A                                NOT EMPLOYED                       12272016      50 C00401224      SA0426188
+10C00495358A              YE           P2018                           IND      MANUS, JILLIAN            ATHERTON                CA     940275440 STRUCTURE CAPITAL                  VENTURE CAPITALIST                 12272016     500 C00401224      SA0426188
+11C00495358 A             YE           P2018        2.01804E+17 15E    IND      CORBETT, LEO              NEW YORK                NY     100295245 SELF EMPLOYED                      BUSINESS CONSULTANT                12282016     100 C00401224      SA0426188
+12C00495358 A             YE           P2018        2.01804E+17 15E    IND      ALTSHULER, SHARMAN         CAMBRIDGE              MA                                                  THEATER PRODUCER                   12302016     500 C00401224      SA0426188
+          C00495358 A     YE           P2018        2.01804E+17 15E    IND      DAVID, JOSEPH J           CHARLOTTESVILLE         VA     22902 SELF-EMPLOYED                          PHYSICIAN                          12102016     250 C00401224      SA0426188
+13C00495358 A             YE           P2018        2.01804E+17 15E             MISKA, SIMA                PINECREST              FL     331566105 N/A                                HOMEMAKER                          12312016      50 C00401224      SA0426188
+14C00495358 A                          P2018        2.01804E+17 15E    IND      WALDRON, KAREN HOLLY SHAWSVILLE                   VA                                                                                     12192016     100 C00401224      SA0426188
+15C00495358 A             YE           P2018                           IND                                                        VA     241621840 FRALIN & WALDRON INC               REAL ESTATE DEVELOPER
+16                        YE                        2.01804E+17 15E    IND      WARNER, RAY                WILLIAMSBURG          VA      231853976 SMITH DAWSON & ANDREWS             GOVERNMENT RELATIONS               12212016     250 C00401224      SA0426188
+17C00495358 A             YE           P2018        2.01804E+17 15E    IND      CROSWELL, CLYDE           BERRYVILLE                     226112408 N/A                                NOT EMPLOYED                       12102016      25 C00401224      SA0426188
+18 C00495358 A            YE           G2018        2.01804E+17 15     IND          STONE, CATHLEEN D     BOSTON                  MA     21081103 SELF EMPLOYED                       ATTORNEY                           12232016     2500               SA0426188
+19C00495358 A             YE           G2018        2.01804E+17 15     IND      MASON, CYNTHIA            CHESTER                 VA     238314700 N/A                                RETIRED                            12302016     500                SA0426188
+20C00495358 A             YE           P2018        2.01804E+17 15E    IND      DAKIN, WILLIAM G           WASHINGTON             DC     200082663 N/A                                RETIRED                          12302016       100 C00401224      SA0426188
+21C0095358A               YE           P2018        2.01804E+1715E     IND          THIBODEAUX, JOYCE     HOUMA                   LA     703605932 N/A                                NOT EMPLOYED                       12272016     25 C00401224       SA0426188
+22C00495358               YE           P2018        2.01804E+17 15E             HAUSLER, RICHARD W         FAIRFAX                VA     220312711 INSIGHT PROPERTY GROUP LLC         EXECUTIVE/ATTORNEY                 12082016     500 C00401224      SA0426188
+                A                      P2018                           IND                                                        VA
+23C00495358 A             YE           P2018        2.01804E+17 15E    IND      KAUFMAN, SUSAN F          VIRGINIA BEACH                 234541624 N/A                                NOT EMPLOYED                       12102016     250 C00401224      SA0426188
+24C00495358A              YE           P2018        2.01804E+17 15E    IND      KAY, SAUL                 ENCINO                  CA     913164415 N/A                                RETIRED                            12142016     100 C00401224      SA0426188
+25C00495358 A             YE                                           IND      REEDER, JAMES             FRANKLIN                VA     238512863 TRAVEL INCORPORATED                TRAVEL AGENT                       12302016     100 C00401224      SA0426188
+ C00495358 A              YE           P2018        2.01804E+17 15E    IND      HUFFMAN, ROBERT K         MCLEAN                  VA                                                  LAWYER                             12302016      25 C00401224      SA042618E
+26C00495358 A             YE           P2018        2.01804E+17 15E    IND      OMOTAYO, ADEWALE           NORTH CHESTERFIELD     VA     221012239 AKIN GUMP STRAUSS HAUER & FELD     TRANSPORTER
+27                                     P2018                           IND                                                               232363511 BIG O'CAB                                                             12302016      25 C00401224      SA0426188
+28C00495358               YE                        2.01804E+17 15E             THIBODEAUX, JOYCE          HOUMA                  LA     703605932 N/A                                NOT EMPLOYED                       12292016      50 C00401224      SA0426188
+                A
+29 C00495358 A            YE           P2018                           IND      MURPHY, ARLENE            FAIRFIELD               CT          68246503 N/A                            COMMUNITY VOLUNTEER                12312016     200 C00401224      SA0426188
+30C00495358A                  YE       P2018        2.01804E+17 15E    IND      CROSWELL, CLYDE            BERRYVILLE             VA     226112408 N/A                                NOT EMPLOYED                       12312016     100 C00401224      SA0426188
+31C00495358A              YE           P2018        2.01804E+17 15E    IND      THIBODEAUX, JOYCE         HOUMA                  LA      703605932 N/A                                NOT EMPLOYED                       12202016      50 C00401224      SA0426188
+32C00495358A              YE           P2018                           IND      ALTSHULER, SHARMAN        CAMBRIDGE               MA     21383329 MOONBOX PRODUCTIONS                 THEATER PRODUCER                   12082016      25 C00401224      SA0426188
+33C00495358 A             YE           P2018        2.01804E+17 15E    IND      FREY, RUSSELL             MCLEAN                  VA     221013206 EDHELPER                           PRESIDENT                          12252016    1000 C00401224      SA0426188
+34C00495358 A             YE           P2018        2.01804E+17 15E    IND      SHEEHAN, ROBERT           NEW YORK                NY     100257659 SKADDEN ARPS SLATE MEAGHER&FLOM IATTORNEY                             12312016     100 C00401224      SA042618
+                     itcont_2016_20161208_92060702  Sheet1  +
+
+                         NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                                                                                 Nanyang Technological University. All rights reserved.             10
+
+  Intrarecord structuring
+
+
+
+
+
+
+
+    Reordering attributes  Creating attributes                Combining attributes
+Attributes and values remain    Attributes are added with     Attributes are merged into a
+         unchanged                values extracted from       single attribute
+                                   existing attributes
+
+
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    11
+
+  Reordering attributes
+
+
+
+          A   B            C    D                   Reordering attributes
+    1 Column  Column2  Column3  Column4  Col
+                                         2.01    We switch colum
+2 C00276311 N     YE       2018          2.01       We switch columns 2 and 3 in the example file.
+3 C00495358 A     YE       2018          2.01
+4 C00495358 A     YE       2018          2.01
+5 C00495358 A     YE                                [67]
+                                                    [67] # switch columns based on their initial positions in the original schema
+                                         2.01 Is     # switch co
+6 C00495358 A     YE       2018          2.01 Is
+7 C00495358 A     YE       2018                      df = df[ dt
+8 C004953 58 A    YE       2018          2.01           df = df[ df.columns.tolist()[0:1] +  #keep first attribute (Column 1)
+                                                              df
+9 C00495358 A     YE       2018          2.01           df.columns.tolist()[2:3] +           # add third attribute (Column 3)
+                                                        df.columns.tolist()[1:2]+            #add second attribute (Column 2)
+10 C00495358 A    YE       2018          2.01                df.
+                                                        df.columns.tolist()[3:]]
+11 C00495358 A    YE       2018          2.01                 df                             #append any remaining attributes
+                           2018          2.01        print(df.co
+12 C00495358 A    YE       2018          2.01           print(df.columns)
+13 C00495358 A    YE       2018          2.01
+14 C00495358 A    YE       2018          2.01
+15 C00495358 A    YE                               M Index(['Co]         'Column3', 'Column2',    'Column4', 'Column5', 'Column6',
+16 C00495358 A    YE       2018          2.01           Index(['Column1'
+                                                            'Col                                  'Column10', 'Column11', 'Column12'
+    17                 VE  2019                         'Column7'
+                                                        'Column13', 'Column14', 'Column15', 'Column16', 'Column17', 'Column18',
+                                                        'Column19', 'Column20', 'Column21'],
+                                                        dtype='object')
+
+
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    12
+
+Extracting Values
+•  Extraction involves creating a new column
+   (i.e., attribute and values for this new
+   attribute) from an existing column.
+•  Three common extraction approaches:
+    – Positional extraction
+    – Pattern extraction
+    – Complex structure extraction
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    13
+
+Extracting values –
+Positional extraction
+
+•     Involves identifying a substring in an existing column C and
+      placing that substring into a new column C’.
+•     Requires the specification of positions (start index, end index)
+      to delimit the substring to be extracted from values of C and
+      stored in the corresponding value of C’.
+•     Common use:
+       –  Date-time fields
+       –  Fixed-width fields
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    14
+
+    Extracting values –
+    Positional extraction
+
+                                                   Positional extraction
+Column14
+   12312016    •     This column stores a data     From Column 14, extract values for new attributes based on fixed positions in the fixed length
+   12302016          in the format MMDDYYYY.       string describing a date in MMDDYYYY format.
+   12282016    •     We extract three                   df['month'] = df['Column14'].astype(str).str[:2]
+   12302016          attributes from it: month,         df['day'] = df['Column14'].astype(str).str[2:4]
+   12272016                                             df['year'] = df['Column14'].astype(str).str[4:]
+   12292016          day, year.                         print(df[['Column14', 'month', 'day', 'year']])
+   12302016    •     Fixed positions of            \          Column14 month day year
+   12272016          extracted values                   0     12312016     12 31 2016
+                                                        1     12302016     12 30 2016
+   12272016                                             2     12282016     12 28  2016
+                     throughout the column.             3     12302016     12 30  2016
+                                                        4     12272016     12 27  2016
+
+
+
+
+   NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    15
+
+  Extracting values –
+  Positional extraction
+                                                                   # Find the position of the comma in 'Column8
+Column8                                                            df['comma_pos'] = df['Column8'].str.find(','
+KENNEDY, CHARLIE                                                   # Extract last name and first name (while coping with Column8 values witout ,)
+MILLER, LUCILE S     •     This column stores strings               df['firstname'] = df.apply(lambda row:
+                                                                             row['Column8'][int(row['comma_pos']) + 1:].1strip()
+SCHULZ, ANDREA             representing LASTNAME,                            if row['comma_pos'] > -1 else None, axis=1)
+FINLEY, SHANNON J                                                   df['lastname'] = df.apply(lambda row:
+DAKIN, WILLIAM G           FIRSTNAMES.                                       row['Column8'][:int(row['comma_pos'])].rstrip()
+                                                                             if row['comma_pos'] >-1 else None, axis=1)
+LESTER, HARRY T      •     We can separate them via                # Display the results
+EVANS, MEGAN               the position of the comma               print(df[['Column8', 'lastname', 'firstname']])
+KNAPP, JOHN W SR                                         $\fra$                         Column8                 lastname     firstname
+MANUS, JILLIAN             (,)                                      0                   KENNEDY, CHARLIE          KENNEDY              CHARLIE
+CORBETT, LEO         •     Position of separator                    1                   MILLER, LUCILE S          MILLER     LUCILE S
+ALTSHULER,                                                          2                   SCHULZ, ANDREA            SCHULZ               ANDREA
+SHARMAN                                                             3                   FINLEY, SHANNON J         FINLEY     SHANNONJ
+DAVID, JOSEPH J            varies and has to be                     4                   DAKIN, WILLIAM G          DAKIN      WILLIAM G
+MISKA, SIMA                determined for extraction               662545    MIGNANO, JOHN E. MD, PHD             MIGNANO    JOHN E. MD, PHD
+                                                                    662546 PACKIANATHAN, SATYASEELAN MD, PHD    PACKIANATHAN SATYASEELAN MD,PHD
+                                                                   662547    PAWLICKI, TODD              PHD    PAWLICKI     TODD      PHD
+                                                                    CCOEAO   DDECTTOGE  DDADI EV D MD MC        DDECTTNGE    DDANI EVD MD MC
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    16
+
+Extracting values – Pattern extraction
+
+•     Uses rules to describe     •  Some regex notation
+      the sequence of               –  \d matches a digit
+      characters or patterns        –  \s matches a whitespace
+      to be extracted.              –  * for 0 or   more occurrences
+•     Such patterns can             –  ? For 0 or   one occurrence
+      frequently be specified       –  | either or
+      by regular expressions        –  [0-9] accepted range of values
+      (regex).                   •  Full reference:Python RegEx
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    17
+
+Extracting values – Pattern extraction
+
+Column20
+P/R DEDUCTION ($25.00 MONTHLY)
+P/R DEDUCTION($75.00 MONTHLY)
+P/R DEDUCTION($36.55 MONTHLY)                   •     We want to create a new
+ P/R DEDUCTION($20.00MONTHLY)                         column
+P/R DEDUCTION($45.00 MONTHLY)                         MONTHLY_CONTRIBUTION
+P/R DEDUCTION($20.00 MONTHLY)                                                  Regular expression:
+P/R DEDUCTION($60.00MONTHLY)                    •     Needs extraction of the  \$  \d+.?\d*\sMONTHLY
+P/R DEDUCTION($20.00 MONTHLY)                         digits + dot + digits
+P/R DEDUCTION($25.00 MONTHLY)
+P/R DEDUCTION($25.00
+             MONTHLY)                                 between the $- sign and
+P/R DEDUCTION($25.00 MONTHLY)                         the keyword MONTHLY.
+P/R DEDUCTION($20.00 MONTHLY)
+P/R DEDUCTION($25.00 MONTHLY)
+P/R DEDUCTION($15.00 SEMI-MONTHLY)
+        N ($30.00 MONTHLY)
+P/R DEDUCTION
+P/R DEDUCTION ($42.11 SEMI-MONTHLY)
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                       Nanyang Technological University. All rights reserved.    18
+
+     Extracting values –                                 import re
+     Pattern extraction                                  def extract contribution(txt):
+                                                          # Search for the pattern
+                                                          # $ + digits + . (optional) + digits (optional) + space + MoNTHLY
+                                                          match = re.search(r"\$\d+.?\d*\sMONTHLY", str(txt))
+                                                          if match:
+         Regular expression:                              # Remove MONTHLY suffix and $ prefix
+                                                          return float(match.group(0).split(' ')[0][1:])
+     \$  \d+.?\d*\sMONTHLY                                else:
+                                                          return np.NaN
+                                                         df['MONTHLY_CONTRIBUTION']= df['Column2e'].apply(extract_contribution)
+•        Regular expressions                             print(df[['Column20', 'MONTHLY_CONTRIBUTION']].
+         integrated in re Python                                  sort_values(by='MONTHLY_CONTRIBUTION',ascending=False).head(100
+         library
+•        search() returns all
+         substrings of text that match                   3454                          Column20      MONTHLY_CONTRIBUTION
+                                                                  P/R DEDUCTION ($437.50 MONTHLY)            437.50
+         the expression (can be more                     16316    P/R DEDUCTION ($416.66 MONTHLY)            416.66
+         than one).                                      26381    P/R DEDUCTION ($416.66 MONTHLY)            416.66
+                                                         14576         ($416.66 MONTHLY)                     416.66
+
+         NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                Nanyang Technological University. All rights reserved.    19
+
+Extracting values –
+Complex structures
+
+•  Data is not always structured in tables.
+•  Semi-structured data allows complex
+   hierarchical structures (e.g., XML, JSON)
+•  Two types of complex structures in JSON,
+   namely JSON array and JSON map
+
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    20
+
+Complex structures in JSON
+
+JSON array[e_1,    e_2, …, e_n]                       JSON map {k_1:v_1, …, k_n:v_n}
+•     Ordered sequence of elements e_i                •     Set of key-value pairs k_i: v_i
+•     Elements in arrays can be of simple             •     Key k_i is a string representing a
+      or complex type, or null                              property name and value v_i
+                                                            represents the value of that property.
+[      [1, “Alice”, 3],
+       [“Bob”],                                       { “courseID”: “SC3021”,
+       [ [true,    false], 8,                   9]         “weeks”: [
+]                                                           {     “weekID”:1,
+                                                                  “lecture”:”Intro”,
+                                                                  “tutorial”: “project”
+                                                            }, …]}
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                         Nanyang Technological University. All rights reserved.    21
+
+Extracting values –
+Complex structures
+•     Semi-structured data                           { “courseID”: “SC3021”,
+      allows variable structure                      “weeks”: [
+      across records.                                       {      “weekID”:1,
+       –  Different array lengths                         “lecture”:”Intro”,
+       –  Varying properties across                       “tutorial”: “project”                  }, …]}
+
+       –  records                               CourseID      weekID  Lecture       Tutorial      Lab
+          etc.
+•     Extraction from these                     SC3021        1       Intro         Project       NULL
+      complex structures                        …             …       …             …             …
+      necessary to obtain                       SC3021        4       Profiling     Ecosystem     Task1
+      tabular data.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                   Nanyang Technological University. All rights reserved.    22
+
+import json                                                        ↑ ↓     G                Extracting values –
+
+# Create a list to store the JSoN records                                                   Complex structures
+json_records = []
+
+# Create example data
+
+data = { "courseID": "SC3021",
+  "weeks": [{ "weekID":1,"1ecture":"Intro", "tutorial": "project"},
+               { "weekID":4,"lecture":"Profiling", "tutorial": "Ecosystem", "Lab":"Task1"} ]
+  }
+
+# Append the dictionary to the list
+json_records.append(data)
+
+# Convert the list of dictionaries to a JSon string
+                                                            \
+                                                            \      weekID
+json_data = json.dumps(json_records, indent=4)                     weekID  lecture tuto
+                                                                           lecture  tutorial  Lab
+                                                                                              courseID
+                                                                    1      Intro    project
+                                                              0     1      Intro    pro       NaN  SC3021
+# Convert the JSoN string back to a list of dictionaries      0            Profiling Ecosy
+                                                              1            Profiling
+                                                              1     4
+                                                                    4               Ecosystem Task1  SC3021
+json_records = json.loads(json_data)
+
+# Create a table that extracts all values
+df = pd.json_normalize(json_records[0], 'weeks', ['courseID'])
+print(df)
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                  Nanyang Technological University. All rights reserved.    23
+
+When to use which extraction technique
+
+Positional extraction
+
+• When each record field conforms to a known structure, and each unique substring in the
+ field always begins and ends at the same position
+• When each record field contains multiple substrings that are separated by the same
+ delimiter string. Substrings do not necessarily need to be the same length or conform to the
+ same pattern.
+
+Pattern-based extraction
+
+• When you want to extract a substring that can be defined by a generic pattern.
+
+Complex structure extraction
+
+• When your record fields contain JSON maps or arrays, and you want to extract individual
+ elements from those structures. Many datasets that are machine-generated contain complex
+ JSON structures.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE      Nanyang Technological University. All rights reserved.    24
+
+  Combining multiple attributes
+
+                                                   # Combine 'Column9' and 'Column10'
+Column9         Column10                           df['Combined_Column'] = df['Column9'] + ', ' + df['Column10']
+SCOTTSBLUFF     NE                                 print(df[['Column9', 'Column10', 'Combined_Column']])
+RICHMOND        VA
+NEW YORK        NY                                           Column9 Column10  Combined Column
+WASHINGTON      DC                                0          SCOTTSBLUFF  NE   SCOTTSBLUFF, NE
+WASHINGTON      DC                                1          RICHMOND     VA     RICHMOND, VA
+VIRGINIA BEACH VA                                 2          NEW YORK     NY     NEW YORK, NY
+ALEXANDRIA      VA                                3          WASHINGTON   DC   WASHINGTON, DC
+LEXINGTON       VA                                4          WASHINGTON   DC   WASHINGTON, DC
+ATHERTON        CA                                662545     BROOKLINE    MA   BROOKLINE, MA
+NEW YORK        NY                                662546      JACKSON     MS     JACKSON, MS
+CAMBRIDGE       MA                                662547     LA JOLLA     CA     LA JOLLA, CA
+                                                   662548     NORFOLK     VA     NORFOLK, VA
+                                                   662549    APPLETON     WI     APPLETON, WI
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                   Nanyang Technological University. All rights reserved.    25
+
+Overview of structuring transformations
+
+               Reordering
+               attributes
+
+Intrarecord    Creating attributes
+Structuring    Combining
+               attributes
+
+               Filtering dataset
+Coming up next
+Interrecord                                     Aggregation
+
+               Pivot
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE               Nanyang Technological University. All rights reserved.    26
+
+References and credits
+
+•     Joseph M. Hellerstein, Tye Rattenbury, Jeffrey
+      Heer, Sean Kandel, Connor Carreras. Principles of Data
+      Wrangling. O’Reilly Media. 2017 – Chapter 4
+
+
+
+
+
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    27

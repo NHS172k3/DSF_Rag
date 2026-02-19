@@ -1,0 +1,1519 @@
+NANYANG
+TECHNOLOGICAL
+UNIVERSITY
+SINGAPORE
+
+             Data Science Fundamentals
+             [SC3021]
+
+
+Chapter 4: Data Preparation
+
+Assoc. Prof. Melanie Herschel | CCDS
+
+NANYANG
+TECHNOLOGICAL
+UNIVERSITY
+SINGAPORE
+
+
+
+
+
+
+
+
+Chapter 4.2: Data profiling
+
+At the end of this sub-chapter, you should be able to…
+•     … explain different profiling
+      tasks and how they may apply
+      at different data science
+      stages.
+•     … identify profiling tasks suited
+      to gain relevant information on
+      a given dataset for a specific
+      application.
+•     … reflect on the computational
+      complexity of profiling tasks
+      when applying them to large
+      data sets.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    3
+
+INTRODUCTION TO DATA
+PROFILING
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    4
+
+ Data profiling in the Data Science               Data     Data           Data        Data
+                                                 engin    analyt          under      protec                Data
+                                                 eering    ics            standing    tion                 ethics
+ Ecosystem
+          Data Engineering
+The practice of designing, building, and maintaining systems
+that collect, manage, and convert raw data into usable
+information for downstream applications.
+                                 profiling
+ Data preparation           Data here            Data management
+                                 fits
+Operations typically involved                    Solutions devised to
+in a data engineering process                    organize, protect, store,
+that transform the data.                         access, and manipulate data.
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.          5
+
+Data preparation tasks
+
+Data Profiling    Data Structuring
+
+                  Data preparation
+
+Data Enriching                    Data Cleaning
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    6
+
+Importance of data profiling
+•  Ensure ingested data is “as expected”         raw
+•  Understand main data characteristics
+•  Assess data utility using data characteristics
+•  Inspect data to validate and refine data      refined
+   transformation steps.
+                                                 produc
+•  Monitor essential data characteristics.       tion
+                                                                                                           7
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.     7
+
+DATA PROFILING TASKS
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    8
+
+Intuitive data profiling introduction
+(reminder)
+
+•     Examine and analyze data        Simple examples:
+      to create metadata (data         •     Number of rows
+      about data).                     •     Min and max values
+•     Metadata represent a             •     Number of missing values
+      summary of various               •     Outliers
+
+•     characteristics of the data.     •     Data type
+      These summaries help to          •     Data format violations
+      assess usefulness and            •     Histograms
+      quality of data.                 •     …
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    9
+
+Downloaded  ncvoter1.txt  ×  +
+  File  Edit  View 2  2
+  file about  2  A  A  2 A $\frac{}$ᵒ2#r}
+  registered  A  \  T  2  2₂$\fr
+  voters  2  2  2 A  S 20  2  C
+  2  0  2  12   FA
+  2  2 W
+   C  2  2  \ra
+   C  1  4  T  2   A  T ² 2$÷fr}$
+
+  2  A  2  2
+
+  T  2 2  21 1
+  2 5
+  1  2 T  2  T  2  N  2  W
+
+
+
+    A  20    2    20    10
+    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.
+
+ Manual profiling example using Excel    Column headers
+
+
+            X                                                           AA              AB     AC                AD    AE        AF               AG               AH                  AI               AJ
+      ode                         confidential ind  registr_dt     race_code      ethnic_code  party_cd     gender_code
+             full_phone_number                      10/011400                V                                       birth_year  age_at_year_end  birth_state  drivers_lic     precinct_abbrv A precinct_desc            Xmunicip
+
+ 3                                N                 02/23/2018    w               UN           UNA          F    1978                  46 DC     Y
+ 4 27302                          N                 10/31/2020     w              UN           REP          M    1966                   58 AL    N                             103           MELVILLE 3
+ 5 27215              3362291110 N                  03/26/1996     W              UN           UNA          F    1976                   48 NC    Y                            03SE           SOUTH BOONE E               BUR
+ 6 27215                 2228834 N                  08/15/1989     w              NL           UNA          F    1945                   79 VA    Y                             124           BURLINGTON 4                BUR
+ 7 27340              2027443411 N                  03/07/2012     W              UN           DEM         M     1948                  76 MA     N                            08N            NORTH NEWLIN
+ 8 27215              2529408167 N                  06/01/2020     B              NL           DEM          F    1966                  58 NC     Y                            03SE           SOUTH BOONE E               BUR
+ 9 27215              3362291110 N                  10/10/1994     w              UN           UNA         M     1976                  48 NC     Y                            03SE           SOUTH BOONE E               BUR
+10 27215              3362228834 N                  12/05/2013     w              UN           UNA          M    1972                   52 VA    Y                             124           BURLINGTON 4                BUR
+ 11 27215    3362228834 N                           12/05/2013     W              HL           UNA          F    1975                   49       N                            124            BURLINGTON 4                BUR
+ 12 27215             3362228834 N                  06/06/1990     w              NL           REP          M    1944                   80 VA    Y                             124           BURLINGTON 4                BUR
+ 13 27258    3365789123 N                           08/18/1998     W              NL           REP          F    1972                   52 NC    Y                            13             HAW RIVER                   HAW
+ 14 27258             3362667615 N                  01/19/2006     w              NL           REP          M    1962                   62 WI    Y                            13             HAW RIVER                   HAW
+ 15 27253                        N                  05/06/2020     w              NL           UNA          M    1987                  37        Y                            06N            NORTH GRAHAM                GRA
+ 16 27253             3362644972 N                  01/16/2009     w              NL           REP          M    1986                  38 NC     Y                            06N            NORTH GRAHAM                GRA
+ 17 27253             3366757112 N                  06/12/2017     W              UN           UNA          M    1960                   64 LA    Y                            06N            NORTH GRAHAM                GRA
+ 18 27253             3365127765 N                  12/02/2008     w              UN           REP          F    1951                   73 NC    Y                            06N            NORTH GRAHAM                GRA
+ 19 27258                        N                  08/10/2018     U              UN           REP          U    1959                   65       Y                            09N            NORTH THOMPSON
+ 20 27253    8133102051 N                           06/07/2024     w              UN           REP          F    1950                   74 NY    Y                            09N            NORTH THOMPSON              SWE
+ 21 27302             9196327914 N                  11/01/2024     W              NL           UNA          F    1970                   54       Y                            10N            NORTH MELVILLE              MEB
+ 22 27253    8133100652 N                           05/09/2023     W              NL           REP          M    1945                   79 NY    Y                            09N            NORTH THOMPSON              SWE
+ 23 27302             7049961866 N                  08/26/2016     W              NL           UNA          F    1990                   34 NC    Y                            10S1           SOUTH MELVILLE              MEB
+ 24 27302                        N                  09/08/2016     w              NL           UNA          M    1989                   35 NC    Y                             10S1          SOUTH MELVILLE              MEB
+ 25 27244             9147724005 N                  10/04/2024     w              NL           DEM          U    2003                   21       N                            03N            NORTH BOONE                 ELO
+ 26 27258    4302953995 N                           05/17/2023     w              NL           REP          F    1967                   57 FL                 N                13            HAW RIVER
+ 27 27215             3365850666 N                  10/26/2012     W              NL           DEM          F    1980                   44 FL    Y                            03C            CENTRAL BOONE               BUR
+28                               N                  03/30/2000     A              UN           DEM          F    1952                   72 NC    Y
+ 29 27244             4018353485 N                  10/11/2024     W              NL           REP          U    2004                   20       N                            035            BOONE 5                     ELO
+ 30 27249             3366842638 N                  04/15/2021     w              NL           REP          M    2003                   21 NC    Y                            03W            WEST BOONE                  GIB
+ 31 27249             3363398364 N                  12/09/2019     W              NL           REP          F    2002                  22 NC     Y                            03W            WEST BOONE                  GIB
+ 32 27249             3364499029 N                  05/14/1996     w              UN           UNA          M    1976                   48 NY    Y                            03W            WEST BOONE                  GIB
+3327249      ncvoter1            N                  10/09/2024    W               NL           UNA          U    1979                  45                     Y               03W            WEST BOONE                  GIB
+                            Sheet1    +                                                                                          :
+
+             NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                                                                      Nanyang Technological University. All rights reserved.       11
+
+   Manual profiling example using Excel
+
+   county_idcounty_desc voter_reg_numncid          last_name           first_name       middle_name  name_suffix_lbl  ×status_cd voter_status_desc  ×reason_cd  voter_status_reason_
+135487    1 ALAMANCE            9194677 AA211067     ZUNIGA CAMBERO      ANAKAREN                   A                    ACTIVE                     AV          VERIFIED
+135488    1 ALAMANCE            9236267 AA234180     ZUNIGA CAMBERO      NORA             ELIA                        A  ACTIVE                     AV          VERIFIED
+135489    1 ALAMANCE            9201310 AA214486     ZUNIGA FIERRO       CHRISTIAN        DENNIS    A                    ACTIVE                     AV          VERIFIED
+135490    1 ALAMANCE            9206554 BL513369     ZUNIGA FIERRO       JISSEL                     A                    ACTIVE                     AV          VERIFIED
+135491    1 ALAMANCE            9200517 AA214045     ZUNIGA HERRERA     MIGUEL                      A                    ACTIVE                     AV          VERIFIED
+135492    1 ALAMANCE            9141392 AA179328     ZUPANCICH          MONICA           ANITA                              INACTIVE                IN          CONFIRMATION NO
+135493    1 ALAMANCE            9141406 AA145791     ZUPANCICH          RONALD           JAMES       II               I     INACTIVE                IN          CONFIRMATION NO
+135494    1 ALAMANCE            9152399 AA186234     ZURIFF             SOPHIE            ANNA                              INACTIVE                IU          CONFIRMATION RET
+135495    1 ALAMANCE            9166564 AA194726     ZWELLING           AMY              MARIE      A                    ACTIVE                     AV         VERIFIED
+135496    1 ALAMANCE            9230103 AA230908     ZWELLING           JOEDIN           SHEA       A                    ACTIVE                     AV         VERIFIED
+135497    1 ALAMANCE            9187816 AA206903     ZWELLING           PAUL              J         A                    ACTIVE                     AV         VERIFIED
+135498    1 ALAMANCE            9174660 BN352594     ZWICK               MICHAEL          TODD      A                    ACTIVE                     AV         VERIFIED
+135499    1 ALAMANCE            9099472 AA148089     ZWIER              ANDREW           MICHAEL    A                    ACTIVE                     AV         VERIFIED
+135500    1 ALAMANCE            9099260 AA147942     ZWIER               CHRISTOPHER     ANTHONY    A                    ACTIVE                     AV         VERIFIED
+135501    1 ALAMANCE            9228255 DK27494      ZWIER              JESSICA                     A                    ACTIVE                     AV         VERIFIED
+135502    1 ALAMANCE            9099261 AA147943     ZWIER              KAREN             JEAN      A                    ACTIVE                     AV          VERIFIED
+135503    1 ALAMANCE            9217806 DE289078     ZWILLING           JASON            ERIC       A                    ACTIVE                     AV          VERIFIED
+135504    1 ALAMANCE            9146897 AA182983     ZWINGELBERG       ANNA              MARIE      D                      DENIED                   DU          VERIFICATION RETU
+135505    1 ALAMANCE            9176512 BL455029     ZYCZKIEWICZ        DIANE                       A                    ACTIVE                     AV          VERIFIED
+135506    1 ALAMANCE            9196290 DE247523     ZYCZKIEWICZ        KRISTINE          MARIE                       A  ACTIVE                     AV          VERIFIED
+135507    1 ALAMANCE            9196289 AX71581      ZYCZKIEWICZ         RICHARD                    A                    ACTIVE                     AV          VERIFIED
+135508    1 ALAMANCE            9236502 AA234296     ZYLOWSKI           PATRICIA          ANN       A                    ACTIVE                     AV         VERIFIED
+135509    1 ALAMANCE            9161152 AA191482     ZYMECK            JULIET            LORE                         I     INACTIVE                IU          CONFIRMATION RET
+135510
+135511
+135512
+135513    Number of rows
+135514
+135515
+135516
+135517
+135518
+135519    ncvoter1 Sheet1  +                                                                         :
+
+          NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                                     Nanyang Technological University. All rights reserved.    12
+
+    Manual profiling example using Excel
+
+    A        B       C             D              last_name          E                   F                G                      H                             J    K
+   county_id county desc  voter_reg_numncid       X                       first_name                            name_suffix_lbl
+       X                                                                  VRUTH               ×middle_name     $\fSortAto             status cd  voter_status desc  reason_cd     voter_status_reason_
+2      1 ALAMANCE             9005990 AA56273          AABEL                                  EVELYN                                             REMOVED       RD                 DECEASED
+3      1 ALAMANCE             9178574 AA201627    AARDEN                  JONI                AUTUMN           A↓Sort Z to A                     REMOVED       RL                 MOVED FROM COUNTY
+4      1 ALAMANCE             9205561 AA216996         AARMSTRONG          TIMOTHY            DUANE                                                  ACTIVE    AV                                VERIFIED
+5      1 ALAMANCE             9048723 AA98377     AARON                    CHRISTINA          CASTAGNA          Sort by Color                      > ACTIVE    AV                                VERIFIED
+6      1 ALAMANCE             9019674 AA69747          AARON               CLAUDIA            HAYDEN                                                 ACTIVE    AV                                VERIFIED
+7      1 ALAMANCE             9129589 AA170513         AARON              JAMES               MICHAEL          Sheet View                            ACTIVE    AV                                VERIFIED
+8      1 ALAMANCE             9194595 BM49306          AARON              KIMBERLY            GREEN            Clear Filter From "status_cd      INACTIVE      IU                 CONFIRMATION RETUR
+9      1 ALAMANCE             9041748 AA91549     AARON                   NATHAN              EDWARD                                                 ACTIVE    AV                                VERIFIED
+10     1 ALAMANCE             9144384 AA125250         AARON               RICHARD            BRIAN             Filter by Color                      ACTIVE    AV                                VERIFIED
+11     1 ALAMANCE             9144385 AA181361    AARON                   SANDRA              ESCOBAR                                                ACTIVE    AV                VRIFIED
+12     1 ALAMANCE             9021947 AA71983          AARON              WILLIE              DALE              Text Filters                   > ACTIVE        AV                                VERIFIED
+13     1 ALAMANCE             9062002 AA111384         AARONSON            GENA               HOLT              Search                               ACTIVE    AV                                VERIFIED
+14     1 ALAMANCE             9096423 AA145641         AARONSON            MICHAEL            CHARLES              (Select All)                      ACTIVE    AV                                VERIFIED
+15     1 ALAMANCE             9194267 AA210859    AASEN                    ALEXANDER          MACNAB              A                              INACTIVE      IN                 CONFIRMATION NOT RI
+16     1 ALAMANCE             9121656 AA165057         ABADIE             JACK                EDWARD             D                                   ACTIVE    AV                                VERIFIED
+17     1 ALAMANCE             9168958 AA196147         ABADIE              JACK               EDWARD             11                                  ACTIVE    AV                                VERIFIED
+18     1 ALAMANCE             9118154 AA162459         ABADIE              MYRA               LYNN               R                               ACTIVE        AV                                VERIFIED
+19     1 ALAMANCE             9175986 AA200312         ABADIE             WILLIAM             EARL              S                                    ACTIVE    AP                 VERIFICATION PENDINC
+20     1 ALAMANCE             9233812 AA233007         ABAJIAN            DEBORAH             RUTH                                               ACTIVE        AV                                VERIFIED
+21     1 ALAMANCE             9242743 BL377881         ABAJIAN              MIICHELLE         s                Distinct values                       ACTIVE    AV                                VERIFIED
+22     1 ALAMANCE             9225186 AA228074         ABAJIAN             ROBERT             HAROLD                                                 ACTIVE         AV                           VERIFIED
+23     1 ALAMANCE             9160433 CW803328         ABASHIAN           ASHLEY              DENNY PARR                                             ACTIVE    AV                VERIFIED
+24     1 ALAMANCE             9160854 EH730361         ABASHIAN           MICHAEL             DAVID                                        OK Cancel ACTIVE    AV                                VERIFIED
+25     1 ALAMANCE             9239089 AA235710         ABATEMARCO         MEGAN               REID                                                   ACTIVE    AV                                VERIFIED
+26     1 ALAMANCE             9225335 AA228157         ABAZIED COOPER      JOY                GAYLE                                   ^              ACTIVE    AV                                VERIFIED
+27     1 ALAMANCE             9139919 AA178336    ABBAS                   JENNIFER            ANN                                     A              ACTIVE    AV                                VERIFIED
+28     1 ALAMANCE             9068460 AA117728    ABBAS                   RAFAT                                                       R          REMOVED       RS                 MOVED FROM STATE
+29     1 ALAMANCE             9239920 AA236185    ABBATE                  MICHAEL             EDWIN                                   A              ACTIVE    AV                                VERIFIED
+30     1 ALAMANCE             9209221 AA219101         ABBATECOLA          ANTHONY            JOSEPH                                  A          ACTIVE        AV                                VERIFIED
+31     1 ALAMANCE             9189448 AA207788         ABBATECOLA         JENNA               CAMILLE                                 A              ACTIVE    AV                 VEERIFIED
+32     1 ALAMANCE             9049573 AA99206          ABBATECOLA         RONALD              JOSEPH              JR                  A          ACTIVE        AV                                VERIFIED
+33     1 ALAMANCE             9240574 BY754441         ABBATECOLA         THOMAS              PAUL                                    A              ACTIVE    AV                                VERIFIED
+             ncvoter1 Sheet1  +                                                                                 : 4
+
+             NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                                                      Nanyang Technological University. All rights reserved.    13
+
+ Manual profiling example using Excel
+
+ mail_city  W  X  Z  AA  AB  AC  AD  AE  AF  AG
+ X  mail_zipcode  full_phone_number  confidential_ind  registr_dt
+ mail state  2702  race_code  ethnic codeXparty_cdX gender code  birth year age at year end  birth state
+1928  MEBANE  NC  \SorAto Z  w  NL  UNA  F  1974  50 NC
+3560  27216  A↓ Sort Z to A  w  NL  REP  F  1932  92 NC
+5192  BURLINGTON  NC  27215  33  w  UN  REP  M  1949  75 NC
+6176  BURLINGTON  NC  27349  33  Sort by Color  > W  NL  DEM  F  1929  95 NC
+6305  SNOW CAMP  NC  w  NL  REP  M  1971  53 NC
+7029  NC  27253  33  Sheet View  > W  NL  DEM  M  1938  86 NC
+7107  GRAHAM  Y$Clear Filter From "registr_dt  W  NL  UNA  M  1941  83 NC
+8376  BURLINGTON  NC  27217  33  W  NL  REP  M  1984  40 VA
+11570  NC  Filter by Color  > w  NL  DEM  F  1930  94 NC
+12322  BURLINGTON  27217  Text Filters  > B  NL  DEM  F  1947  77 NC
+12354  GRAHAM  NC  27253  33  W  NL  REP  F  1933  91 NC
+12855  SNOW CAMP  NC  27349  30  Search  w  NL  UNA  F  1941  83 NC
+13039  GRAHAM  NC  27253  B  UN  DEM  M  1977  47 NC
+14373  BURLINGTON  NC  27215  (Select All)  W  NL  UNA  F  1932  92 SC
+14589  B  ##/##/####  W  NL  DEM  M  1943  81 NC
+19633  BURLINGTON  NC  27215  01/01/1976  w  NL  REP  F  1937  87 NC
+20024  BURLINGTON  NC  2721  .01/01/2019  W  NL  DEM  M  1942  82 NC
+20072  HAW RIVER  NC  01/01/2020  w  NL  DEM  M  1944  80 NC
+21780  .01/01/2021  W  NL  DEM  M  1928  96 PA
+22026  GRAHAM  NC  33  1/01/2022  B  NL  DEM  F  2002  22 VA
+22936  01/01/2023  w  NL  DEM  F  1929  95 NC
+23877  BURLINGTON  NC  27215  33  01/01/2024  W  NL  REP  F  1938  86 NC
+24141  ELON  NC  27244  Not all items showing  w  NL  REP  M  1939  85 NC
+24886  Number of dummy values  OK Cancel W  NL  UNA  F  1939  85 NC
+25994  MEBANE  27349  W  NL  REP  M  1945  79 DC
+27094  SNOW CAMP  NC  w  NL  REP  M  1948  76 NC
+27755  I  ∠20007011  NL  REP  1932  92 NC
+27759  N  ##/##/####  W  UN  REP  F  1929  95 NC
+29087  N  ##/##/#### W  REP  M  1928  96 OC
+29725  NC  27215  N  ##/##/#### W  NL  F  93 NC
+29731  BURLINGT  3362145254 N  ##/##/####  W  NL  REP  F  1931
+33457  NC  27215  ON  ##/##/####  W  NL  REP  M  1930  94 NC
+ N  ##/##/#### W  NL  REP  F  1939  85 NC
+ oter1  Sheet1  +  : 4
+Ready 135 of 135508 records found Accessibility: Investigate  Count: 136  Display Setti
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE  Nanyang Technological University. All rights reserved.  14
+
+             Manual profiling example using Excel
+
+ :thnic_code     party_cd  gender_code A birth_year            age_at_year_end  birth_state     drivers_lic  precinct_abbrv  4precinct_desc       V municipality_abbrv  Tmunicipality_desc  ward abbrv×ward_desc  cong_dist_abb
+4IN              REP       M           1966                                     58 AL           N            103             M$\Sort A to
+      7 N        DEM       M           1948                                     76 MA           N            08N             N A↓Sort Z to A
+19IN             REP       U           1959                                     65              Y            09N             N
+26               REP       F                               1967                 57 FL           N             13                  H  Sort by Color                      >
+28
+       IN        DEM       F           1952                                     72 NC           Y
+35ᴵᴸ             REP       M           1968                                     56NY            Y             07             A       Sheet View
+36IL             REP       F           1968                                     56 SC           Y             07             A Clear Filter From "municipality_abbr
+37IL             REP       M           2000                                     24 NC           N             07             A
+40IL             UNA       F                               1996                 28 NJ           N                                     Filter by Color
+44IL             UNA       M           1968                                     56 OH           Y            127             BU       Text Filters
+45IL             DEM       M           1955                                     69 NC           Y            09S             s
+46N              REP       M           1959                                     65 NC           Y                                     Search
+48IL             DEM       F           1952                                     72 NC           Y            09S             sV  ELO
+51               UNA                   1983                                     41 NC           Y
+ IL                        F                                                                                                            GIB
+54L              DEM       F                               1985                 39 NC           Y            02              C         .GRA
+56L              REP       M           1978                                     46 NC           Y                                      GRE
+60IL             DEM       F           2001                                     23 PA           N            10N                       .HAW
+61 IL            REP       F           1992                                     32 VA           Y                            N         MEB
+62IL             DEM       F           1953                                     71              Y            103             M         OSss
+63IN             UNA       U           1965                                     59              Y                                      SWE
+65IL             DEM       F           1973                                     51 NC           Y            127                  B   (Blanks)
+86IL             UNA       F           1991                                     33 NC           Y            10N
+87IL             UNA       M           1962                                     62 NC           Y                                                     OK Cancel
+88               DEM                   1959                                     65 CA
+ IL                        F                                                    60 NY                        U8S             so
+99IL             UNA       M           1964                                     26 NC                        09S
+101L             UNA       F           1998                                                     Y                            SOUTH THOMPSON
+102IN            DEM       U       Number of missing values                                                  09S             SOUTH THOMPSON
+103IL            DEM       F           1992                                     32 NC                        09S             SOUTH THOMPSON
+105IL            REP       M                                                                    Y            035             BOONE 5
+106IL            DEM                                     7 1965                 59 NC           Y            09S
+107IL            REP       M           1996                                     28 NC           Y            09S             SOUTH THOMPSON
+108L             PEP       M           1989                                     35 NC           Y            035             SOUTH THOMPSON
+1110ON                                 1981                                     43              Y            06S             BOONE5
+                                                                                                                             SOUTH GRAHAM
+                           Sheet1  +
+             59100 of 135508 records found Accessibility: Investigate                                                                                                                                             Display Set
+Ready           NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                                                                             Nanyang Technological University. All rights reserved.    15
+
+          Manual profiling example using Excel
+
+          X                           Y            Z                    AA               AB               AC        AD    AE          AF                 AG      AH            AI             AJ                              AK
+          full_phone_number       confidential_ind registr_dt      race_code       ethnic_code       party_cdgender_code  birth_year t
+ 2                           X             X                                       UN                REP                  1909age_at_year_endXbirth_state  drivers_lic  precinct_abbrv  precinct_desc municipality_ab
+          3362277017 N                             11/02/2004      w               NL               DEM        F          1911                 115 NC           N
+  3                               N                05/11/1946      B                                           F                               113 NC        Y
+                                                                                   UN    Z
+ 4                                N                10/02/2008      B              NL                DEM        F          1911                 113 NC        N
+ 5                                N                10/28/1950      w                                REP       F           1911                 113 NC        Y
+ 6                                N                10/06/1986      B               NL                DEM       F          1913                 111 NC        N
+ 7                                N                10/26/1956      U              NL                DEM        M          1914                 110 NC        Y
+ 8                                N                06/24/1994      W               NL                DEM                  1915                 109 NC        Y
+ 9                                N                04/20/1968    w                 NL               REP                   1915                 109 NC        Y
+ 10                               N                11/08/2016      U               UN                DEM                  1915                 109 NC        Y         10S1          SOUTH MELVILLE
+ 11                               N                10/06/2016      U               UN               REP                   1916              108 MA           N
+ 12                               N                09/21/2016      W               UN               UN                    1916              108 VA              N
+ 13                               N                05/14/1960     B               NL                                      1916                 108 NC        N
+ 14                               N                06/20/2000      W               NL                          M          1916              108 IN           Y
+ 15                               N                09/13/2016      w              NL                                      1916                 108 PA        Y
+ 16                               N                05/17/1952     WMin/max values                                         1916              108 NC           Y
+
+135494    3363802385 N                             05/28/2024    W               UN               UNA         M           2006              18 NY           Y          11            PLEASANT GROVE                        GRA
+135495    3362636795 N                             06/13/2024    U               HL               UNA         F           2006              18              Y          064           GRAHAM 4
+135496    5512327930 N                             01/05/2024    B               UN                           M           2006              18 PA           Y          1210          BURLINGTON 10                         BUR
+135497                       N                     09/13/2024      W            NL                            F           2006              18              Y          03N           NORTH BOONE                           ELO
+135498    3365163246 N                             01/05/2024    W               NL                           M           2006              18 NC           Y          07            ALBRIGHT
+135499    3362601958N                              08/29/2024      W             UN               UN          M           2006              18 NC                      10S1          SOUTH MELVILLE
+135500    9193049069 N                             01/05/2024      W             NL                REP                    2006              18 NC           Y          10S1
+135501                           N                 08/25/2024    W              NL                 REP                    2006              18              Y                        SOUTH MELVILLE
+135502    3362662530 N                             01/05/2024    W               UN               UNA         F           2006              18 NC           Y          03W           WEST BOONE
+135503    3365241260 N                             01/05/2024      W            NL                REP         M           2006              18 NC           Y          05            FAUCETTE
+135504    3362788618 N                             01/05/2024      w             NL                REP                    2006              18 NC           Y          08S           SOUTH NEWLIN
+135505    3365346144 N                             01/05/2024    w               HL                UNA        F           2006              18 WI           Y          03SM          SOUTH BOONE M                         BUR
+135506    3363435524 N                             01/05/2024      O             UN                DEM        F           2006              18 NC           Y          06E           EAST GRAHAM                           GRA
+135507                3362703926 N                 09/12/2024      w             UN               UNA         F           2006              18 NC           Y          125           BURLINGTON 5                          BUR
+135508    3365679723 N                             01/05/2024      w             NL               UNA         M           2006              18 MI           Y          13            HAW RIVER
+135509    6153103615 N                             01/05/2024      w             NL                REP        F           2006              18 NY           Y          11            PLEASANT GROVE
+135510
+135511    NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                                                                           Nanyang Technological University. All rights reserved.       16
+
+ Manual profiling example using Excel
+
+
+ first_name          middle_name  name_suffix lbl               status_cdvoter_status_desc Xreason_cd    voter_status_reason_desc    res_street_address              res_city_descstate_cd
+                                                                                                       X
+2 RUTH               EVELYN                                     R      REMOVED                RD         DECEASED                     REMOVED
+3 JONI               AUTUMN                                     R      REMOVED     RL                    MOVED FROM COUNTY            REMOVED
+4 TIMOTHY            DUANE                                      A      ACTIVE      AV                     VERIFIED                    3670 COVINGTON TRL              MEBANE                 NC
+5 WILLIE             DALE                                       A     ACTIVE       AV                     VERIFIED                     1013 EDITH ST                  BURLINGTON             NC
+6 CLAUDIA            HAYDEN                                     A      ACTIVE      AV                     VERIFIED                     1013 EDITH ST                  BURLINGTON             NC
+7 JAMES              MICHAEL                                    A      ACTIVE      AV                     VERIFIED                     5608 OLD CHEROKEE LN           GRAHAM                 NC
+8 KIMBERLY           GREEN                                             INACTIVE    IU                     CONFIRMATION RETURNED UNDELIVERAI 187 CAVALIER WAY #104     BURLINGTON             NC
+9 RICHARD            BRIAN                                      A     ACTIVE       AV                     VERIFIED                     1013 EDITH ST                  BURLINGTON             NC
+10 SANDRA            ESCOBAR                                    A      ACTIVE                 AV          VERIFIED                     1013 EDITH ST                  BURLINGTON             NC
+11 CHRISTINA         CASTAGNA                                   A      ACTIVE      AV                     VERIFIED                     421 WHITT AVE                  BURLINGTON             NC
+12 NATHAN            EDWARD                                     A      ACTIVE      AV                    VRIFIED                      421 WHITT AVE                   BURLINGTON             NC
+                              Value distribution
+13 MICHAEL      CHARLE                                                 ACTIVE      AV                     VERIFIED                    107 TERRYWOOD CT                HAW RIVER              NC
+14 GENA              HOLT                                              ACTIVE      AV                     VERIFIED                     107 TERRYWOOD CT               HAW RIVER              NC
+15 ALEXANDER                 VOTER STATUS REASON DESC STATISTICS                                          INFIRMATION NOT RETURNED     1286 PYRTLE DR                 GRAHAM                 NC
+16 MYRA                                                                                             2     RIFICATION PENDING           612 SIDEVIEW ST                GRAHAM                 NC
+17 WILLIAM                                                                                             VERIFIED                       3562 S NC HWY 119               HAW RIVER              NC
+18 JACK                                                                                                                                612 SIDEVIEW ST                GRAHAM                 NC
+19 JACK                                                                                                    RIFIED                     612 SIDEVIEW ST                 GRAHAM                 NC
+20 ROBERT                                                                                                                              2220 CRESCENT DR               GRAHAM                 NC
+21 DEBORAH                                                                                                VERIFIED                    2220 CRESCENT DR                GRAHAM                 NC
+22 MICHELLE                                                                                               VERIFIED                     201 E CENTER ST #205           MEBANE                 NC
+23 MICHAEL           8 3          S             a 5            M    8 6 3 a                0              VERIFIED                     975 SWEET GUM WAY             EBANE                   NC
+24ASHLEY        1                F   I                                           3 3                      VERIFIED                     975 SWEET GUM WAY             MEBANE                  NC
+25 MEGAN        p                    t                                    t VERIFIED                                                   204 WOODALE DR                ELON                    NC
+                     c
+                                                           n w
+                                                     p
+                                                      w
+                                                                        c
+                                                                       UNERIOD
+26 JOY          0                 DEENSEO MULTARNY                     tⱽᴱᴿᴱᴰ                             VERIFIED                     1414 TERRYWOOD RD #307         HAW RIVER              NC
+27RAFAT                                                                                                   MOVED FROM STATE             REMOVED                                               NC
+28 JENNIFER                                                                                               VERIFIED                     3027 TRUITT DR                 BURLINGTON
+29 MICHAEL                                                                                                VERIFIED                     3223 BILL LOY DR               ELON                   NC
+30 TRACY                                                                                                  VERIFIED                     504 BROOKFIELD DR              GIBSONVILLE            NC
+31 RONALD                                                                                                 VERIFIED                     504 BROOKFIELD DR              GIBSONVILLE            NC
+32 THOMAS       O                                     O         A                  AV                  o  VERIFIED                     250 OBSIDIUM CT                GIBSONVILLE            NC
+33JENNA              CAMILLE                                           ACTIVE                            VERIFIED                      504 BROOKFIELD DR              GIBSONVILLE            NC
+34ANTHONY             JOSEPH                                    A      ACTIVE      AV                     VERIFIED                     504 BROOKFIELD DR              GIBSONVILLE            NC  17
+
+                NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                                           Nanyang Technological University. All rights reserved.
+
+        Manual profiling example using Excel
+
+        D                            E  i first_nameF                            G    H                         J                          K     L                                                  M
+                     xlast_name                          middle_name                  name_suffix_lbl  status_cd  voter_status_descX reason_cd Tvoter_status_reason desc    res_street_address
+31105378              ADAMS                 PAUL          WEENDELL                          A↓Sort A to Z                            DI         UNAVAILABLE ESSENTIAL INFORMATION 1426 CLOVERDALE ST
+622 04302            AGNEW                  MATTHEW                   PATRICK               A↓Sort Z to A                            DI         UNAVAILABLE ESSENTIAL INFORMATION615 TRACY DR
+664 14513            AGUIAR                 ROGELIO                   LOPEZ                                                          DI          UNAVAILABLE FSSENTIAL INFORMATION_310 N IRFLAND ST
+727 17943            AHERN                  KATHLEEN                  MARY                   Sort by Color                         > DI         UNAVAILABLE ESSENTIAL INFORMATION 1720 ST MARK'S CHURCH RD
+122413639             ALESSANDRO            GUY                       THOMAS                                                         DI         UNAVAILABLE ESSENTIAL INFORMATION 600 N MARSHALL ST
+191207109            ALLISON                LARRY                     DONNELL                Sheet View                            > DI         UNAVAILABLE ESSENTIAL INFORMATION 425 KERNODLE DR
+313710544            ANDRES                 KEITH                     CHARLES               Clear Filter From "voter_status_desc"    DI          UNAVAILABLE FSSFNTIAL INFORMATION108 FLORENCE ST
+334114169            ANGE                   JOSEPH                    FENNER          JR                                             DI         UNAVAILABLE ESSENTIAL INFORMATION 4315 NC HWY 54
+374913749             ARGENTO               JANIE         CAROL                              Filter by Color                       > DI          UNAVAILABLE ESSENTIAL INFORMATION 5533A KIMESVILLE RD
+524405417            BAILIFF                JAMIE                     CATES                  Text Filters                          >DI           UNAVAILABLE ESSENTIAL INFORMATION 1507 TARLETON AVE
+546612314            BAKER                  JOSHUA                    KEITH                                                          DI          UNAVAILABLE FSSENTIAL INFORMATION1400 ROSLYN DR
+601014173            BANKS                  DALE                      CHRISTOPHER            Search                                  DI         UNAVAILABLE ESSENTIAL INFORMATION 206 N FISHER ST
+697200661             BARTLETT              DAVID                     WAYNE                    (Select All)                          DI         UNAVAILABLE ESSENTIAL INFORMATION 4135 PREACHER HOLMES RD
+711613139            BASS                   KITTY                     R                      DENIED                                  DI         UNAVAILABLE ESSENTIAL INFORMATION 110 EASTGATE DR
+         6220         BATRES                RICHARD                   A                                                              DI
+7273                                                      LYNN                                                                       DI          UNAVAILABLE FSSFNTIAL INFORMATION1903 MALONE RD
+72822616              BATTEN                MICHAEL                                                                                              UNAVAILABLE ESSENTIAL INFORMATION 2404 N CHURCH ST
+7623 3562            BEANE              Dependencies among columns (if reason_cd =                                                   DI          UNAVAILABLE FSSENTIAL INFORMATION.1721 MFBANE OAKS RD
+7934                                                                                                                                 DI
+            04614     BEEKER                                                                                                         DI          UNAVAILABLE ESSENTIAL INFORMATION 149 CUTLER TR
+80412628              BELFIELD              “DI”, then voter_status_desc = “DENIED”)                                                 DI
+818912351             BELLAMY                                                                                                        DI          UNAVAILABLE ESSENTIAL INFORMATION 453 OUINTAS AVE
+834104115            BENES                  JOEL          MARTIN                                                                     DI          UNAVAILABLE ESSENTIAL INFORMATION 219 MOFFITT HALL
+8561
+         5668        BENO                                                                                                                        UNAVAILABLE ESSENTIAL INFORMATION. 404 S FLANNER ST
+90553572             BIALLY                 KATHLEEN                  M                                         OK Cancel DI                     UNAVAILABLE ESSENTIAL INFORMATION3508 GARDEN RD
+94199281              BISCHOF               BRIAN                     E                                                              DI          UNAVAILABLE ESSENTIAL INFORMATION 417 WESTHAMPTON DR
+9558                 BLACK                  JERRY         LEE                                                                        DI
+            06730                           TERESA        ANN                                     DENIED                             DI         UNAVAILABLE ESSENTIAL INFORMATION 734 BURLINGTON AVE
+9687
+            01489     BLACKMAN              LISA                      REGINA                 D    DENIED
+993902088             BLAIR                 JON                                              D                                       DI         UNAVAILABLE ESSENTIAL INFORMATION 847 TROLLINGWOOD-HAWF
+997914360            BLAKE                                            STEWART                D    DENIED                             DI         UNAVAILABLE ESSENTIAL INFORMATION 1528 S MEBANE ST
+1003118109           BLALOCK                KATHY                     JEAN                   D    DENIED                             DI         UNAVAILABLE ESSENTIAL INFORMATION 206 N FISHER ST
+1046312374            BODENHEIMER           ROBERT        WAYNE                       JR     D    DENIED                             DI         UNAVAILABLE ESSENTIAL INFORMATION1116 HILLSIDE DR
+105117209            BOGER                  TRACY                     CAPPS                  D    DENIED                             DI         UNAVAILABLE ESSENTIAL INFORMATION 306 BROAD ST
+1159803474           BOWENS                 DERRICK                                          D    DENIED                             DI         UNAVAILABLE ESSENTIAL INFORMATION 606 S MEBANE ST
+                      Sheet2       ncvoter1 Sheet1   +                                                          :
+
+                      NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                                               Nanyang Technological University. All rights reserved.    18
+
+Manual profiling example using Excel
+
+
+
+                                                       ode  X                   Y  Z                     AA          AB       AC           AD                          AE
+                                                                        confidential indregistr_dt  race_code  ethnic_code           gender_code birth_year
+                                                  1        full phone number       10/01/1984ᴬ w               NL        party_cd                                        Aage
+                                                  2                     N                                                     UNA     F                              1935
+                                                  3                     N          02/23/2018       W          UN             UNA     F                              1978
+  Many more interesting                           4 27302               N          10/31/2020       W          UN             REP     M                              1966
+                                                  5 27215     3362291110 N         03/26/1996       w          UN             UNA     F                              1976
+                                                  6 27215        2228834 N         08/15/1989       W          NL             UNA     F                              1945
+  questions about the                             7 27340     2027443411 N         03/07/2012       w          UN             DEM    M                               1948
+                                                  8 27215     2529408167 N         06/01/2020       B          NL             DEM     F                              1966
+  dataset:                                        9 27215     3362291110 N         10/10/1994       W          UN             UNA     M                              1976
+                                                  10 27215    3362228834 N         12/05/2013       w          UN             UNA     M                              1972
+                                                  11 27215    3362228834 N         12/05/2013       w          HL             UNA     F                              1975
+  •     Possible keys?                            12 27215    3362228834 N         06/06/1990       W          NL             REP     M                              1944
+                                                  13 27258    3365789123 N         08/18/1998       W          NL             REP     F                              1972
+                                                  14 27258    3362667615 N         01/19/2006       W          NL             REP     M                              1962
+  •     Functional                                15 27253              N          05/06/2020       w          NL             UNA     M                              1987
+                                                  16 27253    3362644972 N         01/16/2009       W          NL             REP     M                              1986
+        dependencies                              17 27253    3366757112 N         06/12/2017       w          UN             UNA     M                              1960
+                                                  18 27253    3365127765 N         12/02/2008       w          UN             REP     F                              1951
+                                                  19 27258              N          08/10/2018       U          UN             REP     U                              1959
+        between columns?                          20 27253    8133102051 N         06/07/2024       w          UN             REP     F                              1950
+                                                  21 27302    9196327914 N         11/01/2024       W          NL             UNA     F                              1970
+                                                  22 27253    8133100652 N         05/09/2023       W          NL             REP     M                              1945
+  •     Correlations                              23 27302    7049961866 N         08/26/2016       W          NL             UNA     F                              1990
+                                                  24 27302              N          09/08/2016       w          NL             UNA     M                              1989
+        between columns?                          25 27244    9147724005 N         10/04/2024       w          NL             DEM     U                              2003
+                                                  26 27258    4302953995 N         05/17/2023       w          NL             REP     F                              1967
+                                                  27 27215    3365850666 N         10/26/2012       W          NL             DEM     F                              1980
+  •     Frequent patterns in                      28                    N          03/30/2000       A          UN             DEM     F                              1952
+                                                  29 27244    4018353485 N         10/11/2024       w          NL             REP     U                              2004
+        columns?                                  30 27249    3366842638 N         04/15/2021       w          NL             REP     M                              2003
+                                                  31 27249    3363398364 N         12/09/2019       w          NL             REP     F                              2002
+                                                  32 27249    3364499029 N         05/14/1996       w          UN             UNA     M                              1976
+                                                  3327249               N          10/09/2024       w          NL             UNA     U                              1979
+                                                        A  >  ncvoter1  Sheet1  +
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                                                               Nanyang Technological University. All rights reserved.      19
+
+Definition of data profiling
+
+•     “Data profiling is the process of examining the data available in an existing
+      data source [...] and collecting statistics and information about that data.”
+                                                               Wikipedia 01/2025
+•     “Data profiling refers to the activity of creating small but informative
+      summaries of a database.”
+                                                Ted Johnson, Encyclopedia of Database Systems
+
+     Data profiling is the set of activities and processes to
+     determine the metadata about a given dataset.
+
+We cover a fixed set of data profiling tasks and their results.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                   Nanyang Technological University. All rights reserved.    20
+
+
+
+<table>
+  <caption>Classification of standard profiling tasks</caption>
+  <thead>
+    <tr>
+      <th>Root</th>
+      <th>Scope</th>
+      <th>Task Category</th>
+      <th>Specific Task / Variation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="11">Data profiling</td>
+      <td rowspan="3">Single column</td>
+      <td>Cardinalities</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Patterns and data types</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Value distributions</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td rowspan="8">Multiple columns</td>
+      <td rowspan="3">Uniqueness</td>
+      <td>Key discovery</td>
+    </tr>
+    <tr>
+      <td>Conditional</td>
+    </tr>
+    <tr>
+      <td>Partial</td>
+    </tr>
+    <tr>
+      <td rowspan="3">Inclusion dependencies</td>
+      <td>Foreign key discovery</td>
+    </tr>
+    <tr>
+      <td>Conditional</td>
+    </tr>
+    <tr>
+      <td>Partial</td>
+    </tr>
+    <tr>
+      <td rowspan="2">Functional dependencies</td>
+      <td>Conditional</td>
+    </tr>
+    <tr>
+      <td>Partial</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+Classification of
+standard profiling tasks
+
+•     Applies to structured
+      (tabular) data.
+•     Distinguishes between
+      profiling of data stored in a
+      single column and data
+      stored across multiple
+      columns.
+•     For profiling tasks on
+      multiple columns, exact,
+      conditional, and partial tasks
+      exist.
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    21
+
+Single-column vs. multi-column
+
+Single        • Most basic form of data profiling
+              • Assumption: All values are of same type
+column        • Assumption: All values have some common properties that
+profiling     • are to be discovered
+                                                Often part of the basic statistics gathered by DBMS
+              • Complexity: Number of values/rows
+
+Multi-        • Discover joint properties
+column        • Discover dependencies
+profiling     • Complexity: Number of columns and number of values
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE           Nanyang Technological University. All rights reserved.    22
+
+Single-column vs. multi-column
+
+Single        • Most basic form of data profiling
+              • Assumption: All values are of same type
+column        • Assumption: All values have some common properties that
+profiling     • are to be discovered
+                                                Often part of the basic statistics gathered by DBMS
+              • Complexity: Number of values/rows
+                                                Cardinalities
+
+             Single column                      Patterns and
+                                                data types
+                                                Value
+                                                distributions
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                 Nanyang Technological University. All rights reserved.    23
+
+Running example for single column profiling
+
+
+
+
+
+
+ •     Relies on ydata Profiling
+
+ •     Integrates into Python           Passengerld  Survived     Pclass  Name                                                    Sex     Age SibSp Parch Ticket                Fare        Cabin
+                                        1            0    3               Braund, Mr. Owen Harris                                male     22   1    0     A/5 21171             7.25
+       Notebooks                        2            1    1               Cumings, Mrs. John Bradley (Florence Briggs Thayer)     female 38    1    0      PC 17599             71.2833     C85
+                                        3            1    3               Heikkinen, Miss. Laina                                  female 26    0    0      STON/O2. 3101282     7.925
+
+ •     Example exploration of the       4            1    1               Futrelle, Mrs. Jacques Heath (Lily May Peel)            female 35    1    0     113803                53.1        C123
+                                        5            0    3              Allen, Mr. William Henry                                male     35   0    0      373450               8.05
+
+       Titanic Dataset                  6            0    3               Moran, Mr. James                                        male         0    0     330877                8.4583
+                                        7            0            1       McCarthy, Mr. Timothy J                                 male    54   0    0     17463                 51.8625     E46
+                                        8            0    3              Palsson, Master. Gosta Leonard                           male    2    3    1     349909                21.075
+
+ •     Full ydata Profiling report      9            1    3              Johnson, Mrs. Oscar W (Elisabeth Vilhelmina Berg)        female 27    0    2     347742                11.1333
+                                        10           1    2               Nasser, Mrs. Nicholas (Adele Achem)                     female 14    1    0     237736                30.0708
+
+       for this dataset available on    11           1    3               Sandstrom, Miss. Marguerite Rut                         female 4     1    1      pp 9549              16.7        G6
+                                        12           1    1               Bonnell, Miss. Elizabeth                                female 58    0    0      113783               26.55       C103
+
+       the ydata examples page.         13           0    3               Saundercock, Mr. William Henry                          male    20   0    0      A/5. 2151            8.05
+                                        Excerpt of Titanic Dataset
+
+
+
+
+
+
+
+
+
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    24
+
+Cardinalities
+•     Number of values
+•     Number of distinct values
+•     Number of NULLs
+•     MIN, MAX, MEDIAN, AVG value
+•     Applications: data understanding, attribute
+      assessment, attribute categorization, query
+      optimization
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    25
+
+Cardinalities Cardinalities for the                               Number of distinct values
+Age                                             Age Attribute     Number of missing values
+Real number (R)          Age                                      MIN, MAX, MEAN Age
+Missing                                                           …
+Distinct           88                           Minimum            0.42
+Distinct (%)       12.3%                        Maximum            80       High number of
+Missing            177                          Zeros              0        missing values
+                                                                            may be a problem
+Missing (%)        19.9%                        Zeros (%)          0.0%     for age-related
+Infinite           0                            Negative           0        analysis.
+Infinite (%)       0.0%                         Negative (%)       0.0%
+Mean               29.699118                    Memory size        7.1 KiB
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                               Nanyang Technological University. All rights reserved.    26
+
+Data types and value patterns
+
+•     String vs. number
+•     String vs. number vs. date
+•     Categorical vs. continuous                      Increasing difficulty
+•     SQL data types
+      CHAR, INT, DECIMAL, TIMESTAMP, BIT, CLOB, …
+•     Domains
+      VARCHAR(12) vs. VARCHAR(13)
+•     XML data types (even more fine grained)
+•     Regular expressions
+      (\d{3})-(\d{3})-(\d{4})-(\d+)
+•     Semantic domains
+      Address, phone, email, first name
+•     Applications: data understanding, data modeling,
+      attribute categorization, query optimization
+
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    27
+
+Data types and value patterns
+Age                                                                              Variable types
+Real number (R)  Inferred from CSV                                               impact how the
+Missing                                                                          attributes are to
+                                                                                 be handled prior /
+Distinct         Embarked               Inferred from CSV               0.42     during analysis.
+Distinct (%)     Categorical                                            80
+Missing          Distinct               3                               0        died ope
+Missing (%)      Overview         Alerts 10
+                                  Alerts 10  Reproduction
+                 Overview                    Reproduction
+Infinite         Dataset statistics                             Variable types
+                 Dataset statistics                             Variable types
+Infinite (%)     Number of variables                     12     Numeric
+                 Number of variables                     12     Numeric          5
+Mean             Number of observations                  891    Categorical
+                 Number of observations                  891    Categorical      4
+                 Missing cells                           866    Text
+                 Missing cells                           866    Text             3                28
+                 Missing cells (%)                       8.1%                                     28
+
+Numeric distributions                           
+
+<table>
+  <caption>Numeric Distributions: Laplace and Normal Probability Density Functions</caption>
+  <thead>
+    <tr>
+      <th rowspan="2">X-axis Value</th>
+      <th colspan="4">Laplace Distributions</th>
+      <th colspan="4">Normal Distributions</th>
+    </tr>
+    <tr>
+      <th>&mu;=0, b=1</th>
+      <th>&mu;=0, b=2</th>
+      <th>&mu;=0, b=4</th>
+      <th>&mu;=-5, b=4</th>
+      <th>&mu;=0, &sigma;&sup2;=0.2</th>
+      <th>&mu;=0, &sigma;&sup2;=1.0</th>
+      <th>&mu;=0, &sigma;&sup2;=5.0</th>
+      <th>&mu;=-2, &sigma;&sup2;=0.5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-10</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.04</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>-8</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.06</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>-6</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>0.10</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>-5</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>0.125</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>-4</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.05</td>
+      <td>0.10</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.04</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <td>-3</td>
+      <td>0.02</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>0.08</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.07</td>
+      <td>0.21</td>
+    </tr>
+    <tr>
+      <td>-2</td>
+      <td>0.07</td>
+      <td>0.09</td>
+      <td>0.08</td>
+      <td>0.06</td>
+      <td>0.01</td>
+      <td>0.05</td>
+      <td>0.12</td>
+      <td>0.56</td>
+    </tr>
+    <tr>
+      <td>-1</td>
+      <td>0.18</td>
+      <td>0.15</td>
+      <td>0.10</td>
+      <td>0.05</td>
+      <td>0.07</td>
+      <td>0.24</td>
+      <td>0.16</td>
+      <td>0.21</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0.50</td>
+      <td>0.25</td>
+      <td>0.125</td>
+      <td>0.04</td>
+      <td>0.89</td>
+      <td>0.40</td>
+      <td>0.18</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.18</td>
+      <td>0.15</td>
+      <td>0.10</td>
+      <td>0.03</td>
+      <td>0.07</td>
+      <td>0.24</td>
+      <td>0.16</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.07</td>
+      <td>0.09</td>
+      <td>0.08</td>
+      <td>0.02</td>
+      <td>0.01</td>
+      <td>0.05</td>
+      <td>0.12</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.02</td>
+      <td>0.06</td>
+      <td>0.06</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.07</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0.01</td>
+      <td>0.03</td>
+      <td>0.05</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.04</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.04</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.03</td>
+      <td>0.01</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.02</td>
+      <td>0.00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.00</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+
+•     Probability distribution for
+      numeric values
+•     Detect whether data follows                                           Laplacedistributions
+      some well-known distribution              
+
+<table>
+  <caption>Normal distributions</caption>
+  <thead>
+    <tr>
+      <th>$x$</th>
+      <th>$\mu=0, \sigma^2=0.2$</th>
+      <th>$\mu=0, \sigma^2=1.0$</th>
+      <th>$\mu=0, \sigma^2=5.0$</th>
+      <th>$\mu=-2, \sigma^2=0.5$</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>-5</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>-4</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <td>-3</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.10</td>
+      <td>0.21</td>
+    </tr>
+    <tr>
+      <td>-2</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.15</td>
+      <td>0.56</td>
+    </tr>
+    <tr>
+      <td>-1</td>
+      <td>0.07</td>
+      <td>0.24</td>
+      <td>0.17</td>
+      <td>0.21</td>
+    </tr>
+    <tr>
+      <td>0</td>
+      <td>0.89</td>
+      <td>0.40</td>
+      <td>0.18</td>
+      <td>0.01</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.07</td>
+      <td>0.24</td>
+      <td>0.17</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.15</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.00</td>
+      <td>0.01</td>
+      <td>0.10</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.05</td>
+      <td>0.00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0.00</td>
+      <td>0.00</td>
+      <td>0.02</td>
+      <td>0.00</td>
+    </tr>
+  </tbody>
+</table>
+
+
+      – Determine that distribution
+      function for data values
+•     If no specific/useful function
+      detectable: histograms
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    29
+
+                                                distribution of height of 2 durum wheat varieties
+                                                
+
+<table>
+  <caption>distribution of height of 2 durum wheat varieties</caption>
+  <thead>
+    <tr>
+      <th>height</th>
+      <th>Ixos (nbr of plants)</th>
+      <th>Primadur (nbr of plants)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>20-30</td>
+      <td>5</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>30-40</td>
+      <td>15</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>40-50</td>
+      <td>12</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>50-60</td>
+      <td>40</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>60-70</td>
+      <td>65</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>70-80</td>
+      <td>85</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>80-90</td>
+      <td>135</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>90-100</td>
+      <td>225</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>100-110</td>
+      <td>315</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <td>110-120</td>
+      <td>415</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>120-130</td>
+      <td>510</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <td>130-140</td>
+      <td>540</td>
+      <td>55</td>
+    </tr>
+    <tr>
+      <td>140-150</td>
+      <td>495</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <td>150-160</td>
+      <td>430</td>
+      <td>175</td>
+    </tr>
+    <tr>
+      <td>160-170</td>
+      <td>330</td>
+      <td>275</td>
+    </tr>
+    <tr>
+      <td>170-180</td>
+      <td>225</td>
+      <td>365</td>
+    </tr>
+    <tr>
+      <td>180-190</td>
+      <td>125</td>
+      <td>480</td>
+    </tr>
+    <tr>
+      <td>190-200</td>
+      <td>65</td>
+      <td>545</td>
+    </tr>
+    <tr>
+      <td>200-210</td>
+      <td>30</td>
+      <td>510</td>
+    </tr>
+    <tr>
+      <td>210-220</td>
+      <td>12</td>
+      <td>430</td>
+    </tr>
+    <tr>
+      <td>220-230</td>
+      <td>8</td>
+      <td>400</td>
+    </tr>
+    <tr>
+      <td>230-240</td>
+      <td>2</td>
+      <td>275</td>
+    </tr>
+    <tr>
+      <td>240-250</td>
+      <td>0</td>
+      <td>135</td>
+    </tr>
+    <tr>
+      <td>250-260</td>
+      <td>0</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <td>260-270</td>
+      <td>0</td>
+      <td>65</td>
+    </tr>
+    <tr>
+      <td>270-280</td>
+      <td>0</td>
+      <td>35</td>
+    </tr>
+    <tr>
+      <td>280-290</td>
+      <td>0</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>290-300</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+
+
+Histograms
+
+•     Determine (and display) value
+      frequencies for value intervals
+      or for individual values
+•     Estimation of probability
+      distribution for continuous               
+
+<table>
+  <caption>Chart 1: Population Pyramid of the U.S. Total Resident Population in 2015</caption>
+  <thead>
+    <tr>
+      <th>Age</th>
+      <th>Male</th>
+      <th>Female</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>85+</td>
+      <td>2,200,000</td>
+      <td>4,200,000</td>
+    </tr>
+    <tr>
+      <td>80 to 84</td>
+      <td>2,500,000</td>
+      <td>3,500,000</td>
+    </tr>
+    <tr>
+      <td>75 to 79</td>
+      <td>3,800,000</td>
+      <td>4,600,000</td>
+    </tr>
+    <tr>
+      <td>70 to 74</td>
+      <td>5,500,000</td>
+      <td>6,300,000</td>
+    </tr>
+    <tr>
+      <td>65 to 69</td>
+      <td>7,800,000</td>
+      <td>8,600,000</td>
+    </tr>
+    <tr>
+      <td>60 to 64</td>
+      <td>9,200,000</td>
+      <td>10,000,000</td>
+    </tr>
+    <tr>
+      <td>55 to 59</td>
+      <td>10,800,000</td>
+      <td>11,300,000</td>
+    </tr>
+    <tr>
+      <td>50 to 54</td>
+      <td>11,200,000</td>
+      <td>11,500,000</td>
+    </tr>
+    <tr>
+      <td>45 to 49</td>
+      <td>10,400,000</td>
+      <td>10,600,000</td>
+    </tr>
+    <tr>
+      <td>40 to 44</td>
+      <td>10,100,000</td>
+      <td>10,300,000</td>
+    </tr>
+    <tr>
+      <td>35 to 39</td>
+      <td>10,200,000</td>
+      <td>10,300,000</td>
+    </tr>
+    <tr>
+      <td>30 to 34</td>
+      <td>11,100,000</td>
+      <td>10,900,000</td>
+    </tr>
+    <tr>
+      <td>25 to 29</td>
+      <td>11,500,000</td>
+      <td>11,100,000</td>
+    </tr>
+    <tr>
+      <td>20 to 24</td>
+      <td>11,800,000</td>
+      <td>11,200,000</td>
+    </tr>
+    <tr>
+      <td>15 to 19</td>
+      <td>10,800,000</td>
+      <td>10,400,000</td>
+    </tr>
+    <tr>
+      <td>10 to 14</td>
+      <td>10,600,000</td>
+      <td>10,200,000</td>
+    </tr>
+    <tr>
+      <td>5 to 9</td>
+      <td>10,500,000</td>
+      <td>10,100,000</td>
+    </tr>
+    <tr>
+      <td>0 to 4</td>
+      <td>10,200,000</td>
+      <td>9,800,000</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">Source: U.S. Census Bureau, Vintage 2015 Population Estimates.</td>
+    </tr>
+  </tfoot>
+</table>
+
+
+      variables
+•     Applications: Query
+      optimization, outlier detection,
+      visualization
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    30
+
+Histograms
+
+  
+
+<table>
+  <caption>Histogram for the numerical attribute Fare: Histogram with fixed size bins (bins=50)</caption>
+  <thead>
+    <tr>
+      <th>Fare Range (approximate)</th>
+      <th>Frequency</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0 - 10</td>
+      <td>340</td>
+    </tr>
+    <tr>
+      <td>10 - 20</td>
+      <td>185</td>
+    </tr>
+    <tr>
+      <td>20 - 30</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <td>30 - 40</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <td>40 - 50</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>50 - 60</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>60 - 70</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>70 - 80</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <td>80 - 90</td>
+      <td>18</td>
+    </tr>
+    <tr>
+      <td>90 - 100</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>100 - 110</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>110 - 120</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>120 - 130</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>130 - 140</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>140 - 150</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>150 - 160</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>160 - 170</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>170 - 200</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>200 - 210</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>210 - 220</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>220 - 230</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <td>230 - 240</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>240 - 250</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>250 - 260</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <td>260 - 510</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td>510 - 520 (Outlier)</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+  NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    31
+
+Computational complexity
+•  All single-column profiling tasks require to
+   scan the data of a table once.
+•  While reading in each row, variables or data
+   structures are updated, from which the final
+   result is derived.
+•  Computational dependency depends on the
+   number of values / rows.
+•  This is considered easy :)
+
+ NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    32
+
+Next week preview:
+
+                                                Uniqueness
+
+              Multiple                          Inclusion
+              columns                           Dependencies
+               Functional
+              dependencies
+
+Multi-        • Discover joint properties
+column        • Discover dependencies
+profiling     • Complexity: Number of columns and number of values
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE                Nanyang Technological University. All rights reserved.    33
+
+References and credits
+
+•     Joseph M. Hellerstein, Tye Rattenbury, Jeffrey
+      Heer, Sean Kandel, Connor Carreras. Principles of Data
+      Wrangling. O’Reilly Media. 2017 – Chapter 4
+•     Ziawasch Abedjan, Lukasz Golab, Felix Naumann:
+      Profiling relational data: a survey. VLDB J. 24(4): 557-
+      581 (2015)
+•     Slides partially based on slides shared by Felix
+      Naumann, Hasso-Plattner-Institut Potsdam, Germany
+
+NANYANG TECHNOLOGICAL UNIVERSITY | SINGAPORE    Nanyang Technological University. All rights reserved.    34
